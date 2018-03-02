@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 1783111467828420, guid: 2a3251d70bb868d4587b49261bd5f0a5, type: 2}
+  fireAmmo: {fileID: 1030905425225590, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+  iceAmmo: {fileID: 1071596661014122, guid: 131167627dbe03a48836749ae51ac603, type: 2}
   Camera: {fileID: 639908843}
 --- !u!114 &1854195914
 MonoBehaviour:
@@ -418,6 +420,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065,
+    type: 2}
+  fireSlimePrefab: {fileID: 1539134352348728, guid: 7b3ef0fbe80d46443a2efd8282cee79d,
+    type: 2}
+  iceSlimePrefab: {fileID: 1593436585173372, guid: 2d462cb42a835b44db46dbcdba4e5168,
     type: 2}
   slimeList: []
 --- !u!1 &1935115333

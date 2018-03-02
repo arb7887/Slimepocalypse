@@ -5,6 +5,8 @@ using UnityEngine;
 public class SlimeManager : MonoBehaviour {
 
     public GameObject slimePrefab;
+    public GameObject fireSlimePrefab;
+    public GameObject iceSlimePrefab;
     public List<GameObject> slimeList;
     float timer;
 
@@ -49,9 +51,24 @@ public class SlimeManager : MonoBehaviour {
                     break;
             }*/
 
+            //Randomly choose between Fire and Ice
             //Less for a smaller screen
+            int randSlime = Random.Range(1, 3);
+
+            GameObject newSlime = null;
+
+            if (randSlime == 1)
+            {
+                newSlime = Instantiate(fireSlimePrefab);
+            }
+            else if(randSlime == 2)
+            {
+                newSlime = Instantiate(iceSlimePrefab);
+            }
+
+            //Randomly choose between 4 spawn points
             int random = Random.Range(1, 5);
-            GameObject newSlime = Instantiate(slimePrefab);
+
             switch (random)
             {
                 case (1):

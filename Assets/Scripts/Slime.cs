@@ -5,7 +5,7 @@ using UnityEngine;
 public class Slime : MonoBehaviour {
 
     private int health = 3; // number of hits until a slime dies
-    private string slimeType = "fire"; // what element type of slime it is
+    //private string slimeType = "fire"; // what element type of slime it is
 
     private float slimeSpeed = 0.01f;
 
@@ -38,6 +38,12 @@ public class Slime : MonoBehaviour {
         }
     }
 
+    //Gains health
+    public void GainHealth()
+    {
+        health++;
+    }
+
     /* more advanced takedamage method
     // method for a slime to take damage
     public void TakeDamage(string projectileType)
@@ -67,11 +73,18 @@ public class Slime : MonoBehaviour {
     // method for slime to grow or shrink based on health values
     public void ResizeSlime()
     {
-        gameObject.transform.localScale = new Vector3(0.7f + (float)health*0.1f, 0.7f + (float)health*0.1f, 1.0f);
+        //gameObject.transform.localScale = new Vector3(0.7f + (float)health*0.1f, 0.7f + (float)health*0.1f, 1.0f);
+        gameObject.transform.localScale -= new Vector3((float)health * 0.05f, (float)health * 0.05f, 1.0f);
+    }
+
+    //Grows the Slime's Size
+    public void UpSizeSlime()
+    {
+        gameObject.transform.localScale += new Vector3((float)health * 0.05f, (float)health * 0.05f, 1.0f);
     }
 
     // collision detection
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         // on collision, call takeDamage
         // currently using ammo's tag as the determiner for which type of ammo it is

@@ -7,11 +7,14 @@ public class Flickshot : MonoBehaviour {
     Vector2 startVec2 = Vector2.zero;
     Vector2 releaseVec2 = Vector2.zero;
     Vector2 launchAngle = Vector2.zero;
-    bool isHolding = false;
+    //bool isHolding = false;
     public GameObject ammo;
-    GameObject[] ammoList = new GameObject[10];
-    int currentAmmo = 0;
-    int maxAmmo = 10;
+    public GameObject fireAmmo;
+    public GameObject iceAmmo;
+    public int ammoType = 1; //Represents element: 1 = Fire | 2 = Ice
+    //GameObject[] ammoList = new GameObject[10];
+    //int currentAmmo = 0;
+    //int maxAmmo = 10;
 
     public GameObject Camera;
 
@@ -72,9 +75,17 @@ public class Flickshot : MonoBehaviour {
             releaseVec2 = Vector2.zero;
         }
 
-        
+        //Temporary testing of shooting the right projectile
+        if(Input.GetKey("up"))
+        {
+            ammoType = 1;
+        }
+        if (Input.GetKey("down"))
+        {
+            ammoType = 2;
+        }
 
-	}
+    }
 
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
     void Launch() {
@@ -112,6 +123,15 @@ public class Flickshot : MonoBehaviour {
         {
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
 
+            if(ammoType == 1)
+            {
+                projectile = Instantiate(fireAmmo, new Vector2(0, -10), Quaternion.identity);
+            }
+            else if (ammoType == 2)
+            {
+                projectile = Instantiate(iceAmmo, new Vector2(0, -10), Quaternion.identity);
+            }
+
             launchAngle.Normalize();
 
             projectile.transform.position = new Vector2(Camera.transform.localPosition.x, Camera.transform.localPosition.y - 4.2f);
@@ -120,6 +140,17 @@ public class Flickshot : MonoBehaviour {
             projectile.GetComponent<Rigidbody2D>().AddForce(launchAngle * 600);
             projectile.GetComponent<Rigidbody2D>().transform.up = launchAngle;
 
+        }
+        else
+        {
+            if(ammoType == 1)
+            {
+                ammoType = 2;
+            }
+            else if(ammoType == 2)
+            {
+                ammoType = 1;
+            }
         }
     }
 
