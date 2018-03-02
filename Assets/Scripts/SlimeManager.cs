@@ -18,33 +18,53 @@ public class SlimeManager : MonoBehaviour {
         timer += Time.deltaTime;
         if (timer > 1.0f)
         {
+            /*
             int random = Random.Range(1, 8);
             GameObject newSlime = Instantiate(slimePrefab);
             switch (random)
             { 
                 case (1):
-                    newSlime.transform.position = new Vector3(-10.0f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(-2.4f, 5.0f, 0.0f);
                     break;
                 case (2):
-                    newSlime.transform.position = new Vector3(-7.5f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(-1.8f, 5.0f, 0.0f);
                     break;
                 case (3):
-                    newSlime.transform.position = new Vector3(-5.0f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(-1.2f, 5.0f, 0.0f);
                     break;
                 case (4):
-                    newSlime.transform.position = new Vector3(-2.5f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(-0.6f, 5.0f, 0.0f);
                     break;
                 case (5):
-                    newSlime.transform.position = new Vector3(2.5f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
                     break;
                 case (6):
-                    newSlime.transform.position = new Vector3(5.0f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(0.75f, 5.0f, 0.0f);
                     break;
                 case (7):
-                    newSlime.transform.position = new Vector3(7.5f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(7.5f, 5.0f, 0.0f);
                     break;
                 case (8):
-                    newSlime.transform.position = new Vector3(10.0f, 3.6f, 0.0f);
+                    newSlime.transform.position = new Vector3(10.0f, 5.0f, 0.0f);
+                    break;
+            }*/
+
+            //Less for a smaller screen
+            int random = Random.Range(1, 5);
+            GameObject newSlime = Instantiate(slimePrefab);
+            switch (random)
+            {
+                case (1):
+                    newSlime.transform.position = new Vector3(-1.8f, 6.0f, 0.0f);
+                    break;
+                case (2):
+                    newSlime.transform.position = new Vector3(-0.6f, 6.0f, 0.0f);
+                    break;
+                case (3):
+                    newSlime.transform.position = new Vector3(0.6f, 6.0f, 0.0f);
+                    break;
+                case (4):
+                    newSlime.transform.position = new Vector3(1.8f, 6.0f, 0.0f);
                     break;
             }
             slimeList.Add(newSlime);

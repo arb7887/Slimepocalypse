@@ -12,7 +12,7 @@ public class SelfDestruct : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //If the projectile goes far enough off screen, it'll delete itself
-        if (gameObject.transform.position.x > 15 || gameObject.transform.position.x < -15 || gameObject.transform.position.y > 10 || gameObject.transform.position.y < -15)
+        if (gameObject.transform.position.x > 3.5 || gameObject.transform.position.x < -3.5 || gameObject.transform.position.y > 5.5 || gameObject.transform.position.y < -5.5)
         {
             Destroy(gameObject);
         }
