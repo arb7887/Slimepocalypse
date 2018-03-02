@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    public int health = 3; // number of hits until a slime dies
-    public string slimeType = "fire"; // what element type of slime it is
+    private int health = 3; // number of hits until a slime dies
+    private string slimeType = "fire"; // what element type of slime it is
 
 	// Use this for initialization
 	void Start ()
@@ -21,6 +21,21 @@ public class Slime : MonoBehaviour {
 
 	}
 
+    // simple takedamage
+    public void TakeDamage()
+    {
+        // decrease health by 1
+        health--;
+
+        // check to make sure the slime is still alive
+        if (health <= 0)
+        {
+            // destroy the slime when healt is zero
+            Destroy(gameObject);
+        }
+    }
+
+    /* more advanced takedamage method
     // method for a slime to take damage
     public void TakeDamage(string projectileType)
     {
@@ -44,6 +59,7 @@ public class Slime : MonoBehaviour {
             health++;
         }
     }
+    */
 
     // method for slime to grow or shrink based on health values
     public void ResizeSlime()
@@ -52,11 +68,19 @@ public class Slime : MonoBehaviour {
     }
 
     // collision detection
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // on collision, call takeDamage
         // currently using ammo's tag as the determiner for which type of ammo it is
-        TakeDamage(collision.gameObject.GetComponent<Flickshot>().ammo.tag); 
+        //TakeDamage(collision.gameObject.GetComponent<Flickshot>().ammo.tag);
+        // simple take damage method instead
+
+        Debug.Log("Hit");
+        // delete the projectile
+        Destroy(collision.gameObject);
+
+        // call the takeDamage method
+        TakeDamage();
 
         // then resize the slime based on the new health
         ResizeSlime();
