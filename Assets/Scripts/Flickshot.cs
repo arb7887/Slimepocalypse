@@ -17,11 +17,11 @@ public class Flickshot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        /*
         for(int i = 0; i < maxAmmo; i++)
         {
             ammoList[i] = Instantiate(ammo, new Vector2(-10,-10), Quaternion.identity);
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -84,7 +84,7 @@ public class Flickshot : MonoBehaviour {
 
 
         Debug.Log("Launch Vector: " + launchAngle);
-
+        /*
         // Checking if there was enough of a flick to count it
         if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f)
         {
@@ -101,6 +101,25 @@ public class Flickshot : MonoBehaviour {
             // Increment and if necessary, reset the current ammo count
             currentAmmo++;
             if (currentAmmo >= maxAmmo) currentAmmo = 0;
+        }
+        */
+
+        //Allows for infinite ammo
+        //var projectile = Instantiate(ammo, new Vector2(-10, -10), Quaternion.identity);
+
+        // Checking if there was enough of a flick to count it
+        if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f)
+        {
+            var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
+
+            launchAngle.Normalize();
+
+            projectile.transform.position = new Vector2(Camera.transform.localPosition.x, Camera.transform.localPosition.y - 4.2f);
+
+            // Add a force to the ammo and adjust its angle
+            projectile.GetComponent<Rigidbody2D>().AddForce(launchAngle * 600);
+            projectile.GetComponent<Rigidbody2D>().transform.up = launchAngle;
+
         }
     }
 

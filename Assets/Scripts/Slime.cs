@@ -7,6 +7,8 @@ public class Slime : MonoBehaviour {
     private int health = 3; // number of hits until a slime dies
     private string slimeType = "fire"; // what element type of slime it is
 
+    private float slimeSpeed = 0.01f;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -18,7 +20,8 @@ public class Slime : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        //Moving the slimes every frame
+        MoveSlime();
 	}
 
     // simple takedamage
@@ -84,5 +87,11 @@ public class Slime : MonoBehaviour {
 
         // then resize the slime based on the new health
         ResizeSlime();
+    }
+
+    //Moving the Slimes
+    private void MoveSlime()
+    {
+        this.transform.Translate(0f, -1f * slimeSpeed, 0f, Space.Self);
     }
 }
