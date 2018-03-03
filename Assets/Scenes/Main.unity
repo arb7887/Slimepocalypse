@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 1854195912}
   - component: {fileID: 1854195913}
   - component: {fileID: 1854195914}
+  - component: {fileID: 1854195915}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -407,6 +408,7 @@ MonoBehaviour:
   ammo: {fileID: 1783111467828420, guid: 2a3251d70bb868d4587b49261bd5f0a5, type: 2}
   fireAmmo: {fileID: 1030905425225590, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
   iceAmmo: {fileID: 1071596661014122, guid: 131167627dbe03a48836749ae51ac603, type: 2}
+  ammoType: 1
   Camera: {fileID: 639908843}
 --- !u!114 &1854195914
 MonoBehaviour:
@@ -426,6 +428,21 @@ MonoBehaviour:
   iceSlimePrefab: {fileID: 1593436585173372, guid: 2d462cb42a835b44db46dbcdba4e5168,
     type: 2}
   slimeList: []
+--- !u!114 &1854195915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1854195911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33009622448d94841b1217ea98d4105e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walls: []
+  wallImage1: {fileID: 1017607126244738, guid: 29090baa6d13f6941abf1758efa2e292, type: 2}
+  wallImage2: {fileID: 1559415834317350, guid: 2a90c5d6cb0f3d14bb36c95755d43ef5, type: 2}
+  wallImage3: {fileID: 1523582726063464, guid: 53900bf5562098149a150e43668fa413, type: 2}
 --- !u!1 &1935115333
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +525,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240, y: 400, z: 0}
+  m_LocalPosition: {x: 531, y: 319, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
