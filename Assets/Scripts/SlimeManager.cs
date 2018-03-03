@@ -18,7 +18,7 @@ public class SlimeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if (timer > 1.0f)
+        if (timer > 2.0f)
         {
             /*
             int random = Random.Range(1, 8);
