@@ -43,7 +43,8 @@ public class Flickshot : MonoBehaviour {
             {
                 // Save the touch's location in the beginning of the touch
                 case TouchPhase.Began:
-                    startVec2 = touch.position;
+                    //startVec2 = touch.position; //Using this for angle calculation would create an angle from where you touch, to where you end, then apply that angle to a projectile that starts at the magic bolt's location, which feels weird.
+                    startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location
                     break;
                 // Useable for calculating angle
                 case TouchPhase.Moved:

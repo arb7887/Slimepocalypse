@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    private int health = 3; // number of hits until a slime dies
+    public int health = 3; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
-    private float slimeSpeed = 0.01f;
+    public float slimeSpeed = 0.01f;
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +15,7 @@ public class Slime : MonoBehaviour {
         // default values for slime and type
         //health = 3;
         //slimeType = "fire"; // or "ice" but currently only fire
+        setInitialSize();
 	}
 	
 	// Update is called once per frame
@@ -70,17 +71,32 @@ public class Slime : MonoBehaviour {
     }
     */
 
+    //Method to adjust initial size of slime that spawns with >3 health
+    public void setInitialSize()
+    {
+        if (health > 3)
+        {
+            UpSizeSlime();
+        }
+        else if (health < 3)
+        {
+            ResizeSlime();
+        }
+    }
+
     // method for slime to grow or shrink based on health values
     public void ResizeSlime()
     {
         //gameObject.transform.localScale = new Vector3(0.7f + (float)health*0.1f, 0.7f + (float)health*0.1f, 1.0f);
-        gameObject.transform.localScale -= new Vector3((float)health * 0.05f, (float)health * 0.05f, 1.0f);
+        //gameObject.transform.localScale -= new Vector3((float)health * 0.15f, (float)health * 0.15f, 1.0f);
+        gameObject.transform.localScale -= new Vector3(0.15f, 0.15f, 1.0f);
     }
 
     //Grows the Slime's Size
     public void UpSizeSlime()
     {
-        gameObject.transform.localScale += new Vector3((float)health * 0.05f, (float)health * 0.05f, 1.0f);
+        //gameObject.transform.localScale += new Vector3((float)health * 0.15f, (float)health * 0.15f, 1.0f);
+        gameObject.transform.localScale += new Vector3(0.15f, 0.15f, 1.0f);
     }
 
     // collision detection
@@ -103,7 +119,7 @@ public class Slime : MonoBehaviour {
     }
 
     //Moving the Slimes
-    private void MoveSlime()
+    protected virtual void MoveSlime()
     {
         this.transform.Translate(0f, -1f * slimeSpeed, 0f, Space.Self);
     }

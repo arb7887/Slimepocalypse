@@ -423,10 +423,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065,
     type: 2}
-  fireSlimePrefab: {fileID: 1539134352348728, guid: 7b3ef0fbe80d46443a2efd8282cee79d,
-    type: 2}
-  iceSlimePrefab: {fileID: 1593436585173372, guid: 2d462cb42a835b44db46dbcdba4e5168,
-    type: 2}
+  slimePrefabs:
+  - {fileID: 1539134352348728, guid: 7b3ef0fbe80d46443a2efd8282cee79d, type: 2}
+  - {fileID: 1032942079293552, guid: d90e63f8672e0b846bd6a7893fd6c585, type: 2}
+  - {fileID: 1593436585173372, guid: 2d462cb42a835b44db46dbcdba4e5168, type: 2}
+  - {fileID: 1029372757767708, guid: c9d6acc24d4e6a849b3c4281c25d3c00, type: 2}
   slimeList: []
 --- !u!114 &1854195915
 MonoBehaviour:
@@ -525,7 +526,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 531, y: 319, z: 0}
+  m_LocalPosition: {x: 387, y: 139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
