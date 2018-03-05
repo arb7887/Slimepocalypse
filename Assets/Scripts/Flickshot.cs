@@ -66,8 +66,6 @@ public class Flickshot : MonoBehaviour {
         else if (Input.GetMouseButtonDown(0) == true) {
             // Save the touch's location in the beginning of the touch
             startVec2 = Input.mousePosition;
-            //startVec2 = new Vector2(240, 80); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location (The Magic Circle)
-            //Debug.Log(startVec2);
         }
         // Check if the player has released
         if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero) {
@@ -79,25 +77,12 @@ public class Flickshot : MonoBehaviour {
             releaseVec2 = Vector2.zero;
         }
 
-        //Temporary testing of shooting the right projectile
-        /*
-        if(Input.GetKey("up"))
-        {
-            ammoType = 1;
-        }
-        if (Input.GetKey("down"))
-        {
-            ammoType = 2;
-        }
-        */
-
     }
 
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
     void Launch() {
 
         // Calculate launch angle
-        //launchAngle = releaseVec2 - startVec2;
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
         launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
 
