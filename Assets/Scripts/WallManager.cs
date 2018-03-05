@@ -10,8 +10,8 @@ public class WallManager : MonoBehaviour {
     public GameObject wallImage2;
     public GameObject wallImage3;
 
-    private int numWalls = 5; // number of wall pieces
-    private float imgWidth; // width of the image in pixels
+    //private int numWalls = 5; // number of wall pieces
+    //private float imgWidth; // width of the image in pixels
 
     //private float screenWidth;
     //private float screenHeight;
@@ -23,7 +23,7 @@ public class WallManager : MonoBehaviour {
         //screenWidth = Camera.main.WorldToScreenPoint(Screen.width);
 
         // calculate image width
-        imgWidth = wallImage1.GetComponent<SpriteRenderer>().sprite.rect.width;
+        //imgWidth = wallImage1.GetComponent<SpriteRenderer>().sprite.rect.width;
 
         // call the create walls method
         createWall();

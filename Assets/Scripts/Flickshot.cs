@@ -7,7 +7,9 @@ public class Flickshot : MonoBehaviour {
 
     Vector2 startVec2 = Vector2.zero;
     Vector2 releaseVec2 = Vector2.zero;
+    Vector2 launchStartVec2 = Vector2.zero;
     Vector2 launchAngle = Vector2.zero;
+    Vector2 launchAngleCheck = Vector2.zero;
     //bool isHolding = false;
     public GameObject ammo;
     public GameObject fireAmmo;
@@ -22,7 +24,8 @@ public class Flickshot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        //launchStartVec2 = new Vector2(240, 80);
+        launchStartVec2 = new Vector2(MagicCircleButton.transform.position.x, MagicCircleButton.transform.position.y);
     }
 	
 	// Update is called once per frame
@@ -41,8 +44,8 @@ public class Flickshot : MonoBehaviour {
             {
                 // Save the touch's location in the beginning of the touch
                 case TouchPhase.Began:
-                    //startVec2 = touch.position;
-                    startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location
+                    startVec2 = touch.position;
+                    //startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location (The Magic Circle)
                     break;
                 // Useable for calculating angle
                 case TouchPhase.Moved:
@@ -63,6 +66,8 @@ public class Flickshot : MonoBehaviour {
         else if (Input.GetMouseButtonDown(0) == true) {
             // Save the touch's location in the beginning of the touch
             startVec2 = Input.mousePosition;
+            //startVec2 = new Vector2(240, 80); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location (The Magic Circle)
+            //Debug.Log(startVec2);
         }
         // Check if the player has released
         if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero) {
@@ -75,6 +80,7 @@ public class Flickshot : MonoBehaviour {
         }
 
         //Temporary testing of shooting the right projectile
+        /*
         if(Input.GetKey("up"))
         {
             ammoType = 1;
@@ -83,6 +89,7 @@ public class Flickshot : MonoBehaviour {
         {
             ammoType = 2;
         }
+        */
 
     }
 
@@ -90,11 +97,13 @@ public class Flickshot : MonoBehaviour {
     void Launch() {
 
         // Calculate launch angle
-        launchAngle = releaseVec2 - startVec2;
-        
+        //launchAngle = releaseVec2 - startVec2;
+        launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
+        launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
+
 
         // Checking if there was enough of a flick to count it
-        if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f &&
+        if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&
             !(startVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
               startVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
               startVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
@@ -104,11 +113,13 @@ public class Flickshot : MonoBehaviour {
 
             if(ammoType == 1)
             {
-                projectile = Instantiate(fireAmmo, new Vector2(0, -10), Quaternion.identity);
+                //projectile = Instantiate(fireAmmo, new Vector2(0, -10), Quaternion.identity);
+                projectile = Instantiate(fireAmmo, new Vector2(MagicCircleButton.transform.position.x, MagicCircleButton.transform.position.y + 80), Quaternion.identity);
             }
             else if (ammoType == 2)
             {
-                projectile = Instantiate(iceAmmo, new Vector2(0, -10), Quaternion.identity);
+                //projectile = Instantiate(iceAmmo, new Vector2(0, -10), Quaternion.identity);
+                projectile = Instantiate(iceAmmo, new Vector2(MagicCircleButton.transform.position.x, MagicCircleButton.transform.position.y), Quaternion.identity);
             }
 
             launchAngle.Normalize();
@@ -120,7 +131,7 @@ public class Flickshot : MonoBehaviour {
             projectile.GetComponent<Rigidbody2D>().transform.up = launchAngle;
 
         }
-        else if (launchAngle.y <= -125.0f)
+        else if (launchAngleCheck.y <= -125.0f)
         {
             if(ammoType == 1)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    public int health = 3; // number of hits until a slime dies
+    public int health = 2; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
     public float slimeSpeed = 0.01f;
@@ -107,7 +107,7 @@ public class Slime : MonoBehaviour {
         //TakeDamage(collision.gameObject.GetComponent<Flickshot>().ammo.tag);
         // simple take damage method instead
 
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         // delete the projectile
         Destroy(collision.gameObject);
 

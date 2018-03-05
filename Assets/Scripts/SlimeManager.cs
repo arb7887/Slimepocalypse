@@ -18,7 +18,7 @@ public class SlimeManager : MonoBehaviour {
         timer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
-        healthTotal = 3;
+        healthTotal = 2;
         slimeSpeedOffset = 0.0f;
 	}
 	
@@ -29,51 +29,44 @@ public class SlimeManager : MonoBehaviour {
         //Once the time for whatever we determine one round to be passes...
         if (globalTimer > 30.0f)
         {
+            int randDifficulty = Random.Range(1, 4); //Randomly increase an aspect of the Slimes
+
             //We lower the spawn rate, but only until it reaches a time minimum as to not completely overload the player.
-            if (spawnTime >= 0.5)
+            /*if (spawnTime >= 0.5)
             {
                 spawnTime -= 0.25f;
+            }*/
+
+
+            //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
+            switch (randDifficulty)
+            {
+                case (1):
+                    healthTotal += 1;
+                    //Debug.Log("Health Increased!");
+                    break;
+                case (2):
+                    slimeSpeedOffset += 0.005f;
+                    //Debug.Log("Speed Increased!");
+                    break;
+                case (3):
+                    if (spawnTime >= 0.5)
+                    {
+                        spawnTime -= 0.25f;
+                    }
+                    //Debug.Log("Spawn Rate Increased!");
+                    break;
             }
+
             //And adjust slime speed and health.
-            healthTotal += 1;
-            slimeSpeedOffset += 0.01f;
+            //healthTotal += 1;
+            //slimeSpeedOffset += 0.005f;
 
             //Then reset the timer so we can continue adjusting the difficulty as the rounds progress.
             globalTimer = 0.0f;
         }
         if (timer > spawnTime)
         {
-            /*
-            int random = Random.Range(1, 8);
-            GameObject newSlime = Instantiate(slimePrefab);
-            switch (random)
-            { 
-                case (1):
-                    newSlime.transform.position = new Vector3(-2.4f, 5.0f, 0.0f);
-                    break;
-                case (2):
-                    newSlime.transform.position = new Vector3(-1.8f, 5.0f, 0.0f);
-                    break;
-                case (3):
-                    newSlime.transform.position = new Vector3(-1.2f, 5.0f, 0.0f);
-                    break;
-                case (4):
-                    newSlime.transform.position = new Vector3(-0.6f, 5.0f, 0.0f);
-                    break;
-                case (5):
-                    newSlime.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
-                    break;
-                case (6):
-                    newSlime.transform.position = new Vector3(0.75f, 5.0f, 0.0f);
-                    break;
-                case (7):
-                    newSlime.transform.position = new Vector3(7.5f, 5.0f, 0.0f);
-                    break;
-                case (8):
-                    newSlime.transform.position = new Vector3(10.0f, 5.0f, 0.0f);
-                    break;
-            }*/
-
             //Randomly choose between Fire and Ice
             //Less for a smaller screen
 
