@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Flickshot : MonoBehaviour {
 
@@ -12,19 +13,16 @@ public class Flickshot : MonoBehaviour {
     public GameObject fireAmmo;
     public GameObject iceAmmo;
     public int ammoType = 1; //Represents element: 1 = Fire | 2 = Ice
-    //GameObject[] ammoList = new GameObject[10];
-    //int currentAmmo = 0;
-    //int maxAmmo = 10;
+
+    public Button MagicCircleButton;
+    public Sprite fireCircle;
+    public Sprite iceCircle;
 
     public GameObject Camera;
 
 	// Use this for initialization
 	void Start () {
-        /*
-        for(int i = 0; i < maxAmmo; i++)
-        {
-            ammoList[i] = Instantiate(ammo, new Vector2(-10,-10), Quaternion.identity);
-        }*/
+
     }
 	
 	// Update is called once per frame
@@ -43,7 +41,7 @@ public class Flickshot : MonoBehaviour {
             {
                 // Save the touch's location in the beginning of the touch
                 case TouchPhase.Began:
-                    //startVec2 = touch.position; //Using this for angle calculation would create an angle from where you touch, to where you end, then apply that angle to a projectile that starts at the magic bolt's location, which feels weird.
+                    //startVec2 = touch.position;
                     startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location
                     break;
                 // Useable for calculating angle
@@ -93,34 +91,14 @@ public class Flickshot : MonoBehaviour {
 
         // Calculate launch angle
         launchAngle = releaseVec2 - startVec2;
-
-
-        Debug.Log("Launch Vector: " + launchAngle);
-        /*
-        // Checking if there was enough of a flick to count it
-        if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f)
-        {
-            launchAngle.Normalize();
-
-            // Moves the ammo and resets its force
-            ammoList[currentAmmo].transform.position = new Vector2(Camera.transform.localPosition.x, Camera.transform.localPosition.y - 4.2f);
-            ammoList[currentAmmo].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-            // Add a force to the ammo and adjust its angle
-            ammoList[currentAmmo].GetComponent<Rigidbody2D>().AddForce(launchAngle * 600);
-            ammoList[currentAmmo].GetComponent<Rigidbody2D>().transform.up = launchAngle;
-
-            // Increment and if necessary, reset the current ammo count
-            currentAmmo++;
-            if (currentAmmo >= maxAmmo) currentAmmo = 0;
-        }
-        */
-
-        //Allows for infinite ammo
-        //var projectile = Instantiate(ammo, new Vector2(-10, -10), Quaternion.identity);
+        
 
         // Checking if there was enough of a flick to count it
-        if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f)
+        if (Mathf.Abs(launchAngle.x) >= 1.0f && launchAngle.y >= 1.0f &&
+            !(startVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
+              startVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
+              startVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
+              startVec2.y >= MagicCircleButton.transform.position.y - 50.0f))
         {
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
 
@@ -142,15 +120,37 @@ public class Flickshot : MonoBehaviour {
             projectile.GetComponent<Rigidbody2D>().transform.up = launchAngle;
 
         }
-        else
+        else if (launchAngle.y <= -125.0f)
         {
             if(ammoType == 1)
             {
                 ammoType = 2;
+                MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
             }
             else if(ammoType == 2)
             {
                 ammoType = 1;
+                MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
+            }
+        }
+        else if ((startVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
+                  startVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
+                  startVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
+                  startVec2.y >= MagicCircleButton.transform.position.y - 50.0f) &&
+                  (releaseVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
+                  releaseVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
+                  releaseVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
+                  releaseVec2.y >= MagicCircleButton.transform.position.y - 50.0f))
+        {
+            if (ammoType == 1)
+            {
+                ammoType = 2;
+                MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
+            }
+            else if (ammoType == 2)
+            {
+                ammoType = 1;
+                MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
             }
         }
     }
