@@ -80,7 +80,7 @@ public class SlimeManager : MonoBehaviour {
             //Generates 2 random integers. One to determine type, and one to determine movement pattern.
             int randSlime = Random.Range(0, 3);
             int moveType = Random.Range(0, 2);
-            GameObject newSlime = null;
+            GameObject newSlime = slimePrefab;
 
             //Based on the random numbers that are generated, we create a slime of the corresponding type and movement pattern.
             if (randSlime == 0)
@@ -105,9 +105,6 @@ public class SlimeManager : MonoBehaviour {
                     newSlime = Instantiate(slimePrefabs[3]);
                 }
             }
-            //And apply any difficulty changes that we have currently implemented.
-            newSlime.GetComponent<Slime>().health = healthTotal;
-            newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
             //Randomly choose between 4 spawn points
             int random = Random.Range(1, 5);
 
@@ -126,6 +123,10 @@ public class SlimeManager : MonoBehaviour {
                     newSlime.transform.position = new Vector3(1.8f, 6.0f, 0.0f);
                     break;
             }
+
+            //And apply any difficulty changes that we have currently implemented.
+            newSlime.GetComponent<Slime>().health = healthTotal;
+            newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
             slimeList.Add(newSlime);
             timer = 0.0f;
         }

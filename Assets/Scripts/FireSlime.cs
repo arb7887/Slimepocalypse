@@ -20,7 +20,6 @@ public class FireSlime : Slime {
     {
         if(collision.gameObject.name == "IceAmmo(Clone)") //Takes Damage
         {
-            Debug.Log("Ice Hit");
             // delete the projectile
             Destroy(collision.gameObject);
 
@@ -32,7 +31,6 @@ public class FireSlime : Slime {
         }
         else if(collision.gameObject.name == "FireAmmo(Clone)") //Grows
         {
-            Debug.Log("Fire Grow");
             // delete the projectile
             Destroy(collision.gameObject);
 

@@ -8,7 +8,6 @@ public class DashIceSlime : DashSlime {
     {
         if (collision.gameObject.name == "FireAmmo(Clone)") //Takes Damage
         {
-            Debug.Log("Fire Hit");
             // delete the projectile
             Destroy(collision.gameObject);
 
@@ -20,7 +19,6 @@ public class DashIceSlime : DashSlime {
         }
         else if (collision.gameObject.name == "IceAmmo(Clone)") //Grows
         {
-            Debug.Log("Ice Grow");
             // delete the projectile
             Destroy(collision.gameObject);
 
