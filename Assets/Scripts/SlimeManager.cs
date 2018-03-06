@@ -13,6 +13,7 @@ public class SlimeManager : MonoBehaviour {
     int healthTotal; //Adjusting slime health as game goes on.
     float slimeSpeedOffset; //Adjusting speed of slimes.
 
+
     // Use this for initialization
     void Start () {
         timer = 0.0f;

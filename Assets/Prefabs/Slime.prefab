@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199841879888912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 6, z: 0}
+  m_LocalPosition: {x: -1.8, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  slimeSpeed: 2.610005
+  slimeSpeed: 2.6250052
 --- !u!212 &212424730248463672
 SpriteRenderer:
   m_ObjectHideFlags: 1
