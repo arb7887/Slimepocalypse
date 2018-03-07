@@ -36,4 +36,5 @@ public class FireSlime : Slime {
             UpSizeSlime();
         }
     }
+    
 }

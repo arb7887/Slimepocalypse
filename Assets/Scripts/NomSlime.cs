@@ -25,6 +25,10 @@ public class NomSlime : Slime {
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.name == "SuperAmmo(Clone)")
+        {
+            instaKill();
+        }
         if (type == "ice")
         {
             if (collision.gameObject.name == "FireAmmo(Clone)") //Takes Damage

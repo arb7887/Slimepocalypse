@@ -35,4 +35,5 @@ public class IceSlime : Slime {
             UpSizeSlime();
         }
     }
+    
 }

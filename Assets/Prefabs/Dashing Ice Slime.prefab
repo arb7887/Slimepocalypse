@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212093517165366134}
   - component: {fileID: 61634535792858548}
   - component: {fileID: 114581402150519162}
+  - component: {fileID: 50313175863238818}
   m_Layer: 0
   m_Name: Dashing Ice Slime
   m_TagString: Slime
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50313175863238818
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029372757767708}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61634535792858548
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -51,14 +72,14 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1.12, y: 1.12}
     newSize: {x: 2.5, y: 2.65}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -80,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   slimeSpeed: 0.01
+  type: 
+  spriteList: []
 --- !u!212 &212093517165366134
 SpriteRenderer:
   m_ObjectHideFlags: 1

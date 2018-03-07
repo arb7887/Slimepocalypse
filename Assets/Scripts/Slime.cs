@@ -54,6 +54,13 @@ public class Slime : MonoBehaviour {
         }
     }
 
+    // The slime has been instakilled by something like a supershot
+    public void instaKill()
+    {
+            // instantly kill this slime
+            Destroy(gameObject);
+    }
+
     //Gains health
     public void GainHealth()
     {
@@ -118,6 +125,10 @@ public class Slime : MonoBehaviour {
     // collision detection
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.name == "SuperAmmo(Clone)")
+        {
+            instaKill();
+        }
         //Check slime type to determine collision behaviors.
         //Ice types take damage from fire ammo, and absorb ice ammo.
         //Vice versa for fire types.
@@ -172,7 +183,7 @@ public class Slime : MonoBehaviour {
             }
         }
     }
-    
+
     //Moving the Slimes
     protected virtual void MoveSlime()
     {
