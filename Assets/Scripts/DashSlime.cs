@@ -13,6 +13,17 @@ public class DashSlime : Slime {
         slimeSpeed = 0.04f;
         dashTimer = Random.Range(0.3f, 0.7f);
         delayTimer = Random.Range(1.2f, 1.5f);
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+        {
+            type = "ice";
+            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+        }
+        else
+        {
+            type = "fire";
+            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+        }
     }
 	
 	// Update is called once per frame
@@ -32,4 +43,6 @@ public class DashSlime : Slime {
             delayTimer = Random.Range(1.2f, 1.5f);
         }
 	}
+
+
 }

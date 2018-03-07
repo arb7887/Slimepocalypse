@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class FireSlime : Slime {
 
-    /*
+    
 	// Use this for initialization
 	void Start () {
-		
+        type = "fire";
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    */
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.name == "IceAmmo(Clone)") //Takes Damage
         {

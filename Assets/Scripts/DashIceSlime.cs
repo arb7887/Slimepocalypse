@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class DashIceSlime : DashSlime {
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    void Start()
+    {
+        type = "ice";
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "FireAmmo(Clone)") //Takes Damage
         {

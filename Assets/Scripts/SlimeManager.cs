@@ -73,31 +73,22 @@ public class SlimeManager : MonoBehaviour {
 
             //Generates 2 random integers. One to determine type, and one to determine movement pattern.
             int randSlime = Random.Range(0, 3);
-            int moveType = Random.Range(0, 2);
             GameObject newSlime = slimePrefab;
 
             //Based on the random numbers that are generated, we create a slime of the corresponding type and movement pattern.
             if (randSlime == 0)
             {
-                if (moveType == 0)
-                {
-                    newSlime = Instantiate(slimePrefabs[0]);
-                }
-                else
-                {
-                    newSlime = Instantiate(slimePrefabs[1]);
-                }
+                newSlime = Instantiate(slimePrefabs[0]);
+
             }
             else if(randSlime == 1)
             {
-                if (moveType == 0)
-                {
-                    newSlime = Instantiate(slimePrefabs[2]);
-                }
-                else
-                {
-                    newSlime = Instantiate(slimePrefabs[3]);
-                }
+                newSlime = Instantiate(slimePrefabs[1]);
+               
+            }
+            else if (randSlime == 2)
+            {
+                newSlime = Instantiate(slimePrefabs[2]);
             }
             //Randomly choose between 4 spawn points
             int random = Random.Range(1, 5);
