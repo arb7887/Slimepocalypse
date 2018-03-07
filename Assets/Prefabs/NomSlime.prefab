@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212062422347296000}
   - component: {fileID: 61457014002300884}
   - component: {fileID: 114178038677934696}
+  - component: {fileID: 50358547224845356}
   m_Layer: 0
   m_Name: NomSlime
   m_TagString: Slime
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50358547224845356
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636266901075538}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61457014002300884
 BoxCollider2D:
   m_ObjectHideFlags: 1
