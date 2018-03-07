@@ -260,7 +260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315561307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -481.99582, z: 0}
+  m_LocalPosition: {x: 0, y: -282.82977, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -725,7 +725,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019744689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400, y: 640, z: 0}
+  m_LocalPosition: {x: 574.5, y: 316.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 725240231}
@@ -898,7 +898,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807853943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000076293945, y: -339.58795, z: 0}
+  m_LocalPosition: {x: 0.000015258789, y: -199.26643, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1028,6 +1028,7 @@ MonoBehaviour:
   ammo: {fileID: 1783111467828420, guid: 2a3251d70bb868d4587b49261bd5f0a5, type: 2}
   fireAmmo: {fileID: 1030905425225590, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
   iceAmmo: {fileID: 1071596661014122, guid: 131167627dbe03a48836749ae51ac603, type: 2}
+  superAmmo: {fileID: 1120762877480678, guid: 8e3517d333dbcbc43b7012ba1f95cc3e, type: 2}
   ammoType: 1
   MagicCircleButton: {fileID: 1807853945}
   fireCircle: {fileID: 21300000, guid: 44df31a0afd28d64fb15322be90ccaf4, type: 3}
@@ -1224,7 +1225,7 @@ RectTransform:
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.011410887, y: 0.011410887, z: 0.011410887}
+  m_LocalScale: {x: 0.019446325, y: 0.019446325, z: 0.019446325}
   m_Children:
   - {fileID: 1807853944}
   - {fileID: 315561308}

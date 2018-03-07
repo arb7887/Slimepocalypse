@@ -39,6 +39,13 @@ public class Slime : MonoBehaviour {
         }
     }
 
+    // The slime has been instakilled by something like a supershot
+    public void instaKill()
+    {
+            // instantly kill this slime
+            Destroy(gameObject);
+    }
+
     //Gains health
     public void GainHealth()
     {
@@ -116,6 +123,12 @@ public class Slime : MonoBehaviour {
 
         // then resize the slime based on the new health
         ResizeSlime();
+    }
+
+    // trigger detection
+    protected virtual void OnTriggerEnter2D()
+    {
+        Destroy(gameObject);
     }
 
     //Moving the Slimes

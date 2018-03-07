@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Flickshot : MonoBehaviour {
+public class Flickshot : MonoBehaviour
+{
 
     Vector2 startVec2 = Vector2.zero;
     Vector2 releaseVec2 = Vector2.zero;
     Vector2 launchStartVec2 = Vector2.zero;
     Vector2 launchAngle = Vector2.zero;
     Vector2 launchAngleCheck = Vector2.zero;
-    //bool isHolding = false;
     public GameObject ammo;
     public GameObject fireAmmo;
     public GameObject iceAmmo;
+    public GameObject superAmmo;
     public int ammoType = 1; //Represents element: 1 = Fire | 2 = Ice
+    private int superShotCount = 0; // Counts how many shots have been fired to check if we need to fire a super shot
+    private int ammoTypeHolder = 0;
 
     public Button MagicCircleButton;
     public Sprite fireCircle;
@@ -22,15 +25,17 @@ public class Flickshot : MonoBehaviour {
 
     public GameObject Camera;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         //launchStartVec2 = new Vector2(0, -10);
         //launchStartVec2 = new Vector2(MagicCircleButton.transform.position.x, MagicCircleButton.transform.position.y);
         launchStartVec2 = new Vector2(Screen.width * 0.5f, Screen.height * 0.1125f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
 
         // Check if the player is touching the screen
@@ -64,15 +69,17 @@ public class Flickshot : MonoBehaviour {
             }
         }
         // Check if the player is clicking on the screen
-        else if (Input.GetMouseButtonDown(0) == true) {
+        else if (Input.GetMouseButtonDown(0) == true)
+        {
             // Save the touch's location in the beginning of the touch
             startVec2 = Input.mousePosition;
         }
         // Check if the player has released
-        if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero) {
+        if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
+        {
             releaseVec2 = Input.mousePosition;
             Launch();
-            
+
             // reset the start and release vectors
             startVec2 = Vector2.zero;
             releaseVec2 = Vector2.zero;
@@ -81,7 +88,23 @@ public class Flickshot : MonoBehaviour {
     }
 
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
-    void Launch() {
+    void Launch()
+    {
+
+        // Add to the super shot count
+        if (superShotCount < 10)
+        {
+            superShotCount++;
+        }
+        else
+        {
+            // If the super shot count is 10, reset it and mke this shot a super shot
+            superShotCount = 0;
+
+            // Store the ammoType in the ammoTypeHolder
+            ammoTypeHolder = ammoType;
+            ammoType = 3;
+        }
 
         // Calculate launch angle
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
@@ -95,26 +118,27 @@ public class Flickshot : MonoBehaviour {
 
         // Checking if there was enough of a flick to count it
         if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&
-              /*!(startVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
-                startVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
-                startVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
-                startVec2.y >= MagicCircleButton.transform.position.y - 50.0f)*/
-              !(startVec2.x <= launchStartVec2.x + Screen.width/8 &&
-              startVec2.x >= launchStartVec2.x - Screen.width/8 &&
-              startVec2.y <= launchStartVec2.y + Screen.width/8 &&
-              startVec2.y >= launchStartVec2.y - Screen.width/8))
+              !(startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+              startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+              startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+              startVec2.y >= launchStartVec2.y - Screen.width / 8))
         {
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
 
-            if(ammoType == 1)
+            if (ammoType == 1)
             {
-                //projectile = Instantiate(fireAmmo, new Vector2(0, -10), Quaternion.identity);
                 projectile = Instantiate(fireAmmo, launchStartVec2, Quaternion.identity);
             }
             else if (ammoType == 2)
             {
-                //projectile = Instantiate(iceAmmo, new Vector2(0, -10), Quaternion.identity);
                 projectile = Instantiate(iceAmmo, launchStartVec2, Quaternion.identity);
+            }
+            else if (ammoType == 3)
+            {
+                projectile = Instantiate(superAmmo, launchStartVec2, Quaternion.identity);
+
+                // Return the ammoType to the element it was on a bit ago
+                ammoType = ammoTypeHolder;
             }
 
             launchAngle.Normalize();
@@ -128,33 +152,25 @@ public class Flickshot : MonoBehaviour {
         }
         else if (launchAngleCheck.y <= -(Screen.height * 0.1f))
         {
-            if(ammoType == 1)
+            if (ammoType == 1)
             {
                 ammoType = 2;
                 MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
             }
-            else if(ammoType == 2)
+            else if (ammoType == 2)
             {
                 ammoType = 1;
                 MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
             }
         }
-        else if (/*(startVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
-                  startVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
-                  startVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
-                  startVec2.y >= MagicCircleButton.transform.position.y - 50.0f) &&
-                  (releaseVec2.x <= MagicCircleButton.transform.position.x + 50.0f &&
-                  releaseVec2.x >= MagicCircleButton.transform.position.x - 50.0f &&
-                  releaseVec2.y <= MagicCircleButton.transform.position.y + 50.0f &&
-                  releaseVec2.y >= MagicCircleButton.transform.position.y - 50.0f)*/
-                  (startVec2.x <= launchStartVec2.x + Screen.width/8 &&
-                  startVec2.x >= launchStartVec2.x - Screen.width/8 &&
-                  startVec2.y <= launchStartVec2.y + Screen.width/8 &&
-                  startVec2.y >= launchStartVec2.y - Screen.width/8) &&
-                  (releaseVec2.x <= launchStartVec2.x + Screen.width/8 &&
-                  releaseVec2.x >= launchStartVec2.x - Screen.width/8 &&
-                  releaseVec2.y <= launchStartVec2.y + Screen.width/8 &&
-                  releaseVec2.y >= launchStartVec2.y - Screen.width/8))
+        else if ((startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+                  startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+                  startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+                  startVec2.y >= launchStartVec2.y - Screen.width / 8) &&
+                  (releaseVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+                  releaseVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+                  releaseVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+                  releaseVec2.y >= launchStartVec2.y - Screen.width / 8))
         {
             if (ammoType == 1)
             {
