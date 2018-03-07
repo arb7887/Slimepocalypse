@@ -91,21 +91,6 @@ public class Flickshot : MonoBehaviour
     void Launch()
     {
 
-        // Add to the super shot count
-        if (superShotCount < 10)
-        {
-            superShotCount++;
-        }
-        else
-        {
-            // If the super shot count is 10, reset it and mke this shot a super shot
-            superShotCount = 0;
-
-            // Store the ammoType in the ammoTypeHolder
-            ammoTypeHolder = ammoType;
-            ammoType = 3;
-        }
-
         // Calculate launch angle
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
         launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
@@ -123,6 +108,24 @@ public class Flickshot : MonoBehaviour
               startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
               startVec2.y >= launchStartVec2.y - Screen.width / 8))
         {
+
+            // Add to the super shot count
+            if (superShotCount < 10)
+            {
+                superShotCount++;
+            }
+            else
+            {
+                // If the super shot count is 10, reset it and mke this shot a super shot
+                superShotCount = 0;
+
+                // Store the ammoType in the ammoTypeHolder
+                ammoTypeHolder = ammoType;
+                ammoType = 3;
+
+                Debug.Log("Held ammoType: " + ammoTypeHolder);
+            }
+
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
 
             if (ammoType == 1)
