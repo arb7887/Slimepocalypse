@@ -51,6 +51,10 @@ public class Slime : MonoBehaviour {
         {
             // destroy the slime when healt is zero
             Destroy(gameObject);
+
+            // Add to the kill counter
+            KillCounter.instance.AddKillToCount();
+            Debug.Log("Score: " + KillCounter.instance.GetKillCount());
         }
     }
 
@@ -125,6 +129,7 @@ public class Slime : MonoBehaviour {
     // collision detection
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.name == "SuperAmmo(Clone)")
         {
             instaKill();

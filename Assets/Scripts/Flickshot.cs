@@ -28,8 +28,9 @@ public class Flickshot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //launchStartVec2 = new Vector2(0, -10);
-        //launchStartVec2 = new Vector2(MagicCircleButton.transform.position.x, MagicCircleButton.transform.position.y);
+        // gets a reference to the kill Counter Singleton
+        KillCounter.instance.GetKillCount();
+
         launchStartVec2 = new Vector2(Screen.width * 0.5f, Screen.height * 0.1125f);
     }
 
@@ -109,21 +110,18 @@ public class Flickshot : MonoBehaviour
               startVec2.y >= launchStartVec2.y - Screen.width / 8))
         {
 
-            // Add to the super shot count
-            if (superShotCount < 10)
+            // Check if this is a supershot
+            if (KillCounter.instance.IsSuperShot() == true)
             {
-                superShotCount++;
-            }
-            else
-            {
-                // If the super shot count is 10, reset it and mke this shot a super shot
-                superShotCount = 0;
 
                 // Store the ammoType in the ammoTypeHolder
                 ammoTypeHolder = ammoType;
                 ammoType = 3;
 
-                Debug.Log("Held ammoType: " + ammoTypeHolder);
+
+                Debug.Log("AmmoType: " + ammoType);
+                Debug.Log("AmmoTypeHolder: " + ammoTypeHolder);
+
             }
 
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
@@ -142,6 +140,10 @@ public class Flickshot : MonoBehaviour
 
                 // Return the ammoType to the element it was on a bit ago
                 ammoType = ammoTypeHolder;
+
+
+                Debug.Log("AmmoType: " + ammoType);
+                Debug.Log("AmmoTypeHolder: " + ammoTypeHolder);
             }
 
             launchAngle.Normalize();

@@ -12,6 +12,7 @@ public class SlimeManager : MonoBehaviour {
     float spawnTime; //Adjusted spawn speed as game goes on.
     int healthTotal; //Adjusting slime health as game goes on.
     float slimeSpeedOffset; //Adjusting speed of slimes.
+    public KillCounter killCounterSingleton;
 
 
     // Use this for initialization
@@ -21,6 +22,7 @@ public class SlimeManager : MonoBehaviour {
         spawnTime = 2.0f;
         healthTotal = 2;
         slimeSpeedOffset = 0.0f;
+        killCounterSingleton = GetComponent<KillCounter>();
 	}
 	
 	// Update is called once per frame
