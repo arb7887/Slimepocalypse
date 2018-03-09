@@ -112,6 +112,165 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &179251445
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.5741279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.16326189
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934444148485326, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: TrailModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1431267683
+      objectReference: {fileID: 0}
+    - target: {fileID: 199944335102457920, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 3.1415925
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 5.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: ShapeModule.angle
+      value: 5.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199944335102457920, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
+      value: 0.43243408
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: ShapeModule.radius.value
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 19.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 198468715767012696, guid: fcf1dff24504c134d8564ef440e56372,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329356375968532, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329356375968532, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329356375968532, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fcf1dff24504c134d8564ef440e56372, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &252883780
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639908843
 GameObject:
@@ -599,7 +758,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725240230
 GameObject:
@@ -770,7 +929,7 @@ RectTransform:
   m_Children:
   - {fileID: 725240231}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -837,7 +996,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603946143
 GameObject:
@@ -1052,7 +1211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1854195913
 MonoBehaviour:
@@ -1270,7 +1429,7 @@ RectTransform:
   - {fileID: 1807853944}
   - {fileID: 315561308}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
