@@ -6,6 +6,7 @@ public class KillCounter : MonoBehaviour {
 
     private int killCount = 0; // Counts how many slimes have been killed
     private bool fifthShot = false; // Tells if this is a super slime
+    private int score = 0; // Score int if we want to use it later.
 
     private static KillCounter _instance;
 
@@ -21,6 +22,7 @@ public class KillCounter : MonoBehaviour {
 
                 _instance.killCount = _instance.GetComponent<int>();
                 _instance.fifthShot = _instance.GetComponent<bool>();
+                _instance.score = _instance.GetComponent<int>();
             }
 
             return _instance;
@@ -49,12 +51,18 @@ public class KillCounter : MonoBehaviour {
     {
         // Add to the killCount
         killCount++;
+        score++;
+    }
+
+    // Gets the score
+    public int GetScore()
+    {
+        return score;
     }
 
     // Gets the kill count.
     public int GetKillCount()
     {
-        // Add to the killCount
         return killCount;
     }
 
