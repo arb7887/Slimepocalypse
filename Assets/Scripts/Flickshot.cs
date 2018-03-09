@@ -117,11 +117,6 @@ public class Flickshot : MonoBehaviour
                 // Store the ammoType in the ammoTypeHolder
                 ammoTypeHolder = ammoType;
                 ammoType = 3;
-
-
-                Debug.Log("AmmoType: " + ammoType);
-                Debug.Log("AmmoTypeHolder: " + ammoTypeHolder);
-
             }
 
             var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
@@ -140,10 +135,6 @@ public class Flickshot : MonoBehaviour
 
                 // Return the ammoType to the element it was on a bit ago
                 ammoType = ammoTypeHolder;
-
-
-                Debug.Log("AmmoType: " + ammoType);
-                Debug.Log("AmmoTypeHolder: " + ammoTypeHolder);
             }
 
             launchAngle.Normalize();
