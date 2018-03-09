@@ -54,7 +54,6 @@ public class Slime : MonoBehaviour {
 
             // Add to the kill counter
             KillCounter.instance.AddKillToCount();
-            Debug.Log("Score: " + KillCounter.instance.GetKillCount());
         }
     }
 
