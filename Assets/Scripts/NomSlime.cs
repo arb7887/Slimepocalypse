@@ -6,6 +6,9 @@ public class NomSlime : Slime {
 
     void Start()
     {
+        // set the size to start
+        setInitialSize();
+
         //Sets initial speed
         slimeSpeed = 0.02f;
 
@@ -51,7 +54,8 @@ public class NomSlime : Slime {
                 GainHealth();
 
                 // then resize the slime based on the new health
-                UpSizeSlime();
+                //UpSizeSlime();
+                ResizeSlime();
             }
         }
         else if (type == "fire")
@@ -76,7 +80,8 @@ public class NomSlime : Slime {
                 GainHealth();
 
                 // then resize the slime based on the new health
-                UpSizeSlime();
+                //UpSizeSlime();
+                ResizeSlime();
             }
         }
         //If the slime collides with another slime
@@ -84,8 +89,9 @@ public class NomSlime : Slime {
         {
             //Gain health and get bigger.
             health += 2;
-            UpSizeSlime();
-            UpSizeSlime();
+            ResizeSlime();
+            //UpSizeSlime();
+            //UpSizeSlime();
 
             //And change type based on the slime that it collided with.
             type = collision.gameObject.GetComponent<Slime>().type;

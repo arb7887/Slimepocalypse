@@ -51,24 +51,31 @@ public class WallManager : MonoBehaviour {
         */
 
         // Hardcode wall positions
-        Vector3 wallPos1 = new Vector3(-2.5f, -3.5f, 0.0f);
-        Vector3 wallPos2 = new Vector3(-1.25f, -3.5f, 0.0f);
-        Vector3 wallPos3 = new Vector3(0.0f, -3.5f, 0.0f);
-        Vector3 wallPos4 = new Vector3(1.25f, -3.5f, 0.0f);
-        Vector3 wallPos5 = new Vector3(2.5f, -3.5f, 0.0f);
+        Vector3 wallPos1 = new Vector3(-1.8f, -3.5f, 0.0f);
+        Vector3 wallPos2 = new Vector3(-0.6f, -3.5f, 0.0f);
+        Vector3 wallPos3 = new Vector3(0.6f, -3.5f, 0.0f);
+        Vector3 wallPos4 = new Vector3(1.8f, -3.5f, 0.0f);
+        //Vector3 wallPos5 = new Vector3(2.5f, -3.5f, 0.0f);
 
         // instantiate the gameobjects
         GameObject tempWall1 = Instantiate(wallImage1, wallPos1, Quaternion.identity);
         GameObject tempWall2 = Instantiate(wallImage1, wallPos2, Quaternion.identity);
         GameObject tempWall3 = Instantiate(wallImage1, wallPos3, Quaternion.identity);
         GameObject tempWall4 = Instantiate(wallImage1, wallPos4, Quaternion.identity);
-        GameObject tempWall5 = Instantiate(wallImage1, wallPos5, Quaternion.identity);
+        //GameObject tempWall5 = Instantiate(wallImage1, wallPos5, Quaternion.identity);
 
+        // scale the walls
+        //tempWall1.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //tempWall2.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //tempWall3.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //tempWall4.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //tempWall5.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        
         // add them to the list of walls
         walls.Add(tempWall1);
         walls.Add(tempWall2);
         walls.Add(tempWall3);
         walls.Add(tempWall4);
-        walls.Add(tempWall5);
+        //walls.Add(tempWall5);
     }
 }

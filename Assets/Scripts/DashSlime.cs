@@ -9,6 +9,8 @@ public class DashSlime : Slime {
 
 	// Use this for initialization
 	void Start () {
+        // set the size to start
+        setInitialSize();
         slideTimer = 0.0f;
         slimeSpeed = 0.04f;
         dashTimer = Random.Range(0.3f, 0.7f);

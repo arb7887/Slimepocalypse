@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    public int health = 2; // number of hits until a slime dies
+    public int health = 4; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
     public float slimeSpeed;
@@ -14,9 +14,6 @@ public class Slime : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        // default values for slime and type
-        //health = 3;
-        //slimeType = "fire"; // or "ice" but currently only fire
         setInitialSize();
         slimeSpeed = 0.01f;
         //Randomly set the type and sprite of the slime.
@@ -70,35 +67,12 @@ public class Slime : MonoBehaviour {
         health++;
     }
 
-    /* more advanced takedamage method
-    // method for a slime to take damage
-    public void TakeDamage(string projectileType)
-    {
-        // check to make sure the slime was hit by a different element than its type
-        if(slimeType != projectileType)
-        {
-            // decrease health by 1
-            health--;
-
-            // check to make sure the slime is still alive
-            if (health <= 0)
-            {
-                // destroy the slime when healt is zero
-                Destroy(gameObject);
-            }
-        }
-
-        // otherwise they gain health and grow in size
-        else
-        {
-            health++;
-        }
-    }
-    */
-
     //Method to adjust initial size of slime that spawns with >3 health
     public void setInitialSize()
     {
+        ResizeSlime();
+        //gameObject.transform.localScale = new Vector3(0.6f+(float)health * 0.2f, 0.6f+(float)health * 0.2f, 0.0f);
+        /*
         if (health > 3)
         {
             UpSizeSlime();
@@ -107,21 +81,26 @@ public class Slime : MonoBehaviour {
         {
             ResizeSlime();
         }
+        */
     }
 
+    // ResizeSlime and UpSizeSlime now do the same things
     // method for slime to grow or shrink based on health values
     public void ResizeSlime()
     {
+        //Debug.Log("Resized");
         //gameObject.transform.localScale = new Vector3(0.7f + (float)health*0.1f, 0.7f + (float)health*0.1f, 1.0f);
         //gameObject.transform.localScale -= new Vector3((float)health * 0.15f, (float)health * 0.15f, 1.0f);
-        gameObject.transform.localScale -= new Vector3(0.15f, 0.15f, 1.0f);
+        //gameObject.transform.localScale -= new Vector3(0.15f, 0.15f, 1.0f);
+        gameObject.transform.localScale = new Vector3(0.6f+(float)health * 0.2f, 0.6f+(float)health * 0.2f, 0.0f);
     }
 
     //Grows the Slime's Size
     public void UpSizeSlime()
     {
         //gameObject.transform.localScale += new Vector3((float)health * 0.15f, (float)health * 0.15f, 1.0f);
-        gameObject.transform.localScale += new Vector3(0.15f, 0.15f, 1.0f);
+        //gameObject.transform.localScale += new Vector3(0.15f, 0.15f, 1.0f);
+        gameObject.transform.localScale = new Vector3(0.6f+(float)health * 0.2f, 0.6f+(float)health * 0.2f, 0.0f);
     }
 
     
