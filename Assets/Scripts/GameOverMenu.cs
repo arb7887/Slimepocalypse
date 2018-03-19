@@ -18,6 +18,7 @@ public class GameOverMenu : MonoBehaviour {
     public void PlayAgain()
     {
         Time.timeScale = 1f;
+        KillCounter.instance.SetScore(0);
         SceneManager.LoadScene("Main");
     }
 }

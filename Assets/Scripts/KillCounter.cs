@@ -22,9 +22,9 @@ public class KillCounter : MonoBehaviour {
 
                 DontDestroyOnLoad(_instance.gameObject);
 
-                _instance.killCount = _instance.GetComponent<int>();
-                _instance.fifthShot = _instance.GetComponent<bool>();
-                _instance.score = _instance.GetComponent<int>();
+                _instance.killCount = 0;
+                _instance.fifthShot = false;
+                _instance.score = 0;
             }
 
             return _instance;
@@ -57,6 +57,12 @@ public class KillCounter : MonoBehaviour {
 
         // update the text
         killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
+    }
+
+    // Sets the score
+    public void SetScore(int newScore)
+    {
+        score = newScore;
     }
 
     // Gets the score
