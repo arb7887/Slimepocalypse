@@ -13,7 +13,7 @@ public class SlimeManager : MonoBehaviour {
     int healthTotal; //Adjusting slime health as game goes on.
     float slimeSpeedOffset; //Adjusting speed of slimes.
     public KillCounter killCounterSingleton;
-
+    int numMoveTypes;
 
     // Use this for initialization
     void Start () {
@@ -23,6 +23,7 @@ public class SlimeManager : MonoBehaviour {
         healthTotal = 2;
         slimeSpeedOffset = 0.0f;
         killCounterSingleton = GetComponent<KillCounter>();
+        numMoveTypes = 1;
 	}
 	
 	// Update is called once per frame
@@ -92,28 +93,48 @@ public class SlimeManager : MonoBehaviour {
             {
                 newSlime = Instantiate(slimePrefabs[2]);
             }
-            //Randomly choose between 4 spawn points
+            //For now, generate a random number to determine movement type. Will later add functionality to have multiple movement types added at same time.
+            int moveType = Random.Range(0, 3);
+            if (moveType == 0)
+            {
+                newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            }
+            else if (moveType == 1)
+            {
+                newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Dashing);
+            }
+            else if (moveType == 2)
+            {
+                newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.LaneSwap);
+
+            }
+            //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
             int random = Random.Range(1, 5);
 
             switch (random)
             {
                 case (1):
                     newSlime.transform.position = new Vector3(-1.8f, 6.0f, 0.0f);
+                    newSlime.GetComponent<Slime>().SetLanes(1);
                     break;
                 case (2):
                     newSlime.transform.position = new Vector3(-0.6f, 6.0f, 0.0f);
+                    newSlime.GetComponent<Slime>().SetLanes(2);
                     break;
                 case (3):
                     newSlime.transform.position = new Vector3(0.6f, 6.0f, 0.0f);
+                    newSlime.GetComponent<Slime>().SetLanes(3);
                     break;
                 case (4):
                     newSlime.transform.position = new Vector3(1.8f, 6.0f, 0.0f);
+                    newSlime.GetComponent<Slime>().SetLanes(4);
                     break;
             }
 
             //And apply any difficulty changes that we have currently implemented.
             newSlime.GetComponent<Slime>().health = healthTotal;
             newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
+            newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
             slimeList.Add(newSlime);
             timer = 0.0f;
         }
