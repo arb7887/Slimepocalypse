@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    public int health = 4; // number of hits until a slime dies
+    public int health = 2; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
     public float slimeSpeed, dashSpeed; //Speed of normal movement, and dashing movement, which will be higher than normal movement.
@@ -32,17 +32,6 @@ public class Slime : MonoBehaviour {
         reachedLane = true;
         float random = Random.Range(0.0f, 1.0f);
         //Randomly set the type and sprite of the slime.
-        int rand = Random.Range(0, 2);
-        if (rand == 0)
-        {
-            type = "ice";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-        }
-        else
-        {
-            type = "fire";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
-        }
     }
 	
 	// Update is called once per frame
@@ -66,8 +55,22 @@ public class Slime : MonoBehaviour {
         }
 	}
 
+    public void SetType(int newType)
+    {
+        if (newType == 0)
+        {
+            type = "ice";
+            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+        }
+        else
+        {
+            type = "fire";
+            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+        }
+    }
+
     // simple takedamage
-    public void TakeDamage()
+    public virtual void TakeDamage()
     {
         // decrease health by 1
         health--;

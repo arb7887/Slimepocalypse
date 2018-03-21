@@ -14,16 +14,6 @@ public class NomSlime : Slime {
 
         //Randomly generates a number to determine slime type, and assign sprite from there.
         int rand = Random.Range(0, 2);
-        if (rand == 0)
-        {
-            type = "ice";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-        }
-        else
-        {
-            type = "fire";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
-        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

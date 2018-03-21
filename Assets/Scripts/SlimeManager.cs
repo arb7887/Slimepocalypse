@@ -75,7 +75,7 @@ public class SlimeManager : MonoBehaviour {
             //Less for a smaller screen
 
             //Generates 2 random integers. One to determine type, and one to determine movement pattern.
-            int randSlime = Random.Range(0, 3);
+            int randSlime = Random.Range(0, 4);
             GameObject newSlime = slimePrefab;
 
             //Based on the random numbers that are generated, we create a slime of the corresponding type and movement pattern.
@@ -93,6 +93,11 @@ public class SlimeManager : MonoBehaviour {
             {
                 newSlime = Instantiate(slimePrefabs[2]);
             }
+
+            else if (randSlime == 3)
+            {
+                newSlime = Instantiate(slimePrefabs[3]);
+            }
             //For now, generate a random number to determine movement type. Will later add functionality to have multiple movement types added at same time.
             int moveType = Random.Range(0, 3);
             if (moveType == 0)
@@ -108,6 +113,8 @@ public class SlimeManager : MonoBehaviour {
                 newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.LaneSwap);
 
             }
+            int type = Random.Range(0, 2);
+            newSlime.GetComponent<Slime>().SetType(type);
             //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
             int random = Random.Range(1, 5);
 

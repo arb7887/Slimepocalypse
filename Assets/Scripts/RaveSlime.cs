@@ -17,18 +17,6 @@ public class RaveSlime : Slime {
         laneTimer = 0.0f;
         reachedLane = true;
         float random = Random.Range(0.0f, 1.0f);
-        //Randomly generates a number to determine slime type, and assign sprite from there.
-        int rand = Random.Range(0, 2);
-        if (rand == 0)
-        {
-            type = "ice";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-        }
-        else
-        {
-            type = "fire";
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
-        }
     }
 	
 	// Update is called once per frame
