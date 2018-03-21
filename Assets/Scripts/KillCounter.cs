@@ -10,6 +10,12 @@ public class KillCounter : MonoBehaviour {
     private int score = 0; // Score int if we want to use it later.
     public GameObject killCountText; // the actual text being displayed on the canvas
 
+    public float timer = 0.0f; // actual time
+    public int seconds = 0; // time in seconds
+    public int minutes = 0; // time in minutes
+    public GameObject timeText; // actual text of the time being displayed on the canvas
+    private string niceTime = "";
+
     private static KillCounter _instance;
 
     public static KillCounter instance
@@ -47,6 +53,22 @@ public class KillCounter : MonoBehaviour {
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        // increment the timer each frame
+        timer += Time.deltaTime;
+
+        // convert the timer to minutes and seconds
+        minutes = Mathf.FloorToInt(timer / 60F);
+        seconds = Mathf.FloorToInt(timer - minutes * 60);
+
+        // nice formatting for timer
+        niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        // update the canvas text
+        timeText.GetComponent<Text>().text = "Time: " + niceTime;
+    }
 
     // Adds to the kill count.
     public void AddKillToCount()
@@ -63,6 +85,11 @@ public class KillCounter : MonoBehaviour {
     public void SetScore(int newScore)
     {
         score = newScore;
+    }
+
+    public void SetTimer(float newTimer)
+    {
+        timer = newTimer;
     }
 
     // Gets the score

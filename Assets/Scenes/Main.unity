@@ -260,7 +260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315561307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -228.36798, z: 0}
+  m_LocalPosition: {x: 0, y: -482.14798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -570,7 +570,6 @@ GameObject:
   m_Component:
   - component: {fileID: 683887484}
   - component: {fileID: 683887483}
-  - component: {fileID: 683887485}
   m_Layer: 0
   m_Name: ScoreSingleton
   m_TagString: Untagged
@@ -590,6 +589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killCountText: {fileID: 1269278488}
+  timer: 0
+  seconds: 0
+  minutes: 0
+  timeText: {fileID: 1568049046}
 --- !u!4 &683887484
 Transform:
   m_ObjectHideFlags: 0
@@ -603,21 +606,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &683887485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 683887482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25218c04107e5f54593c2053921bf42f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 0
-  seconds: 0
-  minutes: 0
-  timeText: {fileID: 1568049046}
 --- !u!1 &725240230
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +770,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019744689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 387, y: 139, z: 0}
+  m_LocalPosition: {x: 198, y: 317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 725240231}
@@ -819,7 +807,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269278488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -578.01447, y: 207.60725, z: 0}
+  m_LocalPosition: {x: -273.94772, y: 438.31635, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -952,6 +940,7 @@ GameObject:
   - component: {fileID: 1568049047}
   - component: {fileID: 1568049049}
   - component: {fileID: 1568049048}
+  - component: {fileID: 1568049050}
   m_Layer: 5
   m_Name: TimeText
   m_TagString: Untagged
@@ -966,7 +955,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568049046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 578.01447, y: 207.60725, z: 0}
+  m_LocalPosition: {x: 273.94772, y: 438.31635, z: 0}
   m_LocalScale: {x: 1.0002172, y: 1.0002172, z: 1.0002172}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1016,6 +1005,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568049046}
+--- !u!114 &1568049050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568049046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b960224df83ab06419147a0e9e8ffd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1603946143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1115,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807853943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -160.89563, z: 0}
+  m_LocalPosition: {x: 0, y: -339.69516, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1270,6 +1270,11 @@ MonoBehaviour:
   - {fileID: 1239240787953022, guid: a20e768483c26e2409d5d0d25d8f9177, type: 2}
   - {fileID: 1515379610229240, guid: 7d86dc4e7dc0c074a9f4ab9b06b3a833, type: 2}
   slimeList: []
+  timer: 0
+  globalTimer: 0
+  spawnTime: 0
+  healthTotal: 0
+  slimeSpeedOffset: 0
   killCounterSingleton: {fileID: 683887483}
 --- !u!114 &1854195915
 MonoBehaviour:
@@ -1443,7 +1448,7 @@ RectTransform:
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.024083937, y: 0.024083937, z: 0.024083937}
+  m_LocalScale: {x: 0.011407286, y: 0.011407286, z: 0.011407286}
   m_Children:
   - {fileID: 1807853944}
   - {fileID: 315561308}

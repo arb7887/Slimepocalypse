@@ -164,6 +164,33 @@ public class Slime : MonoBehaviour {
         }
     }
 
+    public void ReassignLanes()
+    {
+        float random = Random.Range(0.0f, 1.0f);
+        if (random < 0.5f)
+        {
+            if (currentLane != 1)
+            {
+                moveTo = currentLane - 1;
+            }
+            else
+            {
+                moveTo = currentLane + 1;
+            }
+        }
+        else
+        {
+            if (currentLane != 4)
+            {
+                moveTo = currentLane + 1;
+            }
+            else
+            {
+                moveTo = currentLane - 1;
+            }
+        }
+    }
+
     // collision detection
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -361,7 +388,7 @@ public class Slime : MonoBehaviour {
                     }
                     else
                     {
-                        moveTo -= 1;
+                        moveTo += 1;
                     }
                 }
                 //Failsafe statements to make sure the goal lane is within specified range.
