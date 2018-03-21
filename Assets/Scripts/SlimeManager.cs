@@ -7,11 +7,11 @@ public class SlimeManager : MonoBehaviour {
     public GameObject slimePrefab;
     public List<GameObject> slimePrefabs; //Created a list of slime prefabs so we wouldn't need to constantly make new GameObject variables for more slime types.
     public List<GameObject> slimeList;
-    float timer;
-    float globalTimer;
-    float spawnTime; //Adjusted spawn speed as game goes on.
-    int healthTotal; //Adjusting slime health as game goes on.
-    float slimeSpeedOffset; //Adjusting speed of slimes.
+    public float timer;
+    public float globalTimer;
+    public float spawnTime; //Adjusted spawn speed as game goes on.
+    public int healthTotal; //Adjusting slime health as game goes on.
+    public float slimeSpeedOffset; //Adjusting speed of slimes.
     public KillCounter killCounterSingleton;
     int numMoveTypes;
 
@@ -19,7 +19,7 @@ public class SlimeManager : MonoBehaviour {
     void Start () {
         timer = 0.0f;
         globalTimer = 0.0f;
-        spawnTime = 2.0f;
+        spawnTime = 3.0f;
         healthTotal = 2;
         slimeSpeedOffset = 0.0f;
         killCounterSingleton = GetComponent<KillCounter>();
