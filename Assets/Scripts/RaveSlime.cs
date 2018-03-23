@@ -39,7 +39,7 @@ public class RaveSlime : Slime {
         }
         //Timer for switching types
         switchTimer += Time.deltaTime;
-        if (switchTimer > 1.0f)
+        if (switchTimer > 3.0f)
         {
             //If timer is activated, check type, and switch sprite and type accordingly.
             if (type == "ice")
