@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212371763106327116}
   - component: {fileID: 61361965208195452}
   - component: {fileID: 114417077764254002}
+  - component: {fileID: 114379692236218380}
   m_Layer: 0
   m_Name: RaveSlime
   m_TagString: Slime
@@ -67,6 +68,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &114379692236218380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239240787953022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726f00afa6a603d47833b508720cc961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeTransform: {fileID: 4260451199506724}
+  shakeDuration: 0
+  shakeAmount: 0.3
+  decreaseFactor: 1
 --- !u!114 &114417077764254002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,8 +105,13 @@ MonoBehaviour:
   activeMovetypes: 
   slideTimer: 0
   laneTimer: 0
+  dashTimer: 0
+  delayTimer: 0
+  laneSwitchTimer: 0
   currentLane: 0
   moveTo: 0
+  reachedLane: 0
+  shaking: 0
 --- !u!212 &212371763106327116
 SpriteRenderer:
   m_ObjectHideFlags: 1

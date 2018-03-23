@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212424730248463672}
   - component: {fileID: 114397958620737550}
   - component: {fileID: 61015541545525312}
+  - component: {fileID: 114452217912783884}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
@@ -80,10 +81,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   slimeSpeed: 2.6250052
+  dashSpeed: 0
   type: 
   spriteList:
   - {fileID: 21300000, guid: de2a9f8487cc1df42a5c19acc6bc66f5, type: 3}
   - {fileID: 21300000, guid: bf90a97f862bedc43b793426bd819ccc, type: 3}
+  numMoveTypes: 0
+  activeMovetypes: 
+  slideTimer: 0
+  laneTimer: 0
+  dashTimer: 0
+  delayTimer: 0
+  laneSwitchTimer: 0
+  currentLane: 0
+  moveTo: 0
+  reachedLane: 0
+  shaking: 0
+--- !u!114 &114452217912783884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199841879888912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726f00afa6a603d47833b508720cc961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeTransform: {fileID: 4908935504953262}
+  shakeDuration: 0
+  shakeAmount: 0.3
+  decreaseFactor: 1
 --- !u!212 &212424730248463672
 SpriteRenderer:
   m_ObjectHideFlags: 1

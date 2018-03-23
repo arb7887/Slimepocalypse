@@ -6,8 +6,17 @@ public class Wall : MonoBehaviour {
 
     private int health = 3;
 
-	// Use this for initialization
-	void Start () {
+    // reference to the manager object to get access to the screenshake script
+    public GameObject manager;
+
+    // set the manager
+    private void Awake()
+    {
+        manager = GameObject.Find("Manager");
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,7 +28,7 @@ public class Wall : MonoBehaviour {
     // collision detection
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if a slime colliders with wall
+        // if a slime collides with wall
         if (collision.gameObject.tag == "Slime")
         {
             // decrement health
@@ -27,6 +36,9 @@ public class Wall : MonoBehaviour {
 
             // destroy slime
             Destroy(collision.gameObject);
+
+            // set the duration of the screen shake to activate it
+            manager.GetComponent<ScreenShake>().shakeDuration = 0.1f;
         }
 
         // call the method to update the visual

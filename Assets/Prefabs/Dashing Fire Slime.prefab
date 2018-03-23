@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61508812530226512}
   - component: {fileID: 114742030939166356}
   - component: {fileID: 50652480571851038}
+  - component: {fileID: 114479936918486968}
   m_Layer: 0
   m_Name: Dashing Fire Slime
   m_TagString: Slime
@@ -88,6 +89,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &114479936918486968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032942079293552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726f00afa6a603d47833b508720cc961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeTransform: {fileID: 4505421638801754}
+  shakeDuration: 0
+  shakeAmount: 0.3
+  decreaseFactor: 1
 --- !u!114 &114742030939166356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,8 +117,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   slimeSpeed: 0.01
+  dashSpeed: 0
   type: 
   spriteList: []
+  numMoveTypes: 0
+  activeMovetypes: 
+  slideTimer: 0
+  laneTimer: 0
+  dashTimer: 0
+  delayTimer: 0
+  laneSwitchTimer: 0
+  currentLane: 0
+  moveTo: 0
+  reachedLane: 0
+  shaking: 0
 --- !u!212 &212318006061867412
 SpriteRenderer:
   m_ObjectHideFlags: 1

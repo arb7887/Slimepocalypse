@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212531509403843858}
   - component: {fileID: 114594008159857756}
   - component: {fileID: 61648062873901872}
+  - component: {fileID: 114452575093652356}
   m_Layer: 0
   m_Name: Dashing Slime
   m_TagString: Slime
@@ -67,6 +68,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &114452575093652356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1570526552451536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726f00afa6a603d47833b508720cc961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeTransform: {fileID: 4730783570986702}
+  shakeDuration: 0
+  shakeAmount: 0.3
+  decreaseFactor: 1
 --- !u!114 &114594008159857756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,10 +96,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   slimeSpeed: 0.01
+  dashSpeed: 0
   type: 
   spriteList:
   - {fileID: 21300000, guid: de2a9f8487cc1df42a5c19acc6bc66f5, type: 3}
   - {fileID: 21300000, guid: bf90a97f862bedc43b793426bd819ccc, type: 3}
+  numMoveTypes: 0
+  activeMovetypes: 
+  slideTimer: 0
+  laneTimer: 0
+  dashTimer: 0
+  delayTimer: 0
+  laneSwitchTimer: 0
+  currentLane: 0
+  moveTo: 0
+  reachedLane: 0
+  shaking: 0
 --- !u!212 &212531509403843858
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,6 +19,7 @@ public class Slime : MonoBehaviour {
     public int currentLane; //Storing the current lane of the slime.
     public int moveTo; //Lane that the slime with move towards.
     public bool reachedLane; //Boolean to see if the slime has reached/exceeded the target lane.
+    public bool shaking; // Boolean to see if the slime is shaking
 
     // Use this for initialization
     void Start ()
@@ -74,6 +75,10 @@ public class Slime : MonoBehaviour {
     {
         // decrease health by 1
         health--;
+
+        // shake the slime
+        shaking = true;
+        gameObject.GetComponent<SlimeShake>().shakeDuration = 0.2f;
 
         // check to make sure the slime is still alive
         if (health <= 0)

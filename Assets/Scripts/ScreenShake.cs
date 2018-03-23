@@ -5,9 +5,9 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour {
 
     public Transform camTransform; // transform of the camera
-    public float shakeDuration = 0f; // how long the camera should shake for
+    public float shakeDuration = 0.0f; // how long the camera should shake for
     public float shakeAmount = 0.7f; // amplitude of the shake
-    public float decreaseFactor = 1.0f; // 
+    public float decreaseFactor = 1.0f; // how fast it depletes
     private Vector3 originalPosition; // stores the original position of the camera transform
 
     // happens before start
@@ -36,7 +36,7 @@ public class ScreenShake : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log("Shaking");
+        //Debug.Log("Shaking");
 		if(shakeDuration > 0)
         {
             // set the screen shake to a random position inside the sphere
