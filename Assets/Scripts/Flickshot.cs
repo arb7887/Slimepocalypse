@@ -107,7 +107,8 @@ public class Flickshot : MonoBehaviour
               !(startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
               startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
               startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
-              startVec2.y >= launchStartVec2.y - Screen.width / 8))
+              startVec2.y >= launchStartVec2.y - Screen.width / 8) &&
+              releaseVec2.y > launchStartVec2.y)
         {
 
             // Check if this is a supershot
