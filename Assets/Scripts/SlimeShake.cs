@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// code based on screenshake class
 public class SlimeShake : MonoBehaviour {
 
     public Transform slimeTransform; // transform of the camera

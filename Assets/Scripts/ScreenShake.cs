@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// code for screenshake class based on https://gist.github.com/ftvs/5822103
 public class ScreenShake : MonoBehaviour {
 
     public Transform camTransform; // transform of the camera
