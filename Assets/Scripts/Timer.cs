@@ -33,6 +33,6 @@ public class Timer : MonoBehaviour {
         niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
         // update the canvas text
-        timeText.GetComponent<Text>().text = "Time: " + niceTime;
+        timeText.GetComponent<Text>().text = "Time: " + niceTime + " ";
 	}
 }

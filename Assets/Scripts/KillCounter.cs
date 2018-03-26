@@ -75,6 +75,7 @@ public class KillCounter : MonoBehaviour {
     {
         // Add to the killCount
         killCount++;
+        Debug.Log(killCount);
         score++;
 
         // update the text
@@ -85,6 +86,12 @@ public class KillCounter : MonoBehaviour {
     public void SetScore(int newScore)
     {
         score = newScore;
+    }
+
+    // Sets the KillCount
+    public void SetKillCount(int newKillCount)
+    {
+        killCount = newKillCount;
     }
 
     public void SetTimer(float newTimer)
