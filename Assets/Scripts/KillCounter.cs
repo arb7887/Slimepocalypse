@@ -16,6 +16,16 @@ public class KillCounter : MonoBehaviour {
     public GameObject timeText; // actual text of the time being displayed on the canvas
     private string niceTime = "";
 
+    private GameObject superShotImage;// A reference to the supershot image
+
+    public Sprite noChargeSprite; // Sprite to show the user that they have no charge for their supershot
+    public Sprite oneChargeSprite; // Sprite to show the user that they have 1 charge for their supershot
+    public Sprite twoChargeSprite; // Sprite to show the user that they have 2 charge for their supershot
+    public Sprite threeChargeSprite; // Sprite to show the user that they have 3 charge for their supershot
+    public Sprite fourChargeSprite; // Sprite to show the user that they have 4 charge for their supershot
+    public Sprite fullChargeSprite; // Sprite to show the user that they have full charge for their supershot
+    private Sprite[] superShotChargeSpriteHolder = new Sprite[6]; // The array that holds the supershot sprites
+
     private static KillCounter _instance;
 
     public static KillCounter instance
@@ -53,6 +63,30 @@ public class KillCounter : MonoBehaviour {
         }
     }
 
+    // Resets the reference to the supershot UI
+    public void resetSupershotImages()
+    {
+        superShotImage = GameObject.FindGameObjectWithTag("SuperShotUI");
+        superShotChargeSpriteHolder[0] = noChargeSprite;
+        superShotChargeSpriteHolder[1] = oneChargeSprite;
+        superShotChargeSpriteHolder[2] = twoChargeSprite;
+        superShotChargeSpriteHolder[3] = threeChargeSprite;
+        superShotChargeSpriteHolder[4] = fourChargeSprite;
+        superShotChargeSpriteHolder[5] = fullChargeSprite;
+    }
+
+    private void Start()
+    {
+        // Setup the supershot UI
+        superShotImage = GameObject.FindGameObjectWithTag("SuperShotUI");
+        superShotChargeSpriteHolder[0] = noChargeSprite;
+        superShotChargeSpriteHolder[1] = oneChargeSprite;
+        superShotChargeSpriteHolder[2] = twoChargeSprite;
+        superShotChargeSpriteHolder[3] = threeChargeSprite;
+        superShotChargeSpriteHolder[4] = fourChargeSprite;
+        superShotChargeSpriteHolder[5] = fullChargeSprite;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -78,10 +112,21 @@ public class KillCounter : MonoBehaviour {
         Debug.Log(killCount);
         score++;
 
+        // Replace the supershot charge asset on the circle with a more filled asset
+        if(killCount > 5)
+        {
+            // If killCount is for whatever reason above 5
+            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[5];
+
+        } else
+        {
+            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCount];
+        }
+
         // update the text
         killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
     }
-
+    
     // Sets the score
     public void SetScore(int newScore)
     {
@@ -111,11 +156,12 @@ public class KillCounter : MonoBehaviour {
         return killCount;
     }
 
-    // If the kill count is divisible by 5, the next shot will be a supershot.
+    // If the kill count is greater than 5, the next shot will be a supershot.
     public bool IsSuperShot()
     {
-        if (killCount % 5 == 0 && killCount != 0)
+        if (killCount >= 5)
         {
+            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[0];     // Resets the sprite for supershot count back to its original state
             fifthShot = true;
             killCount = 0;
         }
