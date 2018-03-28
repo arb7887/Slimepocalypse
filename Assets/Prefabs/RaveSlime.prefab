@@ -81,7 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimeTransform: {fileID: 4260451199506724}
   shakeDuration: 0
-  shakeAmount: 0.3
   decreaseFactor: 1
 --- !u!114 &114417077764254002
 MonoBehaviour:
@@ -98,9 +97,10 @@ MonoBehaviour:
   slimeSpeed: 0
   dashSpeed: 0
   type: 
+  specialType: 
   spriteList:
-  - {fileID: 21300000, guid: de2a9f8487cc1df42a5c19acc6bc66f5, type: 3}
-  - {fileID: 21300000, guid: bf90a97f862bedc43b793426bd819ccc, type: 3}
+  - {fileID: 21300000, guid: 9dda53ce43896ba4fa3d44ff6609e4ac, type: 3}
+  - {fileID: 21300000, guid: fc61978dba55e7244920afdc3895f8f5, type: 3}
   numMoveTypes: 0
   activeMovetypes: 
   slideTimer: 0

@@ -260,7 +260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315561307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -481.7307, z: 0}
+  m_LocalPosition: {x: 0, y: -340.76242, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -900,8 +900,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019744689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 170.5, y: 272.5, z: 0}
-  m_LocalScale: {x: 0.6222356, y: 0.6222356, z: 0.6222356}
+  m_LocalPosition: {x: 354.5, y: 283.5, z: 0}
+  m_LocalScale: {x: 0.9151537, y: 0.9151537, z: 0.9151537}
   m_Children:
   - {fileID: 725240231}
   m_Father: {fileID: 0}
@@ -958,7 +958,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269278488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -273.71063, y: 437.937, z: 0}
+  m_LocalPosition: {x: -387.23004, y: 309.78403, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1106,7 +1106,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568049046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 273.71063, y: 437.937, z: 0}
+  m_LocalPosition: {x: 387.23004, y: 309.78403, z: 0}
   m_LocalScale: {x: 1.0002172, y: 1.0002172, z: 1.0002172}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1266,7 +1266,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807853943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000076293945, y: -339.40118, z: 0}
+  m_LocalPosition: {x: 0, y: -240.08263, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1337,7 +1337,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 44df31a0afd28d64fb15322be90ccaf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b5ac1e83a51e6341bc2dad8c553c1e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1400,8 +1400,8 @@ MonoBehaviour:
   superAmmo: {fileID: 1120762877480678, guid: 8e3517d333dbcbc43b7012ba1f95cc3e, type: 2}
   ammoType: 1
   MagicCircleButton: {fileID: 1807853945}
-  fireCircle: {fileID: 21300000, guid: 44df31a0afd28d64fb15322be90ccaf4, type: 3}
-  iceCircle: {fileID: 21300000, guid: 686030bf8ea6e4543b3ca2aa6b0a7ce9, type: 3}
+  fireCircle: {fileID: 21300000, guid: 9b5ac1e83a51e6341bc2dad8c553c1e1, type: 3}
+  iceCircle: {fileID: 21300000, guid: b7648d7a4d1436542bad3e15a1770df7, type: 3}
   Camera: {fileID: 639908843}
 --- !u!114 &1854195914
 MonoBehaviour:
@@ -1614,7 +1614,7 @@ RectTransform:
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.011417166, y: 0.011417166, z: 0.011417166}
+  m_LocalScale: {x: 0.016140277, y: 0.016140277, z: 0.016140277}
   m_Children:
   - {fileID: 1807853944}
   - {fileID: 315561308}
@@ -1727,7 +1727,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105936066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000076293945, y: -339.40118, z: 0}
+  m_LocalPosition: {x: 0, y: -240.08263, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
