@@ -109,7 +109,7 @@ public class KillCounter : MonoBehaviour {
     {
         // Add to the killCount
         killCount++;
-        Debug.Log(killCount);
+        //Debug.Log(killCount);
         score++;
 
         // Replace the supershot charge asset on the circle with a more filled asset
@@ -126,11 +126,20 @@ public class KillCounter : MonoBehaviour {
         // update the text
         killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
     }
-    
+
     // Sets the score
     public void SetScore(int newScore)
     {
         score = newScore;
+    }
+
+    // Add to the score
+    public void AddToScore()
+    {
+        score++;
+
+        // update the text
+        killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
     }
 
     // Sets the KillCount

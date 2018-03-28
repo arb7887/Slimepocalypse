@@ -222,6 +222,7 @@ public class Slime : MonoBehaviour {
 
         if (collision.gameObject.name == "SuperAmmo(Clone)")
         {
+            KillCounter.instance.AddToScore();
             instaKill();
         }
         //Check slime type to determine collision behaviors.
