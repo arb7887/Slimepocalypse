@@ -21,6 +21,16 @@ public class Slime : MonoBehaviour {
     public int moveTo; //Lane that the slime with move towards.
     public bool reachedLane; //Boolean to see if the slime has reached/exceeded the target lane.
     public bool shaking; // Boolean to see if the slime is shaking
+    public AudioClip hitSound; // sound to play when damage is taken
+    public AudioClip deathSound; // sound to play when slime is killed
+    private float volume = 1.0f; // how loud to play the audio
+    private AudioSource source; // how the audio gets played
+
+    // runs before start
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     // Use this for initialization
     void Start ()
@@ -85,11 +95,19 @@ public class Slime : MonoBehaviour {
         // check to make sure the slime is still alive
         if (health <= 0)
         {
+            // play the death sound effect
+            source.PlayOneShot(deathSound, volume);
+
             // destroy the slime when healt is zero
             Destroy(gameObject);
 
             // Add to the kill counter
             KillCounter.instance.AddKillToCount();
+        }
+        else
+        {
+            // play the hit sound effect
+            source.PlayOneShot(hitSound, volume);
         }
     }
 
@@ -204,6 +222,7 @@ public class Slime : MonoBehaviour {
 
         if (collision.gameObject.name == "SuperAmmo(Clone)")
         {
+            KillCounter.instance.AddToScore();
             instaKill();
         }
         //Check slime type to determine collision behaviors.

@@ -82,7 +82,7 @@ public class SlimeManager : MonoBehaviour {
             //Range from 1 to 100 for calculating movement type.
             int randSlime = Random.Range(1, 101);
             GameObject newSlime = slimePrefab;
-            Debug.Log(randSlime);
+            //Debug.Log(randSlime);
             //Based on the random numbers that are generated, we create a slime of the corresponding type and movement pattern.
             //We have these spawn rate variables for each different slime type. Remainder is change for normal slime.
             if (randSlime <= momSpawnrate)

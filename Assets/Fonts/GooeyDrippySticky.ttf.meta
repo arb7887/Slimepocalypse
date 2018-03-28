@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d4fdaf93c2b87a8448dc742eaada6b63
+timeCreated: 1522205950
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: GooeyDrippySticky
+  fontNames:
+  - GooeyDrippySticky
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
