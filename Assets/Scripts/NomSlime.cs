@@ -6,6 +6,7 @@ public class NomSlime : Slime {
 
     void Start()
     {
+        specialType = "nom";
         // set the size to start
         setInitialSize();
 
@@ -77,25 +78,52 @@ public class NomSlime : Slime {
         //If the slime collides with another slime
         if (collision.gameObject.tag == "Slime")
         {
-            //Gain health and get bigger.
-            health += 2;
-            ResizeSlime();
-            //UpSizeSlime();
-            //UpSizeSlime();
-
-            //And change type based on the slime that it collided with.
-            type = collision.gameObject.GetComponent<Slime>().type;
-            if (type == "fire")
+            if (collision.gameObject.GetComponent<Slime>().specialType == "nom")
             {
-                gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                if (health > collision.gameObject.GetComponent<Slime>().health)
+                {
+                    //Gain health and get bigger.
+                    health += 2;
+                    ResizeSlime();
+
+                    //And change type based on the slime that it collided with.
+                    type = collision.gameObject.GetComponent<Slime>().type;
+                    if (type == "fire")
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+                    }
+                }
+                else if (health < collision.gameObject.GetComponent<Slime>().health)
+                {
+                    Destroy(gameObject);
+                }
             }
             else
             {
-                gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-            }
+                //Gain health and get bigger.
+                health += 2;
+                ResizeSlime();
+                //UpSizeSlime();
+                //UpSizeSlime();
 
-            //Then the other slime is deleted.
-            Destroy(collision.gameObject);
+                //And change type based on the slime that it collided with.
+                type = collision.gameObject.GetComponent<Slime>().type;
+                if (type == "fire")
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                }
+                else
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+                }
+
+                //Then the other slime is deleted.
+                Destroy(collision.gameObject);
+            }
         }
     }
 

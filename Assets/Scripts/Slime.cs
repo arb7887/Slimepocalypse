@@ -9,6 +9,7 @@ public class Slime : MonoBehaviour {
 
     public float slimeSpeed, dashSpeed; //Speed of normal movement, and dashing movement, which will be higher than normal movement.
     public string type; //Determines collision detection for different ammo types.
+    public string specialType;
     public List<Sprite> spriteList; //List of sprites for different slime types.
     public int numMoveTypes;
     public enum MoveTypes { Normal, Dashing, LaneSwap};
@@ -42,6 +43,7 @@ public class Slime : MonoBehaviour {
         laneTimer = 0.0f;
         reachedLane = true;
         float random = Random.Range(0.0f, 1.0f);
+        specialType = "normal";
         //Randomly set the type and sprite of the slime.
     }
 	
