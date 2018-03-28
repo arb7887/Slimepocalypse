@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0036211563c2e1644ac8ea2b84881282
+timeCreated: 1522205369
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Jelly Crazies
+  fontNames:
+  - Jelly Crazies
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
