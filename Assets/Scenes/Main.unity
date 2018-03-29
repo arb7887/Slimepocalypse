@@ -260,7 +260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315561307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -481.76758, z: 0}
+  m_LocalPosition: {x: 0, y: -482.07248, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 348980682}
   - component: {fileID: 348980681}
   - component: {fileID: 348980680}
+  - component: {fileID: 348980684}
   m_Layer: 0
   m_Name: Jukebox
   m_TagString: Untagged
@@ -402,7 +403,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4ecb2e5c1041f51458d31b20c044c6cd, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -805,6 +806,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &348980684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348980677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9bbb6a2df5314b97cb34d19721fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poppies: {fileID: 8300000, guid: 2c57ba0ed92810e4c8c44e859f4cbecf, type: 3}
+  Spell: {fileID: 8300000, guid: 348279b3df1d7954a851d38fa1d95364, type: 3}
+  Straw_Fields: {fileID: 8300000, guid: 650029ad6827c764f8e0aed78cd76e4f, type: 3}
+  Neoishiki: {fileID: 8300000, guid: 4ecb2e5c1041f51458d31b20c044c6cd, type: 3}
 --- !u!1 &639908843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,8 +1240,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019744689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 198, y: 316.5, z: 0}
-  m_LocalScale: {x: 0.72265136, y: 0.72265136, z: 0.72265136}
+  m_LocalPosition: {x: 196.5, y: 314.5, z: 0}
+  m_LocalScale: {x: 0.7176307, y: 0.7176307, z: 0.7176307}
   m_Children:
   - {fileID: 725240231}
   m_Father: {fileID: 0}
@@ -1282,7 +1298,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269278488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -273.73157, y: 437.97052, z: 0}
+  m_LocalPosition: {x: -273.90482, y: 438.2477, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1430,7 +1446,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568049046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 273.73157, y: 437.97052, z: 0}
+  m_LocalPosition: {x: 273.90482, y: 438.2477, z: 0}
   m_LocalScale: {x: 1.0002172, y: 1.0002172, z: 1.0002172}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1590,7 +1606,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807853943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -339.4272, z: 0}
+  m_LocalPosition: {x: 0, y: -339.64197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1938,7 +1954,7 @@ RectTransform:
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.011416294, y: 0.011416294, z: 0.011416294}
+  m_LocalScale: {x: 0.011409073, y: 0.011409073, z: 0.011409073}
   m_Children:
   - {fileID: 1807853944}
   - {fileID: 315561308}
@@ -2051,7 +2067,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105936066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -339.4272, z: 0}
+  m_LocalPosition: {x: 0, y: -339.64197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
