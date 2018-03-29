@@ -41,9 +41,7 @@ public class AudioManager : MonoBehaviour {
 
 
         recentTrack = chosenClip; // Save the most recently played clip so that we can avoid playing the same track twice.
-
-        Debug.Log("chosenClip: " + chosenClip);
-
+        
         switch (chosenClip)
         {
             case 1:
