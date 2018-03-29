@@ -78,8 +78,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 52758f0e8c81fdc4c8a62bc39a401d26, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   slimeSpeed: 2.6250052
   dashSpeed: 0
   type: 
+  specialType: 
   spriteList:
   - {fileID: 21300000, guid: de2a9f8487cc1df42a5c19acc6bc66f5, type: 3}
   - {fileID: 21300000, guid: bf90a97f862bedc43b793426bd819ccc, type: 3}

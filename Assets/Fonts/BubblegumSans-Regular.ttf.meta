@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d4fdaf93c2b87a8448dc742eaada6b63
-timeCreated: 1522205950
+guid: 0fe4a69d67e03474aaef8b11287f4ed6
+timeCreated: 1522285931
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: GooeyDrippySticky
+  fontName: Bubblegum Sans
   fontNames:
-  - GooeyDrippySticky
+  - Bubblegum Sans
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

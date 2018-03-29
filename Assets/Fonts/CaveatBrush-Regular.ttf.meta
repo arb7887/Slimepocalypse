@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0036211563c2e1644ac8ea2b84881282
-timeCreated: 1522205369
+guid: 9d1fc4d3557924a4d919dd608fdaf818
+timeCreated: 1522285936
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Jelly Crazies
+  fontName: Caveat Brush
   fontNames:
-  - Jelly Crazies
+  - Caveat Brush
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

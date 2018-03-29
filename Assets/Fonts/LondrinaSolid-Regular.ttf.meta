@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1906ef3bba1650449b72aac646598be2
-timeCreated: 1522205366
+guid: a9ff187caeccb3142b536e3a7d3ca1a6
+timeCreated: 1522285968
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Soft Marshmallow
+  fontName: Londrina Solid
   fontNames:
-  - Soft Marshmallow
+  - Londrina Solid
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

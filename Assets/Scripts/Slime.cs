@@ -25,11 +25,19 @@ public class Slime : MonoBehaviour {
     public AudioClip deathSound; // sound to play when slime is killed
     private float volume = 1.0f; // how loud to play the audio
     private AudioSource source; // how the audio gets played
+    private AudioSource sourceHit; // how the audio gets played
 
     // runs before start
     private void Awake()
     {
+        // set up the audio sources
         source = GetComponent<AudioSource>();
+        sourceHit = GetComponent<AudioSource>();
+
+        // attach the sound clips
+        sourceHit.clip = hitSound;
+        source.clip = deathSound;
+
     }
 
     // Use this for initialization
@@ -96,7 +104,12 @@ public class Slime : MonoBehaviour {
         if (health <= 0)
         {
             // play the death sound effect
-            source.PlayOneShot(deathSound, volume);
+            //source.PlayOneShot(hitSound, volume);
+            source.GetComponent<AudioClip>().UnloadAudioData();
+            source.clip = deathSound;
+            source.GetComponent<AudioClip>().LoadAudioData();
+            source.Play();
+            Debug.Log(source.clip);
 
             // destroy the slime when healt is zero
             Destroy(gameObject);
@@ -107,7 +120,12 @@ public class Slime : MonoBehaviour {
         else
         {
             // play the hit sound effect
-            source.PlayOneShot(hitSound, volume);
+            //source.PlayOneShot(hitSound, volume);
+            source.GetComponent<AudioClip>().UnloadAudioData();
+            source.clip = hitSound;
+            source.GetComponent<AudioClip>().LoadAudioData();
+            sourceHit.Play();
+            Debug.Log(source.clip);
         }
     }
 
