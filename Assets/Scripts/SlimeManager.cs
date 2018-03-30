@@ -56,7 +56,7 @@ public class SlimeManager : MonoBehaviour {
                     break;
             }
 
-            //Increase the spawn rate of a Slime
+            //Increase the spawnrate of a Slime
             int randSlimeRate = Random.Range(1, 4);
 
             switch (randSlimeRate)
@@ -68,12 +68,15 @@ public class SlimeManager : MonoBehaviour {
                     }
                     break;
                 case (2):
-                    slimeSpeedOffset += 0.005f;
+                    if (momSpawnrate >= 30)
+                    {
+                        momSpawnrate += 5;
+                    }
                     break;
                 case (3):
-                    if (spawnTime >= 0.5)
+                    if (raveSpawnrate >= 10)
                     {
-                        spawnTime -= 0.25f;
+                        raveSpawnrate += 2;
                     }
                     break;
             }
