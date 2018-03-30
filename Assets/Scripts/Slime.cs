@@ -77,9 +77,6 @@ public class Slime : MonoBehaviour {
                 }
             }
             Destroy(gameObject);
-
-            // Add to the kill counter
-            KillCounter.instance.AddKillToCount();
         }
         //Moving the slimes every frame
         if (canMove)
@@ -134,6 +131,9 @@ public class Slime : MonoBehaviour {
             source.clip = deathSound;
             source.Play();
 
+            // Add to the kill counter
+            KillCounter.instance.AddKillToCount();
+
             // disable the sprite renderer and hitbox to give the illusion of death
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -144,8 +144,8 @@ public class Slime : MonoBehaviour {
         else
         {
             // play the hit sound effect
-            source.clip = hitSound;
-            source.Play();
+            //source.clip = hitSound;
+            source.PlayOneShot(hitSound,3.0f);
         }
     }
 
