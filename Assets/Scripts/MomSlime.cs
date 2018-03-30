@@ -30,11 +30,26 @@ public class MomSlime : Slime {
         if (health <= 0)
         {
             SpawnChildren();
+            // get audio source
+            AudioSource source = GetComponentInParent<AudioSource>();
+            AudioClip deathClip = GetComponentInParent<Slime>().deathSound;
+            source.clip = deathSound;
+            source.Play();
+
+            // give the illusion of death
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+            // set the slime to dead
+            isDead = true;
+
+            /*
             // destroy the slime when healt is zero
             Destroy(gameObject);
 
             // Add to the kill counter
             KillCounter.instance.AddKillToCount();
+            */
         }
     }
 

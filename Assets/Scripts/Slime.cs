@@ -23,21 +23,15 @@ public class Slime : MonoBehaviour {
     public bool shaking; // Boolean to see if the slime is shaking
     public AudioClip hitSound; // sound to play when damage is taken
     public AudioClip deathSound; // sound to play when slime is killed
-    private float volume = 1.0f; // how loud to play the audio
     private AudioSource source; // how the audio gets played
-    private AudioSource sourceHit; // how the audio gets played
+    public float deathTimer; // how long before the slime dies
+    public bool isDead; // whether or not to activate the death timer
 
     // runs before start
     private void Awake()
     {
         // set up the audio sources
         source = GetComponent<AudioSource>();
-        sourceHit = GetComponent<AudioSource>();
-
-        // attach the sound clips
-        sourceHit.clip = hitSound;
-        source.clip = deathSound;
-
     }
 
     // Use this for initialization
@@ -52,12 +46,28 @@ public class Slime : MonoBehaviour {
         reachedLane = true;
         float random = Random.Range(0.0f, 1.0f);
         specialType = "normal";
+        isDead = false; // slimes start alive
         //Randomly set the type and sprite of the slime.
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        // if slime is dead
+        if(isDead)
+        {
+            // increment the timer
+            deathTimer += Time.deltaTime;
+        }
+        // if more than one second has passed
+        if(deathTimer >= 0.5f)
+        {
+            // destroy the slime after the clip has played
+            Destroy(gameObject);
+
+            // Add to the kill counter
+            KillCounter.instance.AddKillToCount();
+        }
         //Moving the slimes every frame
         for (int i = 0; i < activeMovetypes.Count; i++)
         {
@@ -104,39 +114,37 @@ public class Slime : MonoBehaviour {
         if (health <= 0)
         {
             // play the death sound effect
-            //source.PlayOneShot(hitSound, volume);
-            /*
-            source.GetComponent<AudioClip>().UnloadAudioData();
             source.clip = deathSound;
-            source.GetComponent<AudioClip>().LoadAudioData();
             source.Play();
-            Debug.Log(source.clip);*/
 
-            // destroy the slime when healt is zero
-            Destroy(gameObject);
+            // disable the sprite renderer and hitbox to give the illusion of death
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-            // Add to the kill counter
-            KillCounter.instance.AddKillToCount();
+            // start the death timer
+            isDead = true;
         }
         else
         {
             // play the hit sound effect
-            //source.PlayOneShot(hitSound, volume);
-            /*
-            source.GetComponent<AudioClip>().UnloadAudioData();
             source.clip = hitSound;
-            source.GetComponent<AudioClip>().LoadAudioData();
-            sourceHit.Play();
-            Debug.Log(source.clip);
-            */
+            source.Play();
         }
     }
 
     // The slime has been instakilled by something like a supershot
     public void instaKill()
     {
-            // instantly kill this slime
-            Destroy(gameObject);
+        // play the death sound effect
+        source.clip = deathSound;
+        source.Play();
+
+        // disable the sprite renderer and hitbox to give the illusion of death
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        // start the death timer
+        isDead = true;
     }
 
     //Gains health
