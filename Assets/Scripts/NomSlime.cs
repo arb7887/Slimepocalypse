@@ -79,14 +79,42 @@ public class NomSlime : Slime {
         //If the slime collides with another slime
         if (collision.gameObject.tag == "Slime")
         {
-            if (collision.gameObject.GetComponent<Slime>().specialType == "nom")
+            if (health < 10) //Caps the Health total at 10
             {
-                if (health > collision.gameObject.GetComponent<Slime>().health)
+                if (collision.gameObject.GetComponent<Slime>().specialType == "nom")
+                {
+                    if (health > collision.gameObject.GetComponent<Slime>().health)
+                    {
+                        //Gain health and get bigger.
+                        health += 2;
+                        ResizeSlime();
+
+                        /* Commenting out because this mechanic is confusing to most players
+                        //And change type based on the slime that it collided with.
+                        type = collision.gameObject.GetComponent<Slime>().type;
+                        if (type == "fire")
+                        {
+                            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                        }
+                        else
+                        {
+                            gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+                        }*/
+                    }
+                    else if (health < collision.gameObject.GetComponent<Slime>().health)
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                else
                 {
                     //Gain health and get bigger.
                     health += 2;
                     ResizeSlime();
+                    //UpSizeSlime();
+                    //UpSizeSlime();
 
+                    /*
                     //And change type based on the slime that it collided with.
                     type = collision.gameObject.GetComponent<Slime>().type;
                     if (type == "fire")
@@ -96,34 +124,11 @@ public class NomSlime : Slime {
                     else
                     {
                         gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-                    }
-                }
-                else if (health < collision.gameObject.GetComponent<Slime>().health)
-                {
-                    Destroy(gameObject);
-                }
-            }
-            else
-            {
-                //Gain health and get bigger.
-                health += 2;
-                ResizeSlime();
-                //UpSizeSlime();
-                //UpSizeSlime();
+                    }*/
 
-                //And change type based on the slime that it collided with.
-                type = collision.gameObject.GetComponent<Slime>().type;
-                if (type == "fire")
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                    //Then the other slime is deleted.
+                    Destroy(collision.gameObject);
                 }
-                else
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-                }
-
-                //Then the other slime is deleted.
-                Destroy(collision.gameObject);
             }
         }
     }

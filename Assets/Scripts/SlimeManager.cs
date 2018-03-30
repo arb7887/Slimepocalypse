@@ -11,17 +11,19 @@ public class SlimeManager : MonoBehaviour {
     public float globalTimer;
     public float spawnTime; //Adjusted spawn speed as game goes on.
     public int healthTotal; //Adjusting slime health as game goes on.
+    public int healthRange; //The range of values a Slime's health can be set to
     public float slimeSpeedOffset; //Adjusting speed of slimes.
     //public KillCounter killCounterSingleton;
     int numMoveTypes;
-    int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
+    public int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
 
     // Use this for initialization
     void Start () {
         timer = 0.0f;
         globalTimer = 0.0f;
-        spawnTime = 3.0f;
+        spawnTime = 2.0f;
         healthTotal = 2;
+        healthRange = 3; //The max range is exlusive so this will always be 1 higher than the actual max range
         slimeSpeedOffset = 0.0f;
         //killCounterSingleton = GetComponent<KillCounter>();
         numMoveTypes = 1;
@@ -35,15 +37,15 @@ public class SlimeManager : MonoBehaviour {
         timer += Time.deltaTime;
         globalTimer += Time.deltaTime;
         //Once the time for whatever we determine one round to be passes...
-        if (globalTimer > 30.0f)
+        if (globalTimer > 15.0f) //This number represents seconds
         {
             int randDifficulty = Random.Range(1, 4); //Randomly increase an aspect of the Slimes
-
             //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
             switch (randDifficulty)
             {
                 case (1):
-                    healthTotal += 1;
+                    //healthTotal += 1;
+                    healthRange += 2;
                     break;
                 case (2):
                     slimeSpeedOffset += 0.005f;
@@ -62,19 +64,19 @@ public class SlimeManager : MonoBehaviour {
             switch (randSlimeRate)
             {
                 case (1):
-                    if(nomSpawnrate >= 30)
+                    if(!(nomSpawnrate == 15))
                     {
                         nomSpawnrate += 5;
                     }
                     break;
                 case (2):
-                    if (momSpawnrate >= 30)
+                    if (!(momSpawnrate == 30))
                     {
                         momSpawnrate += 5;
                     }
                     break;
                 case (3):
-                    if (raveSpawnrate >= 10)
+                    if (!(raveSpawnrate == 10))
                     {
                         raveSpawnrate += 2;
                     }
@@ -153,6 +155,10 @@ public class SlimeManager : MonoBehaviour {
                     newSlime.GetComponent<Slime>().SetLanes(4);
                     break;
             }
+
+
+            //Randomly give a Health value so not all Slimes have massive health during the end game
+            healthTotal = Random.Range(2, healthRange);
 
             //And apply any difficulty changes that we have currently implemented.
             newSlime.GetComponent<Slime>().health = healthTotal;

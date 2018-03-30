@@ -103,11 +103,11 @@ public class Flickshot : MonoBehaviour
 
 
         // Checking if there was enough of a flick to count it
-        if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&
+        if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&/*
               !(startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
               startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
               startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
-              startVec2.y >= launchStartVec2.y - Screen.width / 8) &&
+              startVec2.y >= launchStartVec2.y - Screen.width / 8) && //Commented out so you can flick from the circle*/
               releaseVec2.y > launchStartVec2.y)
         {
 
