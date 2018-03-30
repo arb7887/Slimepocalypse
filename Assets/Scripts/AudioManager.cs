@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
     public AudioClip Poppies;
-    public AudioClip Spell;
+    public AudioClip Street;
     public AudioClip Straw_Fields;
     public AudioClip Neoishiki;
     AudioSource audioSource;
@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour {
                 audioSource.Play();
                 break;
             case 2:
-                audioSource.clip = Spell;
+                audioSource.clip = Street;
                 audioSource.Play();
                 break;
             case 3:
@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour {
                 audioSource.Play();
                 break;
             case 2:
-                audioSource.clip = Spell;
+                audioSource.clip = Street;
                 audioSource.Play();
                 break;
             case 3:

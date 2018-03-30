@@ -25,9 +25,9 @@ public class SlimeManager : MonoBehaviour {
         slimeSpeedOffset = 0.0f;
         //killCounterSingleton = GetComponent<KillCounter>();
         numMoveTypes = 1;
-        nomSpawnrate = 10;
-        momSpawnrate = 10;
-        raveSpawnrate = 10;
+        nomSpawnrate = 0;
+        momSpawnrate = 0;
+        raveSpawnrate = 0;
 	}
 	
 	// Update is called once per frame
@@ -39,36 +39,45 @@ public class SlimeManager : MonoBehaviour {
         {
             int randDifficulty = Random.Range(1, 4); //Randomly increase an aspect of the Slimes
 
-            //We lower the spawn rate, but only until it reaches a time minimum as to not completely overload the player.
-            /*if (spawnTime >= 0.5)
-            {
-                spawnTime -= 0.25f;
-            }*/
-
-
             //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
             switch (randDifficulty)
             {
                 case (1):
                     healthTotal += 1;
-                    //Debug.Log("Health Increased!");
                     break;
                 case (2):
                     slimeSpeedOffset += 0.005f;
-                    //Debug.Log("Speed Increased!");
                     break;
                 case (3):
                     if (spawnTime >= 0.5)
                     {
                         spawnTime -= 0.25f;
                     }
-                    //Debug.Log("Spawn Rate Increased!");
                     break;
             }
 
-            //And adjust slime speed and health.
-            //healthTotal += 1;
-            //slimeSpeedOffset += 0.005f;
+            //Increase the spawn rate of a Slime
+            int randSlimeRate = Random.Range(1, 4);
+
+            switch (randSlimeRate)
+            {
+                case (1):
+                    if(nomSpawnrate >= 30)
+                    {
+                        nomSpawnrate += 5;
+                    }
+                    break;
+                case (2):
+                    slimeSpeedOffset += 0.005f;
+                    break;
+                case (3):
+                    if (spawnTime >= 0.5)
+                    {
+                        spawnTime -= 0.25f;
+                    }
+                    break;
+            }
+
 
             //Then reset the timer so we can continue adjusting the difficulty as the rounds progress.
             globalTimer = 0.0f;
