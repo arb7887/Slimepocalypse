@@ -105,11 +105,12 @@ public class Slime : MonoBehaviour {
         {
             // play the death sound effect
             //source.PlayOneShot(hitSound, volume);
+            /*
             source.GetComponent<AudioClip>().UnloadAudioData();
             source.clip = deathSound;
             source.GetComponent<AudioClip>().LoadAudioData();
             source.Play();
-            Debug.Log(source.clip);
+            Debug.Log(source.clip);*/
 
             // destroy the slime when healt is zero
             Destroy(gameObject);
@@ -121,11 +122,13 @@ public class Slime : MonoBehaviour {
         {
             // play the hit sound effect
             //source.PlayOneShot(hitSound, volume);
+            /*
             source.GetComponent<AudioClip>().UnloadAudioData();
             source.clip = hitSound;
             source.GetComponent<AudioClip>().LoadAudioData();
             sourceHit.Play();
             Debug.Log(source.clip);
+            */
         }
     }
 
@@ -240,6 +243,7 @@ public class Slime : MonoBehaviour {
 
         if (collision.gameObject.name == "SuperAmmo(Clone)")
         {
+            KillCounter.instance.AddToScore();
             instaKill();
         }
         //Check slime type to determine collision behaviors.
