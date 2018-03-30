@@ -53,7 +53,7 @@ public class SlimeManager : MonoBehaviour {
                 case (3):
                     if (spawnTime >= 0.5)
                     {
-                        spawnTime -= 0.25f;
+                        spawnTime -= 0.1f;
                     }
                     break;
             }
