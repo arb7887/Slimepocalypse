@@ -162,6 +162,15 @@ public class Slime : MonoBehaviour {
 
         // start the death timer
         isDead = true;
+
+        for (int i = 0; i < manager.GetComponent<SlimeManager>().slimeList.Count; i++)
+        {
+            if (manager.GetComponent<SlimeManager>().slimeList[i] == gameObject)
+            {
+                manager.GetComponent<SlimeManager>().slimeList.RemoveAt(i);
+                break;
+            }
+        }
     }
 
     //Gains health
