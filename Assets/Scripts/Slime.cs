@@ -21,11 +21,14 @@ public class Slime : MonoBehaviour {
     public int moveTo; //Lane that the slime with move towards.
     public bool reachedLane; //Boolean to see if the slime has reached/exceeded the target lane.
     public bool shaking; // Boolean to see if the slime is shaking
+    public bool canMove;
     public AudioClip hitSound; // sound to play when damage is taken
     public AudioClip deathSound; // sound to play when slime is killed
     private AudioSource source; // how the audio gets played
     public float deathTimer; // how long before the slime dies
     public bool isDead; // whether or not to activate the death timer
+    private AudioSource sourceHit; // how the audio gets played
+    public GameObject manager;
 
     // runs before start
     private void Awake()
@@ -48,6 +51,7 @@ public class Slime : MonoBehaviour {
         specialType = "normal";
         isDead = false; // slimes start alive
         //Randomly set the type and sprite of the slime.
+        canMove = true;
     }
 	
 	// Update is called once per frame
@@ -62,26 +66,39 @@ public class Slime : MonoBehaviour {
         // if more than one second has passed
         if(deathTimer >= 0.5f)
         {
-            // destroy the slime after the clip has played
+            // destroy the slime when health is zero
+            //Remove the slime from the manager's slime list.
+            for (int i = 0; i < manager.GetComponent<SlimeManager>().slimeList.Count; i++)
+            {
+                if (manager.GetComponent<SlimeManager>().slimeList[i] == gameObject)
+                {
+                    manager.GetComponent<SlimeManager>().slimeList.RemoveAt(i);
+                    break;
+                }
+            }
             Destroy(gameObject);
 
             // Add to the kill counter
             KillCounter.instance.AddKillToCount();
         }
         //Moving the slimes every frame
-        for (int i = 0; i < activeMovetypes.Count; i++)
+        if (canMove)
         {
-            if (activeMovetypes[i] == MoveTypes.Normal)
+            //Moving the slimes every frame
+            for (int i = 0; i < activeMovetypes.Count; i++)
             {
-                MoveSlime();
-            }
-            else if (activeMovetypes[i] == MoveTypes.Dashing)
-            {
-                Dash();
-            }
-            else if (activeMovetypes[i] == MoveTypes.LaneSwap)
-            {
-                LaneSwap();
+                if (activeMovetypes[i] == MoveTypes.Normal)
+                {
+                    MoveSlime();
+                }
+                else if (activeMovetypes[i] == MoveTypes.Dashing)
+                {
+                    Dash();
+                }
+                else if (activeMovetypes[i] == MoveTypes.LaneSwap)
+                {
+                    LaneSwap();
+                }
             }
         }
 	}

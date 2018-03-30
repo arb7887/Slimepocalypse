@@ -6,6 +6,7 @@ public class GameOverLine : MonoBehaviour {
 
     //Need reference the GameOver screen
     public GameObject gameOverMenu;
+    public GameObject manager;
 
     // Update is called once per frame
     void Update() {
@@ -16,6 +17,7 @@ public class GameOverLine : MonoBehaviour {
     {
         //if ( !(collision.gameObject.name == "FireAmmo(Clone)" || collision.gameObject.name == "IceAmmo(Clone)") ) //Doesn't work for whatever reason
         {
+            manager.GetComponent<SlimeManager>().stopSlimes();
             gameOverMenu.SetActive(true);
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
         }

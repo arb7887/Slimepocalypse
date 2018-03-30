@@ -17,42 +17,46 @@ public class RaveSlime : Slime {
         laneTimer = 0.0f;
         reachedLane = true;
         float random = Random.Range(0.0f, 1.0f);
+        canMove = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //Moving the slimes every frame
-        for (int i = 0; i < activeMovetypes.Count; i++)
+        if (canMove)
         {
-            if (activeMovetypes[i] == MoveTypes.Normal)
+            //Moving the slimes every frame
+            for (int i = 0; i < activeMovetypes.Count; i++)
             {
-                MoveSlime();
+                if (activeMovetypes[i] == MoveTypes.Normal)
+                {
+                    MoveSlime();
+                }
+                else if (activeMovetypes[i] == MoveTypes.Dashing)
+                {
+                    Dash();
+                }
+                else if (activeMovetypes[i] == MoveTypes.LaneSwap)
+                {
+                    LaneSwap();
+                }
             }
-            else if (activeMovetypes[i] == MoveTypes.Dashing)
+            //Timer for switching types
+            switchTimer += Time.deltaTime;
+            if (switchTimer > 3.0f)
             {
-                Dash();
+                //If timer is activated, check type, and switch sprite and type accordingly.
+                if (type == "ice")
+                {
+                    type = "fire";
+                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
+                }
+                else
+                {
+                    type = "ice";
+                    gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
+                }
+                switchTimer = 0.0f;
             }
-            else if (activeMovetypes[i] == MoveTypes.LaneSwap)
-            {
-                LaneSwap();
-            }
-        }
-        //Timer for switching types
-        switchTimer += Time.deltaTime;
-        if (switchTimer > 3.0f)
-        {
-            //If timer is activated, check type, and switch sprite and type accordingly.
-            if (type == "ice")
-            {
-                type = "fire";
-                gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[1];
-            }
-            else
-            {
-                type = "ice";
-                gameObject.GetComponent<SpriteRenderer>().sprite = spriteList[0];
-            }
-            switchTimer = 0.0f;
         }
     }
 }

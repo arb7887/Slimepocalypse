@@ -34,6 +34,7 @@ public class Wall : MonoBehaviour {
             // decrement health
             health--;
 
+            collision.GetComponent<Slime>().manager.GetComponent<SlimeManager>().slimeList.Remove(collision.gameObject);
             // destroy slime
             Destroy(collision.gameObject);
 
