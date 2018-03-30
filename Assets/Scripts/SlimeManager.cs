@@ -146,8 +146,20 @@ public class SlimeManager : MonoBehaviour {
             newSlime.GetComponent<Slime>().health = healthTotal;
             newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
             newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
+            newSlime.GetComponent<Slime>().manager = gameObject;
             slimeList.Add(newSlime);
             timer = 0.0f;
         }
 	}
+
+    public void stopSlimes()
+    {
+        for (int i = 0; i < slimeList.Count; i++)
+        {
+            if (slimeList[i] != null)
+            {
+                slimeList[i].GetComponent<Slime>().canMove = false;
+            }
+        }
+    }
 }

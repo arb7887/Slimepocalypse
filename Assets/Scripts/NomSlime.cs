@@ -15,6 +15,7 @@ public class NomSlime : Slime {
 
         //Randomly generates a number to determine slime type, and assign sprite from there.
         int rand = Random.Range(0, 2);
+        canMove = true;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
