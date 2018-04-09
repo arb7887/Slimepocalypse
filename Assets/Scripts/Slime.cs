@@ -145,7 +145,7 @@ public class Slime : MonoBehaviour {
         {
             // play the hit sound effect
             //source.clip = hitSound;
-            source.PlayOneShot(hitSound,3.0f);
+            source.PlayOneShot(hitSound,1.0f);
         }
     }
 
@@ -176,6 +176,8 @@ public class Slime : MonoBehaviour {
     //Gains health
     public void GainHealth()
     {
+        // play the hit sound at half the volume
+        source.PlayOneShot(hitSound, 0.5f);
         health++;
     }
 

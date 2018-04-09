@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void PlayGame()
     {
+        KillCounter.instance.gameState = KillCounter.GameState.Game;
         SceneManager.LoadScene("Main");
     }
 

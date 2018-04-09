@@ -10,6 +10,8 @@ public class KillCounter : MonoBehaviour {
     private int score = 0; // Score int if we want to use it later.
     public GameObject killCountText; // the actual text being displayed on the canvas
 
+    public enum GameState { Menu, Game, End};
+    public GameState gameState = GameState.Menu;
     public float timer = 0.0f; // actual time
     public int seconds = 0; // time in seconds
     public int minutes = 0; // time in minutes
@@ -90,18 +92,22 @@ public class KillCounter : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // increment the timer each frame
-        timer += Time.deltaTime;
+        // only while the game is running
+        if(gameState == GameState.Game)
+        {
+            // increment the timer each frame
+            timer += Time.deltaTime;
 
-        // convert the timer to minutes and seconds
-        minutes = Mathf.FloorToInt(timer / 60F);
-        seconds = Mathf.FloorToInt(timer - minutes * 60);
+            // convert the timer to minutes and seconds
+            minutes = Mathf.FloorToInt(timer / 60F);
+            seconds = Mathf.FloorToInt(timer - minutes * 60);
 
-        // nice formatting for timer
-        niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+            // nice formatting for timer
+            niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        // update the canvas text
-        timeText.GetComponent<Text>().text = "Time: " + niceTime;
+            // update the canvas text
+            timeText.GetComponent<Text>().text = "Time: " + niceTime;
+        }
     }
 
     // Adds to the kill count.

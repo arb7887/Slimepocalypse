@@ -18,6 +18,7 @@ public class GameOverLine : MonoBehaviour {
         //if ( !(collision.gameObject.name == "FireAmmo(Clone)" || collision.gameObject.name == "IceAmmo(Clone)") ) //Doesn't work for whatever reason
         {
             manager.GetComponent<SlimeManager>().stopSlimes();
+            KillCounter.instance.gameState = KillCounter.GameState.End;
             gameOverMenu.SetActive(true);
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
         }

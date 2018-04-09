@@ -21,6 +21,7 @@ public class GameOverMenu : MonoBehaviour {
         KillCounter.instance.SetScore(0);
         KillCounter.instance.SetTimer(0.0f);
         KillCounter.instance.SetKillCount(0);
+        KillCounter.instance.gameState = KillCounter.GameState.Game;
         SceneManager.LoadScene("Main");
     }
 
@@ -30,6 +31,7 @@ public class GameOverMenu : MonoBehaviour {
         KillCounter.instance.SetScore(0);
         KillCounter.instance.SetTimer(0.0f);
         KillCounter.instance.SetKillCount(0);
+        KillCounter.instance.gameState = KillCounter.GameState.Menu;
         SceneManager.LoadScene("MainMenu");
     }
 }
