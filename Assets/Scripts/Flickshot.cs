@@ -96,6 +96,91 @@ public class Flickshot : MonoBehaviour
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
         launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
 
+        if (launchAngleCheck.y <= -(Screen.height * 0.1f))
+        {
+            if (ammoType == 1)
+            {
+                ammoType = 2;
+                MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
+            }
+            else if (ammoType == 2)
+            {
+                ammoType = 1;
+                MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
+            }
+        }
+        else if ((startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+                  startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+                  startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+                  startVec2.y >= launchStartVec2.y - Screen.width / 8) &&
+                  (releaseVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+                  releaseVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+                  releaseVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+                  releaseVec2.y >= launchStartVec2.y - Screen.width / 8))
+        {
+            if (ammoType == 1)
+            {
+                ammoType = 2;
+                MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
+            }
+            else if (ammoType == 2)
+            {
+                ammoType = 1;
+                MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
+            }
+        }
+        else
+        {
+            // Check if this is a supershot
+            if (KillCounter.instance.IsSuperShot() == true)
+            {
+
+                // Store the ammoType in the ammoTypeHolder
+                ammoTypeHolder = ammoType;
+                ammoType = 3;
+            }
+
+            var projectile = Instantiate(ammo, new Vector2(0, -10), Quaternion.identity);
+
+            if (ammoType == 1)
+            {
+                projectile = Instantiate(fireAmmo, launchStartVec2, Quaternion.identity);
+            }
+            else if (ammoType == 2)
+            {
+                projectile = Instantiate(iceAmmo, launchStartVec2, Quaternion.identity);
+            }
+            else if (ammoType == 3)
+            {
+                projectile = Instantiate(superAmmo, launchStartVec2, Quaternion.identity);
+
+                // Return the ammoType to the element it was on a bit ago
+                ammoType = ammoTypeHolder;
+            }
+
+            launchAngle.Normalize();
+
+            projectile.transform.position = new Vector2(Camera.transform.localPosition.x, Camera.transform.localPosition.y - 4.2f);
+
+            // Add a force to the ammo and adjust its angle
+            projectile.GetComponent<Rigidbody2D>().AddForce(launchAngle * 600);
+            projectile.GetComponent<Rigidbody2D>().transform.up = launchAngle;
+
+        }
+    }
+
+
+    
+    // Depricated Flicking Code
+    /*
+    // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
+    void Launch()
+    {
+
+        // Calculate launch angle
+        launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
+        launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
+
         //Debug.Log("launchStartVec2: " + launchStartVec2);
         //Debug.Log("releaseVec2: " + releaseVec2);
         //Debug.Log("launchAngle: " + launchAngle);
@@ -103,11 +188,11 @@ public class Flickshot : MonoBehaviour
 
 
         // Checking if there was enough of a flick to count it
-        if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&/*
-              !(startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
-              startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
-              startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
-              startVec2.y >= launchStartVec2.y - Screen.width / 8) && //Commented out so you can flick from the circle*/
+        if (Mathf.Abs(launchAngleCheck.x) >= 1.0f && launchAngleCheck.y >= 1.0f &&
+              //!(startVec2.x <= launchStartVec2.x + Screen.width / 8 &&
+              //startVec2.x >= launchStartVec2.x - Screen.width / 8 &&
+              //startVec2.y <= launchStartVec2.y + Screen.width / 8 &&
+              //startVec2.y >= launchStartVec2.y - Screen.width / 8) && //Commented out so you can flick from the circle
               releaseVec2.y > launchStartVec2.y)
         {
 
@@ -181,6 +266,7 @@ public class Flickshot : MonoBehaviour
             }
         }
     }
+    */
 
 
 }
