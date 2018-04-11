@@ -115,10 +115,10 @@ public class Slime : MonoBehaviour {
     }
 
     // simple takedamage
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(int damage)
     {
-        // decrease health by 1
-        health--;
+        // decrease health by damage amount
+        health -= damage;
 
         // shake the slime
         shaking = true;
@@ -132,7 +132,14 @@ public class Slime : MonoBehaviour {
             source.Play();
 
             // Add to the kill counter
-            KillCounter.instance.AddKillToCount();
+            if(damage > 1) //If the Slime takes more damage, it means the correct type was used
+            {
+                KillCounter.instance.AddKillToCount(true);
+            }
+            else
+            {
+                KillCounter.instance.AddKillToCount(false);
+            }
 
             // disable the sprite renderer and hitbox to give the illusion of death
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -291,7 +298,7 @@ public class Slime : MonoBehaviour {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage();
+                TakeDamage(3);
 
                 // then resize the slime based on the new health
                 ResizeSlime();
@@ -302,10 +309,16 @@ public class Slime : MonoBehaviour {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                GainHealth();
+                TakeDamage(1);
 
                 // then resize the slime based on the new health
-                UpSizeSlime();
+                ResizeSlime();
+
+                // call the takeDamage method
+                //GainHealth();
+
+                // then resize the slime based on the new health
+                //UpSizeSlime();
             }
         }
         else if (type == "fire")
@@ -316,7 +329,7 @@ public class Slime : MonoBehaviour {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage();
+                TakeDamage(3);
 
                 // then resize the slime based on the new health
                 ResizeSlime();
@@ -327,10 +340,16 @@ public class Slime : MonoBehaviour {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                GainHealth();
+                TakeDamage(1);
 
                 // then resize the slime based on the new health
-                UpSizeSlime();
+                ResizeSlime();
+
+                // call the takeDamage method
+                //GainHealth();
+
+                // then resize the slime based on the new health
+                //UpSizeSlime();
             }
         }
     }

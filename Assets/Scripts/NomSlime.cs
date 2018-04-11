@@ -32,7 +32,7 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage();
+                TakeDamage(3);
 
                 // then resize the slime based on the new health
                 ResizeSlime();
@@ -43,11 +43,16 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                GainHealth();
+                TakeDamage(1);
+
+                // then resize the slime based on the new health
+                ResizeSlime();
+
+                // call the takeDamage method
+                //GainHealth();
 
                 // then resize the slime based on the new health
                 //UpSizeSlime();
-                ResizeSlime();
             }
         }
         else if (type == "fire")
@@ -58,7 +63,7 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage();
+                TakeDamage(3);
 
                 // then resize the slime based on the new health
                 ResizeSlime();
@@ -69,11 +74,16 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                GainHealth();
+                TakeDamage(1);
+
+                // then resize the slime based on the new health
+                ResizeSlime();
+
+                // call the takeDamage method
+                //GainHealth();
 
                 // then resize the slime based on the new health
                 //UpSizeSlime();
-                ResizeSlime();
             }
         }
         //If the slime collides with another slime

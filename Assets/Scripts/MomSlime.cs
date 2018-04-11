@@ -22,10 +22,10 @@ public class MomSlime : Slime {
     }
 
     //Altered damage taking method to include children spawning on death.
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
         // decrease health by 1
-        health--;
+        health -= damage;
 
         // check to make sure the slime is still alive
         if (health <= 0)

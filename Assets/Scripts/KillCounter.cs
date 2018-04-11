@@ -105,10 +105,14 @@ public class KillCounter : MonoBehaviour {
     }
 
     // Adds to the kill count.
-    public void AddKillToCount()
+    public void AddKillToCount(bool correctType)
     {
-        // Add to the killCount
-        killCount++;
+        if(correctType) //Only adds to the Super Shot count if the Slime is killed with the correct element type
+        {
+            // Add to the killCount
+            killCount++;
+        }
+
         //Debug.Log(killCount);
         score++;
 
