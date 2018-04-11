@@ -29,6 +29,9 @@ public class Slime : MonoBehaviour {
     public bool isDead; // whether or not to activate the death timer
     private AudioSource sourceHit; // how the audio gets played
     public GameObject manager;
+    public GameObject gameOverMenu; // reference to the game over menu
+    private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic
+
 
     // runs before start
     private void Awake()
@@ -97,6 +100,17 @@ public class Slime : MonoBehaviour {
                     LaneSwap();
                 }
             }
+        }
+
+
+        if(transform.position.y <= -5 && gameIsOver == false)
+        {
+            Debug.Log("u Ded");
+            gameIsOver = true;
+            manager.GetComponent<SlimeManager>().stopSlimes();
+            gameOverMenu.SetActive(true);
+            Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
+            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
         }
 	}
 

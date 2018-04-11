@@ -7,6 +7,8 @@ TagManager:
   - Slime
   - Manager
   - SuperShotUI
+  - GameOverMenu
+  - GameOverCanvas
   layers:
   - Default
   - TransparentFX

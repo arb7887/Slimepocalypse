@@ -16,6 +16,7 @@ public class SlimeManager : MonoBehaviour {
     //public KillCounter killCounterSingleton;
     int numMoveTypes;
     public int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
+    public GameObject gameOverMenu;
 
     // Use this for initialization
     void Start () {
@@ -34,6 +35,9 @@ public class SlimeManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        Debug.Log("Timescale: " + Time.timeScale);
+
         timer += Time.deltaTime;
         globalTimer += Time.deltaTime;
         //Once the time for whatever we determine one round to be passes...
@@ -142,6 +146,7 @@ public class SlimeManager : MonoBehaviour {
             newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
             newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
             newSlime.GetComponent<Slime>().manager = gameObject;
+            newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
 
             //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
             int random = Random.Range(1, 5);
