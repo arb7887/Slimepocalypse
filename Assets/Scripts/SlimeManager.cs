@@ -133,6 +133,16 @@ public class SlimeManager : MonoBehaviour {
             }
             int type = Random.Range(0, 2);
             newSlime.GetComponent<Slime>().SetType(type);
+
+            //Randomly give a Health value so not all Slimes have massive health during the end game
+            healthTotal = Random.Range(2, healthRange);
+
+            //And apply any difficulty changes that we have currently implemented.
+            newSlime.GetComponent<Slime>().health = healthTotal;
+            newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
+            newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
+            newSlime.GetComponent<Slime>().manager = gameObject;
+
             //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
             int random = Random.Range(1, 5);
 
@@ -156,15 +166,6 @@ public class SlimeManager : MonoBehaviour {
                     break;
             }
 
-
-            //Randomly give a Health value so not all Slimes have massive health during the end game
-            healthTotal = Random.Range(2, healthRange);
-
-            //And apply any difficulty changes that we have currently implemented.
-            newSlime.GetComponent<Slime>().health = healthTotal;
-            newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
-            newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
-            newSlime.GetComponent<Slime>().manager = gameObject;
             slimeList.Add(newSlime);
             timer = 0.0f;
         }
