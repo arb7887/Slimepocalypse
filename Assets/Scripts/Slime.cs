@@ -105,7 +105,6 @@ public class Slime : MonoBehaviour {
 
         if(transform.position.y <= -5 && gameIsOver == false)
         {
-            Debug.Log("u Ded");
             gameIsOver = true;
             manager.GetComponent<SlimeManager>().stopSlimes();
             gameOverMenu.SetActive(true);

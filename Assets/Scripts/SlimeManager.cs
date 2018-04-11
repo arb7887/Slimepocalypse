@@ -35,9 +35,6 @@ public class SlimeManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        Debug.Log("Timescale: " + Time.timeScale);
-
         timer += Time.deltaTime;
         globalTimer += Time.deltaTime;
         //Once the time for whatever we determine one round to be passes...
