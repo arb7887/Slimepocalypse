@@ -20,6 +20,7 @@ public class GameOverLine : MonoBehaviour {
             manager.GetComponent<SlimeManager>().stopSlimes();
             gameOverMenu.SetActive(true);
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
+            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
         }
     }
 }

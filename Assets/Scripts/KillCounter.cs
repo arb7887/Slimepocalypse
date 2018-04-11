@@ -7,7 +7,7 @@ public class KillCounter : MonoBehaviour {
 
     private int killCount = 0; // Counts how many slimes have been killed
     private bool fifthShot = false; // Tells if this is a super slime
-    private int score = 0; // Score int if we want to use it later.
+    public int score = 0; // Score int if we want to use it later.
     public GameObject killCountText; // the actual text being displayed on the canvas
 
     public float timer = 0.0f; // actual time
