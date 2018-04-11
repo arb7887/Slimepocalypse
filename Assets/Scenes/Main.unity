@@ -1429,17 +1429,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39b6687e3795de4ca4b9ee2c54e0230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1416093430
+--- !u!1 &1517404524
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1416093431}
-  - component: {fileID: 1416093434}
-  - component: {fileID: 1416093433}
-  - component: {fileID: 1416093432}
+  - component: {fileID: 1517404527}
+  - component: {fileID: 1517404526}
+  - component: {fileID: 1517404525}
   m_Layer: 5
   m_Name: HighScoreText
   m_TagString: Untagged
@@ -1447,48 +1446,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1416093431
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1416093430}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -265.21762, y: 408.7477, z: 0}
-  m_LocalScale: {x: 1.0000794, y: 1.0000794, z: 1.0000794}
-  m_Children: []
-  m_Father: {fileID: 1935115337}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 9, y: -30.000488}
-  m_SizeDelta: {x: 240, y: 60}
-  m_Pivot: {x: 0, y: 1}
---- !u!114 &1416093432
+--- !u!114 &1517404525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1416093430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39b6687e3795de4ca4b9ee2c54e0230, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1416093433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1416093430}
+  m_GameObject: {fileID: 1517404524}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.051470578, g: 0.005298441, b: 0.005298441, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1500,21 +1470,39 @@ MonoBehaviour:
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ' High Score: 0'
---- !u!222 &1416093434
+  m_Text: 'High Score:'
+--- !u!222 &1517404526
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1416093430}
+  m_GameObject: {fileID: 1517404524}
+--- !u!224 &1517404527
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1517404524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -181.21762, y: 387.7482, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1935115337}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93, y: -51}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1557043462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,7 +2031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa16689bb03cff478240ed37ee7c502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1416093430}
+  highScoreText: {fileID: 1517404524}
 --- !u!1 &1909028605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2198,7 @@ RectTransform:
   - {fileID: 1568049047}
   - {fileID: 2105936067}
   - {fileID: 1845494108}
-  - {fileID: 1416093431}
+  - {fileID: 1517404527}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
