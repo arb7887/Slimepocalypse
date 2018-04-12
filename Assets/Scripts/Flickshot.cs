@@ -25,6 +25,19 @@ public class Flickshot : MonoBehaviour
 
     public GameObject Camera;
 
+    // audio objects
+    public AudioSource source;
+    public AudioClip fireSound;
+    public AudioClip iceSound;
+    public AudioClip superSound;
+
+    // runs before start
+    private void Awake()
+    {
+        // set up the audio source
+        source = GetComponent<AudioSource>();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -91,7 +104,6 @@ public class Flickshot : MonoBehaviour
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
     void Launch()
     {
-
         // Calculate launch angle
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
         launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
@@ -145,10 +157,16 @@ public class Flickshot : MonoBehaviour
             if (ammoType == 1)
             {
                 projectile = Instantiate(fireAmmo, launchStartVec2, Quaternion.identity);
+                // play a fire sound effect
+                //source.clip = fireSound;
+                source.PlayOneShot(fireSound,0.5f);
             }
             else if (ammoType == 2)
             {
                 projectile = Instantiate(iceAmmo, launchStartVec2, Quaternion.identity);
+                // play an ice sound effect
+                //source.clip = iceSound;
+                source.PlayOneShot(iceSound);
             }
             else if (ammoType == 3)
             {
@@ -156,6 +174,9 @@ public class Flickshot : MonoBehaviour
 
                 // Return the ammoType to the element it was on a bit ago
                 ammoType = ammoTypeHolder;
+                // play a super shot sound effect
+                //source.clip = superSound;
+                source.PlayOneShot(superSound,1.5f);
             }
 
             launchAngle.Normalize();

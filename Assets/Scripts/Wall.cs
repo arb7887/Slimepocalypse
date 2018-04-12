@@ -3,26 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wall : MonoBehaviour {
-
+    // wall health
     private int health = 3;
 
     // reference to the manager object to get access to the screenshake script
     public GameObject manager;
 
-    // set the manager
+    // audio for the walls
+    private AudioSource source;
+    public AudioClip crash;
+    public float deathTimer;
+    public bool isDead = false;
+
     private void Awake()
     {
+        // assign references
         manager = GameObject.Find("Manager");
+        source = GetComponent<AudioSource>();
     }
 
     // Use this for initialization
     void Start () {
-		
+        isDead = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        // runs the sound effect after the wall is dead
+        if (isDead)
+        {
+            // create the illusion of death/destruction
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+
+            // update the timer
+            deathTimer += Time.deltaTime;
+
+            // if the timer is greater than 7 seconds
+            if(deathTimer > 7.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
 	}
 
     // collision detection
@@ -33,6 +55,9 @@ public class Wall : MonoBehaviour {
         {
             // decrement health
             health--;
+
+            // play the sound effect
+            source.PlayOneShot(crash);
 
             collision.GetComponent<Slime>().manager.GetComponent<SlimeManager>().slimeList.Remove(collision.gameObject);
             // destroy slime
@@ -48,7 +73,8 @@ public class Wall : MonoBehaviour {
         // if the health of the wall reaches or falls below 0, destroy the wall
         if(health <=0)
         {
-            Destroy(gameObject);
+            isDead = true; // delays death for sound effect playing purposes
+            //Destroy(gameObject);
         }
     }
 

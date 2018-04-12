@@ -141,8 +141,8 @@ public class Slime : MonoBehaviour {
         if (health <= 0)
         {
             // play the death sound effect
-            source.clip = deathSound;
-            source.Play();
+            //source.clip = deathSound;
+            source.PlayOneShot(deathSound,1.0f);
 
             // Add to the kill counter
             if(damage > 1) //If the Slime takes more damage, it means the correct type was used
@@ -165,7 +165,7 @@ public class Slime : MonoBehaviour {
         {
             // play the hit sound effect
             //source.clip = hitSound;
-            source.PlayOneShot(hitSound,3.0f);
+            source.PlayOneShot(hitSound,1.0f);
         }
     }
 

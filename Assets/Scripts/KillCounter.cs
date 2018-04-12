@@ -26,6 +26,11 @@ public class KillCounter : MonoBehaviour {
     public Sprite fullChargeSprite; // Sprite to show the user that they have full charge for their supershot
     private Sprite[] superShotChargeSpriteHolder = new Sprite[6]; // The array that holds the supershot sprites
 
+    // audio variables
+    private AudioSource source;
+    public AudioClip manaCharge;
+    public AudioClip superShotReadySound;
+
     private static KillCounter _instance;
 
     public static KillCounter instance
@@ -49,6 +54,7 @@ public class KillCounter : MonoBehaviour {
 
     private void Awake()
     {
+        source = GetComponent<AudioSource>(); // set the reference to the audio source component
         if(_instance == null)
         {
             _instance = this;
@@ -109,6 +115,19 @@ public class KillCounter : MonoBehaviour {
     {
         if(correctType) //Only adds to the Super Shot count if the Slime is killed with the correct element type
         {
+            // if gaining a mana charge
+            if(killCount <= 3)
+            {
+                // play a mana gaining sound effect
+                source.PlayOneShot(manaCharge);
+            }
+            // otherwise the supershot is ready
+            else if(killCount >= 4)
+            {
+                // play the ready sound effect
+                source.PlayOneShot(superShotReadySound,2.0f);
+            }
+
             // Add to the killCount
             killCount++;
         }
