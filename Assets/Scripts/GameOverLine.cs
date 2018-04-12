@@ -7,6 +7,7 @@ public class GameOverLine : MonoBehaviour {
     //Need reference the GameOver screen
     public GameObject gameOverMenu;
     public GameObject manager;
+    public GameObject jukeboxSE;
 
     // Update is called once per frame
     void Update() {
@@ -19,6 +20,10 @@ public class GameOverLine : MonoBehaviour {
         {
             manager.GetComponent<SlimeManager>().stopSlimes();
             gameOverMenu.SetActive(true);
+
+            // get the jukebox script to play the gameover jingle
+            jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
+
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
             manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
         }

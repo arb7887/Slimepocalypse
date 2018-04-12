@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject jukeboxSE;
+    // Use this for initialization
+    void Start () {
+        jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
+    }
 	
 	// Update is called once per frame
 	void Update () {
