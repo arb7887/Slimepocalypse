@@ -224,7 +224,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: Z:/IGMProfile/Desktop/Slimepocalypse/keystore.keystore
+  AndroidKeystoreName: D:/Steven/Documents/Class/IGM/Casual Game Dev/Slimepocalypse/keystore.keystore
   AndroidKeyaliasName: slimepocalypse
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

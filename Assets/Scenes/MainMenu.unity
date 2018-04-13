@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 8300000, guid: dbbeec43aeac5fe43a1005ac63fe58a2, type: 3}
+  gameOverJingle: {fileID: 0}
 --- !u!82 &1029042862
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2349,8 +2350,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877650519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 199.5, y: 319, z: 0}
-  m_LocalScale: {x: 1.0633334, y: 1.0633334, z: 1.0633334}
+  m_LocalPosition: {x: 170, y: 272, z: 0}
+  m_LocalScale: {x: 0.9066667, y: 0.9066667, z: 0.9066667}
   m_Children:
   - {fileID: 1836680326}
   - {fileID: 401573634}
@@ -2418,7 +2419,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 2.11e-10, y: -20}
-  m_SizeDelta: {x: -44, y: -265.7}
+  m_SizeDelta: {x: -44, y: -222.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2038964402
 MonoBehaviour:
@@ -2463,7 +2464,12 @@ MonoBehaviour:
 
     Matt Lefurge
 
-    Andrew Baron'
+    Andrew Baron
+
+
+    Music
+
+    Rolemusic'
 --- !u!222 &2038964403
 CanvasRenderer:
   m_ObjectHideFlags: 0
