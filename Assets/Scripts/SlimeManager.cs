@@ -9,6 +9,7 @@ public class SlimeManager : MonoBehaviour {
     public List<GameObject> slimeList;
     public float timer;
     public float globalTimer;
+    public float secondTimer; // the timer to keep track of when 1 second passes
     public float spawnTime; //Adjusted spawn speed as game goes on.
     public int healthTotal; //Adjusting slime health as game goes on.
     public int healthRange; //The range of values a Slime's health can be set to
@@ -17,6 +18,8 @@ public class SlimeManager : MonoBehaviour {
     int numMoveTypes;
     public int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
     public GameObject gameOverMenu;
+    public int scoreIncrease = 10;
+    public int passiveScore = 10;
 
     // Use this for initialization
     void Start () {
@@ -36,10 +39,22 @@ public class SlimeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
+        secondTimer += Time.deltaTime;
         globalTimer += Time.deltaTime;
+
+        // add the passive score to the score
+        if(secondTimer > 1.0f)
+        {
+            KillCounter.instance.currentScore += passiveScore;
+            // reset the second timer
+            secondTimer = 0.0f;
+        }
+
         //Once the time for whatever we determine one round to be passes...
         if (globalTimer > 15.0f) //This number represents seconds
         {
+            // increase the passive score by the scoreIncease
+            passiveScore += scoreIncrease;
             int randDifficulty = Random.Range(1, 4); //Randomly increase an aspect of the Slimes
             //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
             switch (randDifficulty)

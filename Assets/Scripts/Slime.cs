@@ -299,6 +299,8 @@ public class Slime : MonoBehaviour {
         {
             KillCounter.instance.AddToScore();
             instaKill();
+            // add to the score (300 currently) for super shot kill
+            KillCounter.instance.currentScore += 300;
         }
         //Check slime type to determine collision behaviors.
         //Ice types take damage from fire ammo, and absorb ice ammo.
@@ -315,6 +317,9 @@ public class Slime : MonoBehaviour {
 
                 // then resize the slime based on the new health
                 ResizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "IceAmmo(Clone)") //Grows
             {
@@ -346,6 +351,9 @@ public class Slime : MonoBehaviour {
 
                 // then resize the slime based on the new health
                 ResizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "FireAmmo(Clone)") //Grows
             {

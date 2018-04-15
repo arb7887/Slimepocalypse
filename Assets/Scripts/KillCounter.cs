@@ -8,6 +8,8 @@ public class KillCounter : MonoBehaviour {
     private int killCount = 0; // Counts how many slimes have been killed
     private bool fifthShot = false; // Tells if this is a super slime
     public int score = 0; // Score int if we want to use it later.
+    public int currentScore; // the actual in game score
+    public GameObject inGameScoreText;
     public GameObject killCountText; // the actual text being displayed on the canvas
 
     public float timer = 0.0f; // actual time
@@ -106,8 +108,9 @@ public class KillCounter : MonoBehaviour {
         // nice formatting for timer
         niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        // update the canvas text
+        // update the canvas text for timer and score
         timeText.GetComponent<Text>().text = "Time: " + niceTime;
+        inGameScoreText.GetComponent<Text>().text = "Score: " + currentScore;
     }
 
     // Adds to the kill count.
@@ -148,6 +151,9 @@ public class KillCounter : MonoBehaviour {
 
         // update the text
         killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
+
+        // update the score (100 on kill so far)
+        currentScore += 100;
     }
 
     // Sets the score
