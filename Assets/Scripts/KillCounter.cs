@@ -100,7 +100,6 @@ public class KillCounter : MonoBehaviour {
         if (beserkState)
         {
             beserkCount -= Time.deltaTime;
-            Debug.Log("beserkCount: " + beserkCount);
 
             if (beserkCount <= 0)
             {
@@ -193,7 +192,6 @@ public class KillCounter : MonoBehaviour {
             {
                 killCountSpriteNum++;
             }
-            Debug.Log("killCountSpriteNum: " + killCountSpriteNum);
             superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCountSpriteNum];
         }
 
