@@ -45,11 +45,11 @@ public class MomSlime : Slime {
             isDead = true;
 
             /*
-            for (int i = 0; i < manager.GetComponent<SlimeManager>().slimeList.Count; i++)
+            for (int i = 0; i < SlimeManagerSingleton.Instance.slimeList.Count; i++)
             {
-                if (manager.GetComponent<SlimeManager>().slimeList[i] == gameObject)
+                if (SlimeManagerSingleton.Instance.slimeList[i] == gameObject)
                 {
-                    manager.GetComponent<SlimeManager>().slimeList.RemoveAt(i);
+                    SlimeManagerSingleton.Instance.slimeList.RemoveAt(i);
                     break;
                 }
             }
@@ -79,37 +79,33 @@ public class MomSlime : Slime {
         //Sets the lane, type, and movement type of each child slime.
         if (currentLane == 1)
         {
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y + 1.2f, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y + 1.2f, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
             /*
             newSlime = Instantiate(slimePrefab);
@@ -118,7 +114,7 @@ public class MomSlime : Slime {
             newSlime.GetComponent<Slime>().SetType(newType);
             newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             newSlime.GetComponent<Slime>().manager = gameObject;
-            manager.GetComponent<SlimeManager>().slimeList.Add(newSlime);
+            SlimeManagerSingleton.Instance.slimeList.Add(newSlime);
 
             newSlime = Instantiate(slimePrefab);
             newSlime.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
@@ -126,7 +122,7 @@ public class MomSlime : Slime {
             newSlime.GetComponent<Slime>().SetType(newType);
             newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             newSlime.GetComponent<Slime>().manager = gameObject;
-            manager.GetComponent<SlimeManager>().slimeList.Add(newSlime);
+            SlimeManagerSingleton.Instance.slimeList.Add(newSlime);
 
             newSlime = Instantiate(slimePrefab);
             newSlime.transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y, 0.0f);
@@ -134,7 +130,7 @@ public class MomSlime : Slime {
             newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             newSlime.GetComponent<Slime>().SetType(newType);
             newSlime.GetComponent<Slime>().manager = gameObject;
-            manager.GetComponent<SlimeManager>().slimeList.Add(newSlime);
+            SlimeManagerSingleton.Instance.slimeList.Add(newSlime);
 
             newSlime = Instantiate(slimePrefab);
             newSlime.transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y + 1.2f, 0.0f);
@@ -142,73 +138,65 @@ public class MomSlime : Slime {
             newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             newSlime.GetComponent<Slime>().SetType(newType);
             newSlime.GetComponent<Slime>().manager = gameObject;
-            manager.GetComponent<SlimeManager>().slimeList.Add(newSlime);*/
+            SlimeManagerSingleton.Instance.slimeList.Add(newSlime);*/
 
         }
         else if (currentLane == 4)
         {
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1] = Instantiate(slimePrefab);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y + 1.2f, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y + 1.2f, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
         }
         //Otherwise, normal spawning paradigm (T block shape)
         else
         {
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.0f, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x - 1.2f, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane - 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
 
-            manager.GetComponent<SlimeManager>().slimeList.Add(Instantiate(slimePrefab));
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y, 0.0f);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-            manager.GetComponent<SlimeManager>().slimeList[manager.GetComponent<SlimeManager>().slimeList.Count - 1].GetComponent<Slime>().manager = manager;
+            SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].transform.position = new Vector3(gameObject.transform.position.x + 1.2f, gameObject.transform.position.y, 0.0f);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
         }
     }
 }

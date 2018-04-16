@@ -59,7 +59,8 @@ public class Wall : MonoBehaviour {
             // play the sound effect
             source.PlayOneShot(crash);
 
-            collision.GetComponent<Slime>().manager.GetComponent<SlimeManager>().slimeList.Remove(collision.gameObject);
+            //collision.GetComponent<Slime>().manager.GetComponent<SlimeManager>().slimeList.Remove(collision.gameObject);
+            SlimeManagerSingleton.Instance.slimeList.Remove(collision.gameObject);
             // destroy slime
             Destroy(collision.gameObject);
 

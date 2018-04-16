@@ -28,7 +28,6 @@ public class Slime : MonoBehaviour {
     public float deathTimer; // how long before the slime dies
     public bool isDead; // whether or not to activate the death timer
     private AudioSource sourceHit; // how the audio gets played
-    public GameObject manager;
     public GameObject gameOverMenu; // reference to the game over menu
     private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic
 
@@ -71,11 +70,11 @@ public class Slime : MonoBehaviour {
         {
             // destroy the slime when health is zero
             //Remove the slime from the manager's slime list.
-            for (int i = 0; i < manager.GetComponent<SlimeManager>().slimeList.Count; i++)
+            for (int i = 0; i < SlimeManagerSingleton.Instance.slimeList.Count; i++)
             {
-                if (manager.GetComponent<SlimeManager>().slimeList[i] == gameObject)
+                if (SlimeManagerSingleton.Instance.slimeList[i] == gameObject)
                 {
-                    manager.GetComponent<SlimeManager>().slimeList.RemoveAt(i);
+                    SlimeManagerSingleton.Instance.slimeList.RemoveAt(i);
                     break;
                 }
             }
@@ -106,10 +105,11 @@ public class Slime : MonoBehaviour {
         if(transform.position.y <= -5 && gameIsOver == false)
         {
             gameIsOver = true;
-            manager.GetComponent<SlimeManager>().stopSlimes();
+            SlimeManagerSingleton.Instance.StopSlimes();
             gameOverMenu.SetActive(true);
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
+            SlimeManagerSingleton.Instance.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
+            //manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
         }
 	}
 
@@ -183,11 +183,11 @@ public class Slime : MonoBehaviour {
         // start the death timer
         isDead = true;
 
-        for (int i = 0; i < manager.GetComponent<SlimeManager>().slimeList.Count; i++)
+        for (int i = 0; i < SlimeManagerSingleton.Instance.slimeList.Count; i++)
         {
-            if (manager.GetComponent<SlimeManager>().slimeList[i] == gameObject)
+            if (SlimeManagerSingleton.Instance.slimeList[i] == gameObject)
             {
-                manager.GetComponent<SlimeManager>().slimeList.RemoveAt(i);
+                SlimeManagerSingleton.Instance.slimeList.RemoveAt(i);
                 break;
             }
         }

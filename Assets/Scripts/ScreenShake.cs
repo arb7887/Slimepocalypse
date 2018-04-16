@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // code for screenshake class based on https://gist.github.com/ftvs/5822103
 public class ScreenShake : MonoBehaviour {
@@ -37,20 +38,27 @@ public class ScreenShake : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //Debug.Log("Shaking");
-		if(shakeDuration > 0)
+        if (SceneManager.GetActiveScene().name == "Main")
         {
-            // set the screen shake to a random position inside the sphere
-            camTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
+            if (camTransform == null)
+            {
+                camTransform = GameObject.FindWithTag("MainCamera").transform;
+            }
+            //Debug.Log("Shaking");
+            if (shakeDuration > 0)
+            {
+                // set the screen shake to a random position inside the sphere
+                camTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
 
-            // decrease the shake duration over time
-            shakeDuration -= Time.deltaTime * decreaseFactor;
-        }
-        else
-        {
-            // reset the values to turn off the screenshake effect
-            shakeDuration = 0f;
-            camTransform.localPosition = originalPosition;
+                // decrease the shake duration over time
+                shakeDuration -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                // reset the values to turn off the screenshake effect
+                shakeDuration = 0f;
+                camTransform.localPosition = originalPosition;
+            }
         }
 	}
 }

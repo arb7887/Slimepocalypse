@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // necessary for changing the text of a canvas element
+using UnityEngine.SceneManagement;
 
 public class KillCounter : MonoBehaviour {
 
@@ -14,7 +15,8 @@ public class KillCounter : MonoBehaviour {
     public int score = 0; // Score int if we want to use it later.
     public int currentScore; // the actual in game score
     public GameObject inGameScoreText;
-    public GameObject killCountText; // the actual text being displayed on the canvas
+    public GameObject killCountText; // the actual text being displayed on the canvas                          
+    public GameObject highScoreText; //Canvas text field for high score.
 
     public float timer = 0.0f; // actual time
     public int seconds = 0; // time in seconds
@@ -91,36 +93,41 @@ public class KillCounter : MonoBehaviour {
     {
         // Setup the supershot UI
         ResetSupershotImages();
+
+        LoadHighScore();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Count down the beserk state
-        if (beserkState)
+        //Check if we are in the main game scene
+        if (SceneCheck() == 1)
         {
-            beserkCount -= Time.deltaTime;
-
-            if (beserkCount <= 0)
+            // Count down the beserk state
+            if (beserkState)
             {
-                ResetBeserkStateVariables();
+                beserkCount -= Time.deltaTime;
+
+                if (beserkCount <= 0)
+                {
+                    ResetBeserkStateVariables();
+                }
             }
-        }
 
-        // increment the timer each frame
-        timer += Time.deltaTime;
+            // increment the timer each frame
+            timer += Time.deltaTime;
 
-        // convert the timer to minutes and seconds
-        minutes = Mathf.FloorToInt(timer / 60F);
-        seconds = Mathf.FloorToInt(timer - minutes * 60);
+            // convert the timer to minutes and seconds
+            minutes = Mathf.FloorToInt(timer / 60F);
+            seconds = Mathf.FloorToInt(timer - minutes * 60);
 
-        // nice formatting for timer
-        niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+            // nice formatting for timer
+            niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        // update the canvas text for timer and score
-        timeText.GetComponent<Text>().text = "Time: " + niceTime;
-        inGameScoreText.GetComponent<Text>().text = "Score: " + currentScore;
-        
+            // update the canvas text for timer and score
+            timeText.GetComponent<Text>().text = "Time: " + niceTime;
+            inGameScoreText.GetComponent<Text>().text = "Score: " + currentScore;
+        }    
     }
 
     // Resets the beserk state variables when it runs out
@@ -242,6 +249,34 @@ public class KillCounter : MonoBehaviour {
         return killCount;
     }
 
+    public void SetCurrentScore(int newScore)
+    {
+        currentScore = newScore;
+    }
+
+    // Loading and setting the player's high score in the text bubble
+    public void LoadHighScore()
+    {
+        if (PlayerPrefs.HasKey("highScore"))
+        {
+            highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        }
+        else
+        {
+            highScoreText.GetComponent<Text>().text = "High Score: 0";
+        }
+    }
+
+    //Saving the high score if there is a new high score.
+    public void SaveHighScore(int score)
+    {
+        if (!PlayerPrefs.HasKey("highScore") || score > PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", score);
+            highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        }
+    }
+
     // If the kill count is greater than 5, the next shot will be a supershot.
     public bool IsBeserkState()
     {
@@ -256,4 +291,35 @@ public class KillCounter : MonoBehaviour {
         return fifteenthKill;
     }
 
+    public int SceneCheck()
+    {
+        //If we are in the main game scene
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            if (_instance.inGameScoreText == null)
+            {
+                _instance.inGameScoreText = GameObject.Find("Score");
+            }
+            if (_instance.killCountText == null)
+            {
+                _instance.inGameScoreText = GameObject.Find("KillCountText");
+            }
+            if (_instance.timeText == null)
+            {
+                _instance.inGameScoreText = GameObject.Find("TimeText");
+            }
+            if (_instance.highScoreText == null)
+            {
+                _instance.highScoreText = GameObject.Find("HighScoreText");
+                _instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+
+            }
+            return 1;
+        }
+        else
+        {
+            currentScore = 0;
+            return 2;
+        }
+    }
 }

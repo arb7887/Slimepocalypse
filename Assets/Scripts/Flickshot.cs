@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Flickshot : MonoBehaviour
 {
@@ -50,55 +51,55 @@ public class Flickshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        // Check if the player is touching the screen
-        if (Input.touchCount > 0)
+        if (SceneCheck() == 1)
         {
+            // Check if the player is touching the screen
+            if (Input.touchCount > 0)
+            {
 
-            // Store a touch
-            Touch touch = Input.GetTouch(0);
+                // Store a touch
+                Touch touch = Input.GetTouch(0);
 
-            // Check which part of the touch we're on
-            switch (touch.phase)
+                // Check which part of the touch we're on
+                switch (touch.phase)
+                {
+                    // Save the touch's location in the beginning of the touch
+                    case TouchPhase.Began:
+                        startVec2 = touch.position;
+                        //startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location (The Magic Circle)
+                        break;
+                    // Useable for calculating angle
+                    case TouchPhase.Moved:
+                        // Might be used later to draw a line representing the angle that the player will use when shooting ammo
+                        break;
+                    // Save the touch's location on the release of the touch
+                    case TouchPhase.Ended:
+                        releaseVec2 = touch.position;
+                        Launch();
+
+                        // reset the start and release vectors
+                        startVec2 = Vector2.zero;
+                        releaseVec2 = Vector2.zero;
+                        break;
+                }
+            }
+            // Check if the player is clicking on the screen
+            else if (Input.GetMouseButtonDown(0) == true)
             {
                 // Save the touch's location in the beginning of the touch
-                case TouchPhase.Began:
-                    startVec2 = touch.position;
-                    //startVec2 = new Vector2(0, -10); //We want to calculate the angle from the origin point of the magic bolt, which is always going to be the same location (The Magic Circle)
-                    break;
-                // Useable for calculating angle
-                case TouchPhase.Moved:
-                    // Might be used later to draw a line representing the angle that the player will use when shooting ammo
-                    break;
-                // Save the touch's location on the release of the touch
-                case TouchPhase.Ended:
-                    releaseVec2 = touch.position;
-                    Launch();
+                startVec2 = Input.mousePosition;
+            }
+            // Check if the player has released
+            if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
+            {
+                releaseVec2 = Input.mousePosition;
+                Launch();
 
-                    // reset the start and release vectors
-                    startVec2 = Vector2.zero;
-                    releaseVec2 = Vector2.zero;
-                    break;
+                // reset the start and release vectors
+                startVec2 = Vector2.zero;
+                releaseVec2 = Vector2.zero;
             }
         }
-        // Check if the player is clicking on the screen
-        else if (Input.GetMouseButtonDown(0) == true)
-        {
-            // Save the touch's location in the beginning of the touch
-            startVec2 = Input.mousePosition;
-        }
-        // Check if the player has released
-        if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
-        {
-            releaseVec2 = Input.mousePosition;
-            Launch();
-
-            // reset the start and release vectors
-            startVec2 = Vector2.zero;
-            releaseVec2 = Vector2.zero;
-        }
-
     }
 
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
@@ -198,7 +199,26 @@ public class Flickshot : MonoBehaviour
         }
     }
 
-
+    public int SceneCheck()
+    {
+        //If we are in the main game scene
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            if (Camera == null)
+            {
+                Camera = GameObject.Find("Main Camera");
+            }
+            if (MagicCircleButton == null)
+            {
+                MagicCircleButton = GameObject.Find("Button").GetComponent<Button>();
+            }
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
     
     // Depricated Flicking Code
     /*

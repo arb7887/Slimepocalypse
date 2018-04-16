@@ -25,7 +25,7 @@ public class GameOverLine : MonoBehaviour {
             jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
 
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
+            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.currentScore);
         }
     }
 }
