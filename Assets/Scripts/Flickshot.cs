@@ -104,6 +104,14 @@ public class Flickshot : MonoBehaviour
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
     void Launch()
     {
+
+        // Check to see if we're done using the beserk state. If so, start using the previous ammo type again.
+        if (KillCounter.instance.CheckBeserkState() == false && ammoType == 3)
+        {
+            // Return the ammoType to the element it was on a bit ago
+            ammoType = ammoTypeHolder;
+        }
+
         // Calculate launch angle
         launchAngle = releaseVec2 - launchStartVec2; //Always start from a set position
         launchAngleCheck = releaseVec2 - startVec2; //Used for "if" checks in order to retain touch logic
@@ -144,7 +152,7 @@ public class Flickshot : MonoBehaviour
         else
         {
             // Check if this is a supershot
-            if (KillCounter.instance.IsSuperShot() == true)
+            if (KillCounter.instance.IsBeserkState() == true)
             {
 
                 // Store the ammoType in the ammoTypeHolder
@@ -172,8 +180,8 @@ public class Flickshot : MonoBehaviour
             {
                 projectile = Instantiate(superAmmo, launchStartVec2, Quaternion.identity);
 
-                // Return the ammoType to the element it was on a bit ago
-                ammoType = ammoTypeHolder;
+                KillCounter.instance.BeginBeserkState();
+
                 // play a super shot sound effect
                 //source.clip = superSound;
                 source.PlayOneShot(superSound,1.5f);

@@ -6,7 +6,11 @@ using UnityEngine.UI; // necessary for changing the text of a canvas element
 public class KillCounter : MonoBehaviour {
 
     private int killCount = 0; // Counts how many slimes have been killed
-    private bool fifthShot = false; // Tells if this is a super slime
+    private int killCountSpriteNum = 0; // Number representing the image that will be used for mana
+    private bool beserkState = false; // Variable that says whether we're in the beserk state currently
+    private bool readyToBeserk = true; // Variable that only lets the beserk timer start once
+    private float beserkCount = 0; // Amount of time left in the current beserk state
+    private bool fifteenthKill = false; // Tells if this is a super slime
     public int score = 0; // Score int if we want to use it later.
     public int currentScore; // the actual in game score
     public GameObject inGameScoreText;
@@ -46,7 +50,7 @@ public class KillCounter : MonoBehaviour {
                 DontDestroyOnLoad(_instance.gameObject);
 
                 _instance.killCount = 0;
-                _instance.fifthShot = false;
+                _instance.fifteenthKill = false;
                 _instance.score = 0;
             }
 
@@ -72,7 +76,7 @@ public class KillCounter : MonoBehaviour {
     }
 
     // Resets the reference to the supershot UI
-    public void resetSupershotImages()
+    public void ResetSupershotImages()
     {
         superShotImage = GameObject.FindGameObjectWithTag("SuperShotUI");
         superShotChargeSpriteHolder[0] = noChargeSprite;
@@ -86,18 +90,24 @@ public class KillCounter : MonoBehaviour {
     private void Start()
     {
         // Setup the supershot UI
-        superShotImage = GameObject.FindGameObjectWithTag("SuperShotUI");
-        superShotChargeSpriteHolder[0] = noChargeSprite;
-        superShotChargeSpriteHolder[1] = oneChargeSprite;
-        superShotChargeSpriteHolder[2] = twoChargeSprite;
-        superShotChargeSpriteHolder[3] = threeChargeSprite;
-        superShotChargeSpriteHolder[4] = fourChargeSprite;
-        superShotChargeSpriteHolder[5] = fullChargeSprite;
+        ResetSupershotImages();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Count down the beserk state
+        if (beserkState)
+        {
+            beserkCount -= Time.deltaTime;
+            Debug.Log("beserkCount: " + beserkCount);
+
+            if (beserkCount <= 0)
+            {
+                ResetBeserkStateVariables();
+            }
+        }
+
         // increment the timer each frame
         timer += Time.deltaTime;
 
@@ -111,6 +121,35 @@ public class KillCounter : MonoBehaviour {
         // update the canvas text for timer and score
         timeText.GetComponent<Text>().text = "Time: " + niceTime;
         inGameScoreText.GetComponent<Text>().text = "Score: " + currentScore;
+        
+    }
+
+    // Resets the beserk state variables when it runs out
+    public void ResetBeserkStateVariables()
+    {
+        beserkState = false;
+        readyToBeserk = true;
+        killCount = 0;
+        killCountSpriteNum = 0;
+        superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[0];     // Resets the sprite for supershot count back to its original state
+    }
+
+    // Tells the game to start the beserk state
+    public void BeginBeserkState()
+    {
+        // Check if this is the first click
+        if (readyToBeserk == true)
+        {
+            beserkState = true;
+            beserkCount = 5; // Makes the beserk state last 5 seconds
+            readyToBeserk = false;
+        }
+    }
+
+    // Tells the Flickshot class to start using normal shots again
+    public bool CheckBeserkState()
+    {
+        return beserkState;
     }
 
     // Adds to the kill count.
@@ -130,24 +169,34 @@ public class KillCounter : MonoBehaviour {
                 // play the ready sound effect
                 source.PlayOneShot(superShotReadySound,2.0f);
             }
+        }
 
+        // Don't add to beserkState mana while you're in beserkState
+        if(!beserkState)
+        {
             // Add to the killCount
             killCount++;
         }
-
         //Debug.Log(killCount);
         score++;
 
         // Replace the supershot charge asset on the circle with a more filled asset
-        if(killCount > 5)
+        if (killCount > 15)
         {
             // If killCount is for whatever reason above 5
             superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[5];
 
         } else
         {
-            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCount];
+            // Only change the sprite every 3 kills
+            if (killCount % 3 == 0 && killCount > 0)
+            {
+                killCountSpriteNum++;
+            }
+            Debug.Log("killCountSpriteNum: " + killCountSpriteNum);
+            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCountSpriteNum];
         }
+
 
         // update the text
         killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
@@ -175,6 +224,7 @@ public class KillCounter : MonoBehaviour {
     public void SetKillCount(int newKillCount)
     {
         killCount = newKillCount;
+        killCountSpriteNum = 0;
     }
 
     public void SetTimer(float newTimer)
@@ -195,17 +245,17 @@ public class KillCounter : MonoBehaviour {
     }
 
     // If the kill count is greater than 5, the next shot will be a supershot.
-    public bool IsSuperShot()
+    public bool IsBeserkState()
     {
-        if (killCount >= 5)
+        if (killCount >= 15)
         {
-            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[0];     // Resets the sprite for supershot count back to its original state
-            fifthShot = true;
+            fifteenthKill = true;
             killCount = 0;
+            killCountSpriteNum = 0;
         }
-        else fifthShot = false;
+        else fifteenthKill = false;
 
-        return fifthShot;
+        return fifteenthKill;
     }
 
 }

@@ -8,7 +8,7 @@ public class hello : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         KillCounter.instance.killCountText = gameObject;
-        KillCounter.instance.resetSupershotImages();
+        KillCounter.instance.ResetSupershotImages();
     }
 	
 	// Update is called once per frame

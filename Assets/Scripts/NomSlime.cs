@@ -22,7 +22,17 @@ public class NomSlime : Slime {
     {
         if (collision.gameObject.name == "SuperAmmo(Clone)")
         {
-            instaKill();
+            // delete the projectile
+            Destroy(collision.gameObject);
+
+            // call the takeDamage method
+            TakeDamage(3);
+
+            // then resize the slime based on the new health
+            ResizeSlime();
+
+            // add to the score (25 on hit currently) if hit with correct element type
+            KillCounter.instance.currentScore += 25;
         }
         if (type == "ice")
         {
@@ -36,6 +46,9 @@ public class NomSlime : Slime {
 
                 // then resize the slime based on the new health
                 ResizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "IceAmmo(Clone)") //Grows
             {
@@ -53,6 +66,9 @@ public class NomSlime : Slime {
 
                 // then resize the slime based on the new health
                 //UpSizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
         }
         else if (type == "fire")
@@ -67,6 +83,9 @@ public class NomSlime : Slime {
 
                 // then resize the slime based on the new health
                 ResizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "FireAmmo(Clone)") //Grows
             {
@@ -84,6 +103,9 @@ public class NomSlime : Slime {
 
                 // then resize the slime based on the new health
                 //UpSizeSlime();
+
+                // add to the score (25 on hit currently) if hit with correct element type
+                KillCounter.instance.currentScore += 25;
             }
         }
         //If the slime collides with another slime
