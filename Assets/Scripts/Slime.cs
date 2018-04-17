@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour {
 
-    public int health = 2; // number of hits until a slime dies
+    public int health = 4; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
     public float slimeSpeed, dashSpeed; //Speed of normal movement, and dashing movement, which will be higher than normal movement.
@@ -334,16 +334,10 @@ public class Slime : MonoBehaviour {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage(1);
+                GainHealth();
 
                 // then resize the slime based on the new health
                 ResizeSlime();
-
-                // call the takeDamage method
-                //GainHealth();
-
-                // then resize the slime based on the new health
-                //UpSizeSlime();
             }
         }
         else if (type == "fire")
@@ -367,17 +361,11 @@ public class Slime : MonoBehaviour {
                 // delete the projectile
                 Destroy(collision.gameObject);
 
-                // call the takeDamage method
-                TakeDamage(1);
+                // call the GainHealth method
+                GainHealth();
 
                 // then resize the slime based on the new health
                 ResizeSlime();
-
-                // call the takeDamage method
-                //GainHealth();
-
-                // then resize the slime based on the new health
-                //UpSizeSlime();
             }
         }
     }

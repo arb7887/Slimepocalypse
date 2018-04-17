@@ -56,7 +56,7 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage(1);
+                GainHealth();
 
                 // then resize the slime based on the new health
                 ResizeSlime();
@@ -93,7 +93,7 @@ public class NomSlime : Slime {
                 Destroy(collision.gameObject);
 
                 // call the takeDamage method
-                TakeDamage(1);
+                GainHealth();
 
                 // then resize the slime based on the new health
                 ResizeSlime();

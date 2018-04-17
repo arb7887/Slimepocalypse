@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf58f844439ca47964d7110021c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 4
   slimeSpeed: 2.6250052
   dashSpeed: 0
   type: 
@@ -260,8 +260,12 @@ MonoBehaviour:
   moveTo: 0
   reachedLane: 0
   shaking: 0
+  canMove: 0
   hitSound: {fileID: 8300000, guid: 52758f0e8c81fdc4c8a62bc39a401d26, type: 3}
   deathSound: {fileID: 8300000, guid: 675e4453ca83c524aa02a58e9a4543e2, type: 3}
+  deathTimer: 0
+  isDead: 0
+  gameOverMenu: {fileID: 0}
 --- !u!114 &114452217912783884
 MonoBehaviour:
   m_ObjectHideFlags: 1

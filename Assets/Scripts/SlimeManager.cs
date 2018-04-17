@@ -26,8 +26,8 @@ public class SlimeManager : MonoBehaviour {
         timer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
-        healthTotal = 2;
-        healthRange = 3; //The max range is exlusive so this will always be 1 higher than the actual max range
+        healthTotal = 4;
+        healthRange = 5; //The max range is exlusive so this will always be 1 higher than the actual max range
         slimeSpeedOffset = 0.0f;
         //killCounterSingleton = GetComponent<KillCounter>();
         numMoveTypes = 1;
@@ -60,8 +60,10 @@ public class SlimeManager : MonoBehaviour {
             switch (randDifficulty)
             {
                 case (1):
-                    //healthTotal += 1;
-                    healthRange += 2;
+                    if(healthRange < 17)
+                    {
+                        healthRange += 2; //Increase the potential health of Slimes
+                    }
                     break;
                 case (2):
                     slimeSpeedOffset += 0.005f;
@@ -151,7 +153,7 @@ public class SlimeManager : MonoBehaviour {
             newSlime.GetComponent<Slime>().SetType(type);
 
             //Randomly give a Health value so not all Slimes have massive health during the end game
-            healthTotal = Random.Range(2, healthRange);
+            healthTotal = Random.Range(4, healthRange);
 
             //And apply any difficulty changes that we have currently implemented.
             newSlime.GetComponent<Slime>().health = healthTotal;
