@@ -300,20 +300,22 @@ public class KillCounter : MonoBehaviour {
             {
                 _instance.inGameScoreText = GameObject.Find("Score");
             }
+            /*
             if (_instance.killCountText == null)
             {
-                _instance.inGameScoreText = GameObject.Find("KillCountText");
-            }
+                _instance.killCountText = GameObject.Find("KillCountText");
+            }*/
             if (_instance.timeText == null)
             {
-                _instance.inGameScoreText = GameObject.Find("TimeText");
+                _instance.timeText = GameObject.Find("TimeText");
             }
+            /*
             if (_instance.highScoreText == null)
             {
                 _instance.highScoreText = GameObject.Find("HighScoreText");
                 _instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
 
-            }
+            }*/
             return 1;
         }
         else

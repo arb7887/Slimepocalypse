@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // needed for text
 
 public class GameOverLine : MonoBehaviour {
 
@@ -25,7 +26,10 @@ public class GameOverLine : MonoBehaviour {
             jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
 
             Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-            manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.currentScore);
+            KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
+            KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
+            KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+            //manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.currentScore);
         }
     }
 }

@@ -29,7 +29,9 @@ public class Slime : MonoBehaviour {
     public bool isDead; // whether or not to activate the death timer
     private AudioSource sourceHit; // how the audio gets played
     public GameObject gameOverMenu; // reference to the game over menu
-    private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic
+    //public GameObject jukeboxSE; // sound effects pls
+
+    //private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic
 
 
     // runs before start
@@ -102,14 +104,9 @@ public class Slime : MonoBehaviour {
         }
 
 
-        if(transform.position.y <= -5 && gameIsOver == false)
+        if(transform.position.y <= -5 && SlimeManagerSingleton.Instance.isGameOver == false)
         {
-            gameIsOver = true;
-            SlimeManagerSingleton.Instance.StopSlimes();
-            gameOverMenu.SetActive(true);
-            Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-            SlimeManagerSingleton.Instance.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
-            //manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
+            SlimeManagerSingleton.Instance.GameOver();
         }
 	}
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SlimeManagerSingleton : MonoBehaviour {
 
@@ -23,8 +24,10 @@ public class SlimeManagerSingleton : MonoBehaviour {
     int numMoveTypes;
     public int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
     public GameObject gameOverMenu;
+    public bool isGameOver;
     public int scoreIncrease = 10;
     public int passiveScore = 10;
+    public GameObject jukeboxSE; // sound effects
 
     public static SlimeManagerSingleton Instance
     {
@@ -109,6 +112,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        isGameOver = false;
         timer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
@@ -303,6 +307,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
         momSpawnrate = 0;
         raveSpawnrate = 0;
         slimeList = new List<GameObject>();
+        isGameOver = false;
     }
 
     public int SceneCheck()
@@ -317,5 +322,24 @@ public class SlimeManagerSingleton : MonoBehaviour {
             Reset();
             return 2;
         }
+    }
+
+    public void GameOver()
+    {
+        SlimeManagerSingleton.Instance.isGameOver = true;
+        //gameIsOver = true;
+        SlimeManagerSingleton.Instance.StopSlimes();
+        gameOverMenu.SetActive(true);
+
+        // get the jukebox script to play the gameover jingle
+        jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
+
+        Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
+        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
+        KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
+        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+
+        //SlimeManagerSingleton.Instance.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
+        //manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
     }
 }
