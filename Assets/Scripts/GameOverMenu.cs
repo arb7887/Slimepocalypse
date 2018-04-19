@@ -22,7 +22,7 @@ public class GameOverMenu : MonoBehaviour {
         KillCounter.instance.SetScore(0);
         KillCounter.instance.SetTimer(0.0f);
         KillCounter.instance.SetKillCount(0);
-        KillCounter.instance.ResetBeserkStateVariables();
+        KillCounter.instance.ResetberserkStateVariables();
         KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
         KillCounter.instance.LoadHighScore();
         KillCounter.instance.SetCurrentScore(0);
@@ -36,7 +36,7 @@ public class GameOverMenu : MonoBehaviour {
         KillCounter.instance.SetScore(0);
         KillCounter.instance.SetTimer(0.0f);
         KillCounter.instance.SetKillCount(0);
-        KillCounter.instance.ResetBeserkStateVariables();
+        KillCounter.instance.ResetberserkStateVariables();
         KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
         SlimeManagerSingleton.Instance.Reset();
         SceneManager.LoadScene("MainMenu");

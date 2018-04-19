@@ -8,9 +8,10 @@ public class KillCounter : MonoBehaviour {
 
     private int killCount = 0; // Counts how many slimes have been killed
     private int killCountSpriteNum = 0; // Number representing the image that will be used for mana
-    private bool beserkState = false; // Variable that says whether we're in the beserk state currently
-    private bool readyToBeserk = true; // Variable that only lets the beserk timer start once
-    private float beserkCount = 0; // Amount of time left in the current beserk state
+    private bool berserkState = false; // Variable that says whether we're in the berserk state currently
+    private bool readyToberserk = true; // Variable that only lets the berserk timer start once
+    private bool berserkStarted = false;
+    private float berserkCount = 0; // Amount of time left in the current berserk state
     private bool fifteenthKill = false; // Tells if this is a super slime
     public int score = 0; // Score int if we want to use it later.
     public int currentScore; // the actual in game score
@@ -103,14 +104,14 @@ public class KillCounter : MonoBehaviour {
         //Check if we are in the main game scene
         if (SceneCheck() == 1)
         {
-            // Count down the beserk state
-            if (beserkState)
+            // Count down the berserk state
+            if (berserkState)
             {
-                beserkCount -= Time.deltaTime;
+                berserkCount -= Time.deltaTime;
 
-                if (beserkCount <= 0)
+                if (berserkCount <= 0)
                 {
-                    ResetBeserkStateVariables();
+                    ResetberserkStateVariables();
                 }
             }
 
@@ -130,32 +131,33 @@ public class KillCounter : MonoBehaviour {
         }    
     }
 
-    // Resets the beserk state variables when it runs out
-    public void ResetBeserkStateVariables()
+    // Resets the berserk state variables when it runs out
+    public void ResetberserkStateVariables()
     {
-        beserkState = false;
-        readyToBeserk = true;
+        berserkState = false;
+        readyToberserk = true;
         killCount = 0;
         killCountSpriteNum = 0;
         superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[0];     // Resets the sprite for supershot count back to its original state
     }
 
-    // Tells the game to start the beserk state
-    public void BeginBeserkState()
+    // Tells the game to start the berserk state
+    public void BeginBerserkState()
     {
         // Check if this is the first click
-        if (readyToBeserk == true)
+        if (readyToberserk == true)
         {
-            beserkState = true;
-            beserkCount = 5; // Makes the beserk state last 5 seconds
-            readyToBeserk = false;
+            berserkState = true;
+            berserkCount = 5; // Makes the berserk state last 5 seconds
+            readyToberserk = false;
+            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[5];
         }
     }
 
-    // Tells the Flickshot class to start using normal shots again
-    public bool CheckBeserkState()
+    // Getter for the killCount variable
+    public int CheckKillCount()
     {
-        return beserkState;
+        return killCount;
     }
 
     // Adds to the kill count.
@@ -164,21 +166,21 @@ public class KillCounter : MonoBehaviour {
         if(correctType) //Only adds to the Super Shot count if the Slime is killed with the correct element type
         {
             // if gaining a mana charge
-            if(killCount <= 3)
+            if(killCountSpriteNum <= 4)
             {
                 // play a mana gaining sound effect
                 source.PlayOneShot(manaCharge);
             }
             // otherwise the supershot is ready
-            else if(killCount >= 4)
+            else if(killCountSpriteNum == 5)
             {
                 // play the ready sound effect
                 source.PlayOneShot(superShotReadySound,2.0f);
             }
         }
 
-        // Don't add to beserkState mana while you're in beserkState
-        if(!beserkState)
+        // Don't add to berserkState mana while you're in berserkState
+        if(!berserkState)
         {
             // Add to the killCount
             killCount++;
@@ -187,18 +189,13 @@ public class KillCounter : MonoBehaviour {
         score++;
 
         // Replace the supershot charge asset on the circle with a more filled asset
-        if (killCount > 15)
+        // Only change the sprite every 3 kills
+        if (killCount % 3 == 0 && killCount > 0)
         {
-            // If killCount is for whatever reason above 5
-            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[5];
-
-        } else
+            killCountSpriteNum++;
+        }
+        if(killCountSpriteNum < 5)
         {
-            // Only change the sprite every 3 kills
-            if (killCount % 3 == 0 && killCount > 0)
-            {
-                killCountSpriteNum++;
-            }
             superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCountSpriteNum];
         }
 
@@ -209,7 +206,7 @@ public class KillCounter : MonoBehaviour {
         // update the score (100 on kill so far)
         currentScore += 100;
     }
-
+    
     // Sets the score
     public void SetScore(int newScore)
     {
@@ -277,18 +274,10 @@ public class KillCounter : MonoBehaviour {
         }
     }
 
-    // If the kill count is greater than 5, the next shot will be a supershot.
-    public bool IsBeserkState()
+    // Getter for berserkState variable
+    public bool IsBerserkState()
     {
-        if (killCount >= 15)
-        {
-            fifteenthKill = true;
-            killCount = 0;
-            killCountSpriteNum = 0;
-        }
-        else fifteenthKill = false;
-
-        return fifteenthKill;
+        return berserkState;
     }
 
     public int SceneCheck()
