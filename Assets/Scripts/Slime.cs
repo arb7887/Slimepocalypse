@@ -33,6 +33,8 @@ public class Slime : MonoBehaviour {
 
     //private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic
 
+    private bool used; //Used to make sure we only fire the GameOver method once
+
 
     // runs before start
     private void Awake()
@@ -56,6 +58,7 @@ public class Slime : MonoBehaviour {
         isDead = false; // slimes start alive
         //Randomly set the type and sprite of the slime.
         canMove = true;
+        used = false;
     }
 	
 	// Update is called once per frame
@@ -106,7 +109,11 @@ public class Slime : MonoBehaviour {
 
         if(transform.position.y <= -5 && SlimeManagerSingleton.Instance.isGameOver == false)
         {
-            SlimeManagerSingleton.Instance.GameOver();
+            if(used == false)
+            {
+                used = true;
+                SlimeManagerSingleton.Instance.GameOver();
+            }
         }
 	}
 
