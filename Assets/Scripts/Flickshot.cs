@@ -58,62 +58,67 @@ public class Flickshot : MonoBehaviour
 
         if (SceneCheck() == 1)
         {
-            // Check if the player is touching the screen
-            if (Input.touchCount > 0)
+
+            // done to make sure a shot doesn't fire as soon as the scene starts due to pressing the button
+            if(KillCounter.instance.timer > 0.01f && !SlimeManagerSingleton.Instance.isGameOver)
             {
+                // Check if the player is touching the screen
+                if (Input.touchCount > 0)
+                {
 
-                // Store a touch
-                Touch touch = Input.GetTouch(0);
+                    // Store a touch
+                    Touch touch = Input.GetTouch(0);
 
-                // Check which part of the touch we're on
-                switch (touch.phase)
+                    // Check which part of the touch we're on
+                    switch (touch.phase)
+                    {
+                        // Save the touch's location in the beginning of the touch
+                        case TouchPhase.Began:
+                            startVec2 = touch.position;
+
+                            // Start recording holding time
+                            fingerDown = true;
+
+                            break;
+                        // Useable for calculating angle
+                        case TouchPhase.Moved:
+                            // Might be used later to draw a line representing the angle that the player will use when shooting ammo
+                            break;
+                        // Save the touch's location on the release of the touch
+                        case TouchPhase.Ended:
+                            releaseVec2 = touch.position;
+                            Launch();
+
+                            // reset the start and release vectors
+                            startVec2 = Vector2.zero;
+                            releaseVec2 = Vector2.zero;
+
+                            break;
+                    }
+                }
+                // Check if the player is clicking on the screen
+                else if (Input.GetMouseButtonDown(0) == true)
                 {
                     // Save the touch's location in the beginning of the touch
-                    case TouchPhase.Began:
-                        startVec2 = touch.position;
+                    startVec2 = Input.mousePosition;
 
-                        // Start recording holding time
-                        fingerDown = true;
-
-                        break;
-                    // Useable for calculating angle
-                    case TouchPhase.Moved:
-                        // Might be used later to draw a line representing the angle that the player will use when shooting ammo
-                        break;
-                    // Save the touch's location on the release of the touch
-                    case TouchPhase.Ended:
-                        releaseVec2 = touch.position;
-                        Launch();
-
-                        // reset the start and release vectors
-                        startVec2 = Vector2.zero;
-                        releaseVec2 = Vector2.zero;
-
-                        break;
+                    // Start recording holding time
+                    fingerDown = true;
                 }
-            }
-            // Check if the player is clicking on the screen
-            else if (Input.GetMouseButtonDown(0) == true)
-            {
-                // Save the touch's location in the beginning of the touch
-                startVec2 = Input.mousePosition;
+                // Check if the player has released
+                if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
+                {
+                    releaseVec2 = Input.mousePosition;
+                    Launch();
 
-                // Start recording holding time
-                fingerDown = true;
-            }
-            // Check if the player has released
-            if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
-            {
-                releaseVec2 = Input.mousePosition;
-                Launch();
+                    // reset the start and release vectors
+                    startVec2 = Vector2.zero;
+                    releaseVec2 = Vector2.zero;
 
-                // reset the start and release vectors
-                startVec2 = Vector2.zero;
-                releaseVec2 = Vector2.zero;
-
-                // Reset the magic circle holding variables
-                magicCircleHoldCount = 0.0f;
-                fingerDown = false;
+                    // Reset the magic circle holding variables
+                    magicCircleHoldCount = 0.0f;
+                    fingerDown = false;
+                }
             }
         }
     }

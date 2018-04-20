@@ -323,11 +323,22 @@ public class SlimeManagerSingleton : MonoBehaviour {
         }
     }
 
+    private void DestroyProjectiles()
+    {
+        // get all of the projectiles in the scene and destroy them
+        foreach (GameObject projectile in GameObject.FindGameObjectsWithTag("Ammo"))
+        {
+            Destroy(projectile);
+        }
+    }
+
     public void GameOver()
     {
         //SlimeManagerSingleton.Instance.isGameOver = true;
         //SlimeManagerSingleton.Instance.StopSlimes();
+        //StopShaking();
         isGameOver = true;
+        DestroyProjectiles();
         StopSlimes();
         KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
         gameOverMenu.SetActive(true);
@@ -339,11 +350,5 @@ public class SlimeManagerSingleton : MonoBehaviour {
 
         // get the jukebox script to play the gameover jingle
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
-
-        //Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-        /*KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
-        KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
-        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
-
     }
 }

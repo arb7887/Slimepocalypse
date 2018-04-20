@@ -44,21 +44,31 @@ public class ScreenShake : MonoBehaviour {
             {
                 camTransform = GameObject.FindWithTag("MainCamera").transform;
             }
-            //Debug.Log("Shaking");
-            if (shakeDuration > 0)
-            {
-                // set the screen shake to a random position inside the sphere
-                camTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
 
-                // decrease the shake duration over time
-                shakeDuration -= Time.deltaTime * decreaseFactor;
+            // make sure the game is not over
+            if (!SlimeManagerSingleton.Instance.isGameOver)
+            {
+                //Debug.Log("Shaking");
+                if (shakeDuration > 0)
+                {
+                    // set the screen shake to a random position inside the sphere
+                    camTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
+
+                    // decrease the shake duration over time
+                    shakeDuration -= Time.deltaTime * decreaseFactor;
+                }
+                else
+                {
+                    // reset the values to turn off the screenshake effect
+                    shakeDuration = 0f;
+                    camTransform.localPosition = originalPosition;
+                }
             }
             else
             {
-                // reset the values to turn off the screenshake effect
-                shakeDuration = 0f;
                 camTransform.localPosition = originalPosition;
             }
+
         }
 	}
 }

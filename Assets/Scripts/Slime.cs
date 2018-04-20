@@ -330,7 +330,7 @@ public class Slime : MonoBehaviour {
                 ResizeSlime();
 
                 // add to the score (25 on hit currently) if hit with correct element type
-                KillCounter.instance.currentScore += 10000;
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "IceAmmo(Clone)") //Grows
             {
@@ -358,7 +358,7 @@ public class Slime : MonoBehaviour {
                 ResizeSlime();
 
                 // add to the score (25 on hit currently) if hit with correct element type
-                KillCounter.instance.currentScore += 10000;
+                KillCounter.instance.currentScore += 25;
             }
             else if (collision.gameObject.name == "FireAmmo(Clone)") //Grows
             {

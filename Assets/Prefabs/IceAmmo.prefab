@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114054845577998130}
   m_Layer: 0
   m_Name: IceAmmo
-  m_TagString: Untagged
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

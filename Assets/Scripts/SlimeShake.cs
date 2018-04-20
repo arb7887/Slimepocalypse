@@ -39,23 +39,27 @@ public class SlimeShake : MonoBehaviour {
     {
         // updates the position
         originalPosition = slimeTransform.localPosition;
-        if (gameObject.GetComponent<Slime>().shaking)
+        // only keep shaking if the game is not over
+        if (!SlimeManagerSingleton.Instance.isGameOver)
         {
-            //Debug.Log("Shaking");
-            if (shakeDuration > 0)
+            if (gameObject.GetComponent<Slime>().shaking)
             {
-                // set the screen shake to a random position inside the sphere
-                slimeTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
+                //Debug.Log("Shaking");
+                if (shakeDuration > 0)
+                {
+                    // set the screen shake to a random position inside the sphere
+                    slimeTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeAmount;
 
-                // decrease the shake duration over time
-                shakeDuration -= Time.deltaTime * decreaseFactor;
-            }
-            else
-            {
-                // reset the values to turn off the screenshake effect
-                shakeDuration = 0f;
-                slimeTransform.localPosition = originalPosition;
-                gameObject.GetComponent<Slime>().shaking = false;
+                    // decrease the shake duration over time
+                    shakeDuration -= Time.deltaTime * decreaseFactor;
+                }
+                else
+                {
+                    // reset the values to turn off the screenshake effect
+                    shakeDuration = 0f;
+                    slimeTransform.localPosition = originalPosition;
+                    gameObject.GetComponent<Slime>().shaking = false;
+                }
             }
         }
     }

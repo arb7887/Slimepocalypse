@@ -146,6 +146,11 @@ public class KillCounter : MonoBehaviour {
             {
                 inGameScoreText.GetComponent<Text>().color = Color.yellow;
             }
+            else
+            {
+                inGameScoreText.GetComponent<Text>().color = Color.black;
+            }
+
             if (newHighScoreAlert)
             {
                 alertTimer += Time.deltaTime;

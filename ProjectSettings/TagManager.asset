@@ -9,6 +9,7 @@ TagManager:
   - SuperShotUI
   - GameOverMenu
   - GameOverCanvas
+  - Ammo
   layers:
   - Default
   - TransparentFX
