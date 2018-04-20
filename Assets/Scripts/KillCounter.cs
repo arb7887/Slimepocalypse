@@ -15,7 +15,11 @@ public class KillCounter : MonoBehaviour {
     private bool fifteenthKill = false; // Tells if this is a super slime
     public int score = 0; // Score int if we want to use it later.
     public int currentScore; // the actual in game score
+    public bool surpassedHighScore;
+    public bool newHighScoreAlert;
+    private float alertTimer = 0.0f;
     public GameObject inGameScoreText;
+    public GameObject newHighScoreAlertText;
     //public GameObject killCountText; // the actual text being displayed on the canvas                          
     public GameObject highScoreText; //Canvas text field for high score.
 
@@ -55,6 +59,8 @@ public class KillCounter : MonoBehaviour {
                 _instance.killCount = 0;
                 _instance.fifteenthKill = false;
                 _instance.score = 0;
+                _instance.currentScore = 0;
+                _instance.surpassedHighScore = false;
             }
 
             return _instance;
@@ -127,6 +133,29 @@ public class KillCounter : MonoBehaviour {
 
             // update the canvas text for timer and score
             timeText.GetComponent<Text>().text = "Time: " + niceTime;
+
+            // keep checking to see if the high score has been passed
+            if(currentScore > PlayerPrefs.GetInt("highScore"))
+            {
+                surpassedHighScore = true;
+                newHighScoreAlert = true;
+            }
+
+            // if the player has surpassed the current high score
+            if (surpassedHighScore)
+            {
+                inGameScoreText.GetComponent<Text>().color = Color.yellow;
+            }
+            if (newHighScoreAlert)
+            {
+                alertTimer += Time.deltaTime;
+                newHighScoreAlertText.GetComponent<Text>().enabled = true;
+                if(alertTimer >= 3.0f)
+                {
+                    newHighScoreAlertText.GetComponent<Text>().enabled = false;
+                    newHighScoreAlert = false;
+                }
+            }
             inGameScoreText.GetComponent<Text>().text = "Score: " + currentScore;
         }    
     }
@@ -316,7 +345,8 @@ public class KillCounter : MonoBehaviour {
         LoadHighScore();
         SetCurrentScore(0);
         ResetSupershotImages();
-        highScoreText = GameObject.Find("HighScoreText"); 
-
+        highScoreText = GameObject.Find("HighScoreText");
+        newHighScoreAlertText = GameObject.Find("NewHighScoreAlert");
+        surpassedHighScore = false;
     }
 }

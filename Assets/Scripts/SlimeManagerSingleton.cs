@@ -319,9 +319,9 @@ public class SlimeManagerSingleton : MonoBehaviour {
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-        /*KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
-        KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
-        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
+        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
+        //KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
+        //KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
 
     }
 }
