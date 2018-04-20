@@ -329,7 +329,11 @@ public class SlimeManagerSingleton : MonoBehaviour {
         //SlimeManagerSingleton.Instance.StopSlimes();
         isGameOver = true;
         StopSlimes();
+        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
         gameOverMenu.SetActive(true);
+        KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
+        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
 

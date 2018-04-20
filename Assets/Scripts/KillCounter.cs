@@ -135,7 +135,7 @@ public class KillCounter : MonoBehaviour {
             timeText.GetComponent<Text>().text = "Time: " + niceTime;
 
             // keep checking to see if the high score has been passed
-            if(currentScore > PlayerPrefs.GetInt("highScore"))
+            if(!PlayerPrefs.HasKey("highScore") || currentScore > PlayerPrefs.GetInt("highScore"))
             {
                 surpassedHighScore = true;
                 newHighScoreAlert = true;
