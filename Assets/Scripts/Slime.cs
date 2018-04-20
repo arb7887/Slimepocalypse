@@ -28,7 +28,7 @@ public class Slime : MonoBehaviour {
     public float deathTimer; // how long before the slime dies
     public bool isDead; // whether or not to activate the death timer
     private AudioSource sourceHit; // how the audio gets played
-    public GameObject gameOverMenu; // reference to the game over menu
+    //public GameObject gameOverMenu; // reference to the game over menu
     //public GameObject jukeboxSE; // sound effects pls
 
     //private bool gameIsOver = false; // variable that tracks if we have used game over logic before so we don't repeat that logic

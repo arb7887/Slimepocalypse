@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class KillCounter : MonoBehaviour {
 
     private int killCount = 0; // Counts how many slimes have been killed
-    private int killCountSpriteNum = 0; // Number representing the image that will be used for mana
+    public int killCountSpriteNum = 0; // Number representing the image that will be used for mana
     private bool berserkState = false; // Variable that says whether we're in the berserk state currently
     private bool readyToberserk = true; // Variable that only lets the berserk timer start once
     private bool berserkStarted = false;
@@ -16,7 +16,7 @@ public class KillCounter : MonoBehaviour {
     public int score = 0; // Score int if we want to use it later.
     public int currentScore; // the actual in game score
     public GameObject inGameScoreText;
-    public GameObject killCountText; // the actual text being displayed on the canvas                          
+    //public GameObject killCountText; // the actual text being displayed on the canvas                          
     public GameObject highScoreText; //Canvas text field for high score.
 
     public float timer = 0.0f; // actual time
@@ -25,7 +25,7 @@ public class KillCounter : MonoBehaviour {
     public GameObject timeText; // actual text of the time being displayed on the canvas
     private string niceTime = "";
 
-    private GameObject superShotImage;// A reference to the supershot image
+    public GameObject superShotImage;// A reference to the supershot image
 
     public Sprite noChargeSprite; // Sprite to show the user that they have no charge for their supershot
     public Sprite oneChargeSprite; // Sprite to show the user that they have 1 charge for their supershot
@@ -33,7 +33,7 @@ public class KillCounter : MonoBehaviour {
     public Sprite threeChargeSprite; // Sprite to show the user that they have 3 charge for their supershot
     public Sprite fourChargeSprite; // Sprite to show the user that they have 4 charge for their supershot
     public Sprite fullChargeSprite; // Sprite to show the user that they have full charge for their supershot
-    private Sprite[] superShotChargeSpriteHolder = new Sprite[6]; // The array that holds the supershot sprites
+    public Sprite[] superShotChargeSpriteHolder = new Sprite[6]; // The array that holds the supershot sprites
 
     // audio variables
     private AudioSource source;
@@ -201,7 +201,7 @@ public class KillCounter : MonoBehaviour {
 
 
         // update the text
-        killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
+       // killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
 
         // update the score (100 on kill so far)
         currentScore += 100;
@@ -219,7 +219,7 @@ public class KillCounter : MonoBehaviour {
         score++;
 
         // update the text
-        killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
+       // killCountText.GetComponent<Text>().text = "Slimes Killed: " + score;
     }
 
     // Sets the KillCount
@@ -285,26 +285,18 @@ public class KillCounter : MonoBehaviour {
         //If we are in the main game scene
         if (SceneManager.GetActiveScene().name == "Main")
         {
-            if (_instance.inGameScoreText == null)
+            if (inGameScoreText == null)
             {
-                _instance.inGameScoreText = GameObject.Find("Score");
+                inGameScoreText = GameObject.Find("Score");
             }
-            /*
-            if (_instance.killCountText == null)
+            if (timeText == null)
             {
-                _instance.killCountText = GameObject.Find("KillCountText");
-            }*/
-            if (_instance.timeText == null)
-            {
-                _instance.timeText = GameObject.Find("TimeText");
+                timeText = GameObject.Find("TimeText");
             }
-            /*
-            if (_instance.highScoreText == null)
+            if (superShotImage == null)
             {
-                _instance.highScoreText = GameObject.Find("HighScoreText");
-                _instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
-
-            }*/
+                superShotImage = GameObject.Find("SuperShotUI");
+            }
             return 1;
         }
         else
@@ -312,5 +304,19 @@ public class KillCounter : MonoBehaviour {
             currentScore = 0;
             return 2;
         }
+    }
+
+    public void Reset()
+    {
+        SetScore(0);
+        SetTimer(0.0f);
+        SetKillCount(0);
+        ResetberserkStateVariables();
+        SaveHighScore(currentScore);
+        LoadHighScore();
+        SetCurrentScore(0);
+        ResetSupershotImages();
+        highScoreText = GameObject.Find("HighScoreText"); 
+
     }
 }

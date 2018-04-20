@@ -774,6 +774,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &655281747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 655281749}
+  - component: {fileID: 655281748}
+  m_Layer: 0
+  m_Name: SlimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &655281748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655281747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc121953a1d3ef4e98d8330867817c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimePrefab: {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065,
+    type: 2}
+  slimePrefabs:
+  - {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065, type: 2}
+  - {fileID: 1636266901075538, guid: 3f03fba2028e70a4ca350e9adc2e26b9, type: 2}
+  - {fileID: 1239240787953022, guid: a20e768483c26e2409d5d0d25d8f9177, type: 2}
+  - {fileID: 1515379610229240, guid: 7d86dc4e7dc0c074a9f4ab9b06b3a833, type: 2}
+  slimeList: []
+  timer: 0
+  globalTimer: 0
+  secondTimer: 0
+  spawnTime: 0
+  healthTotal: 0
+  healthRange: 0
+  slimeSpeedOffset: 0
+  normalSpawnrate: 0
+  nomSpawnrate: 0
+  momSpawnrate: 0
+  raveSpawnrate: 0
+  gameOverMenu: {fileID: 725240230}
+  isGameOver: 0
+  scoreIncrease: 10
+  passiveScore: 10
+  jukeboxSE: {fileID: 0}
+--- !u!4 &655281749
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655281747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.775136, y: 1.184732, z: -0.054316413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683887482
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,21 +866,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6282107c5aad81459db19ff5d96e583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killCountSpriteNum: 0
   score: 0
   currentScore: 0
   inGameScoreText: {fileID: 1779416262}
-  killCountText: {fileID: 1269278488}
   highScoreText: {fileID: 1681175005}
   timer: 0
   seconds: 0
   minutes: 0
   timeText: {fileID: 1568049046}
+  superShotImage: {fileID: 0}
   noChargeSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   oneChargeSprite: {fileID: 21300000, guid: 74b81cb18572dac4789fb88dcb09e095, type: 3}
   twoChargeSprite: {fileID: 21300000, guid: a3eb06de8b0c24d409f3ac1b885d24d6, type: 3}
   threeChargeSprite: {fileID: 21300000, guid: c4093e4b7d9121d48aeeaf3ea940fa11, type: 3}
   fourChargeSprite: {fileID: 21300000, guid: 7df482a5f25432c488db083597ed546d, type: 3}
   fullChargeSprite: {fileID: 21300000, guid: 654dd0252c0b1a9448816cb0eb1f40ef, type: 3}
+  superShotChargeSpriteHolder:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   manaCharge: {fileID: 8300000, guid: 1513cf14eac23064cab9cdc4a1c61c7a, type: 3}
   superShotReadySound: {fileID: 8300000, guid: 3ff8000661228bd47bdcf24c93f081dc, type: 3}
 --- !u!4 &683887484
@@ -1277,7 +1349,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946872240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 438.04074, z: 0}
+  m_LocalPosition: {x: 0, y: 438.17804, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1404,8 +1476,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019744689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 199.5, y: 319, z: 0}
-  m_LocalScale: {x: 0.72824275, y: 0.72824275, z: 0.72824275}
+  m_LocalPosition: {x: 72.5, y: 116, z: 0}
+  m_LocalScale: {x: 0.26473257, y: 0.26473257, z: 0.26473257}
   m_Children:
   - {fileID: 725240231}
   m_Father: {fileID: 0}
@@ -1462,7 +1534,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269278488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -264.77545, y: 438.04074, z: 0}
+  m_LocalPosition: {x: -264.86127, y: 438.17804, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1610,7 +1682,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568049046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 253.77545, y: 434.04074, z: 0}
+  m_LocalPosition: {x: 253.86127, y: 434.17804, z: 0}
   m_LocalScale: {x: 1.0002172, y: 1.0002172, z: 1.0002172}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1769,7 +1841,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1681175005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000030517578, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 725240231}
@@ -1843,7 +1915,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779416262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -173.77545, y: 418.04074, z: 0}
+  m_LocalPosition: {x: -173.86127, y: 418.17804, z: 0}
   m_LocalScale: {x: 1.0001019, y: 1.0001019, z: 1.0001019}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -1918,7 +1990,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807853943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000076293945, y: -339.48157, z: 0}
+  m_LocalPosition: {x: 0.0000076293945, y: -339.588, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}
@@ -2088,7 +2160,6 @@ GameObject:
   - component: {fileID: 1854195915}
   - component: {fileID: 1854195916}
   - component: {fileID: 1854195918}
-  - component: {fileID: 1854195919}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -2243,39 +2314,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1854195919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1854195911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc121953a1d3ef4e98d8330867817c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slimePrefab: {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065,
-    type: 2}
-  slimePrefabs:
-  - {fileID: 1199841879888912, guid: b91e26e24b047a24cb4e1d359415d065, type: 2}
-  - {fileID: 1636266901075538, guid: 3f03fba2028e70a4ca350e9adc2e26b9, type: 2}
-  - {fileID: 1239240787953022, guid: a20e768483c26e2409d5d0d25d8f9177, type: 2}
-  - {fileID: 1515379610229240, guid: 7d86dc4e7dc0c074a9f4ab9b06b3a833, type: 2}
-  slimeList: []
-  timer: 0
-  globalTimer: 0
-  secondTimer: 0
-  spawnTime: 0
-  healthTotal: 0
-  healthRange: 0
-  slimeSpeedOffset: 0
-  normalSpawnrate: 0
-  nomSpawnrate: 0
-  momSpawnrate: 0
-  raveSpawnrate: 0
-  gameOverMenu: {fileID: 725240230}
-  scoreIncrease: 10
-  passiveScore: 10
 --- !u!1 &1909028605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2471,7 @@ RectTransform:
   m_GameObject: {fileID: 1935115333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.011414464, y: 0.011414464, z: 0.011414464}
+  m_LocalScale: {x: 0.011410886, y: 0.011410886, z: 0.011410886}
   m_Children:
   - {fileID: 1807853944}
   - {fileID: 946872241}
@@ -2548,7 +2586,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105936066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000076293945, y: -339.48157, z: 0}
+  m_LocalPosition: {x: 0.0000076293945, y: -339.588, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935115337}

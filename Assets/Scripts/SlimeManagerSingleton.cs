@@ -33,49 +33,15 @@ public class SlimeManagerSingleton : MonoBehaviour {
     {
         get
         {
-            if (applicationIsQuitting)
+            
+            if (_instance == null)
             {
-                Debug.LogWarning("[Singleton] Instance '" + typeof(SlimeManagerSingleton) +
-                    "' already destroyed on application quit." +
-                    " Won't create again - returning null.");
-                return null;
+                _instance = (SlimeManagerSingleton)FindObjectOfType(typeof(SlimeManagerSingleton));
+                DontDestroyOnLoad(_instance.gameObject);
             }
 
-            lock (_lock)
-            {
-                if (_instance == null)
-                {
-                    _instance = (SlimeManagerSingleton)FindObjectOfType(typeof(SlimeManagerSingleton));
-
-                    if (FindObjectsOfType(typeof(SlimeManagerSingleton)).Length > 1)
-                    {
-                        Debug.LogError("[Singleton] Something went really wrong " +
-                            " - there should never be more than 1 singleton!" +
-                            " Reopening the scene might fix it.");
-                        return _instance;
-                    }
-
-                    if (_instance == null)
-                    {
-                        GameObject singleton = new GameObject();
-                        _instance = singleton.AddComponent<SlimeManagerSingleton>();
-                        singleton.name = "(singleton) " + typeof(SlimeManagerSingleton).ToString();
-
-                        DontDestroyOnLoad(singleton);
-
-                        Debug.Log("[Singleton] An instance of " + typeof(SlimeManagerSingleton) +
-                            " is needed in the scene, so '" + singleton +
-                            "' was created with DontDestroyOnLoad.");
-                    }
-                    else
-                    {
-                        Debug.Log("[Singleton] Using instance already created: " +
-                            _instance.gameObject.name);
-                    }
-                }
-
-                return _instance;
-            }
+            return _instance;
+            
         }
     }
 
@@ -252,7 +218,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
                 newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
                 newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
                 //newSlime.GetComponent<Slime>().manager = gameObject;
-                newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
+                //newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
 
                 //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
                 int random = Random.Range(1, 5);
@@ -327,7 +293,6 @@ public class SlimeManagerSingleton : MonoBehaviour {
     public void GameOver()
     {
         SlimeManagerSingleton.Instance.isGameOver = true;
-        //gameIsOver = true;
         SlimeManagerSingleton.Instance.StopSlimes();
         gameOverMenu.SetActive(true);
 
@@ -339,7 +304,5 @@ public class SlimeManagerSingleton : MonoBehaviour {
         KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
         KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
 
-        //SlimeManagerSingleton.Instance.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
-        //manager.GetComponent<HighScore>().SaveHighScore(KillCounter.instance.score);
     }
 }

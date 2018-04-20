@@ -160,7 +160,7 @@ public class SlimeManager : MonoBehaviour {
             newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
             newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
             //newSlime.GetComponent<Slime>().manager = gameObject;
-            newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
+            //newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
 
             //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
             int random = Random.Range(1, 5);

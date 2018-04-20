@@ -36,7 +36,7 @@ public class WallManager : MonoBehaviour {
 	}
 
     // method to spawn walls
-    private void createWall()
+    public void createWall()
     {
         /*
         // loop to instantiate wall pieces

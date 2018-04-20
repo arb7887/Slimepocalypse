@@ -19,26 +19,17 @@ public class GameOverMenu : MonoBehaviour {
     public void PlayAgain()
     {
         Time.timeScale = 1f;
-        KillCounter.instance.SetScore(0);
-        KillCounter.instance.SetTimer(0.0f);
-        KillCounter.instance.SetKillCount(0);
-        KillCounter.instance.ResetberserkStateVariables();
-        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
-        KillCounter.instance.LoadHighScore();
-        KillCounter.instance.SetCurrentScore(0);
-        SlimeManagerSingleton.Instance.Reset();
         SceneManager.LoadScene("Main");
+        KillCounter.instance.Reset();
+        KillCounter.instance.superShotImage = GameObject.Find("SuperShotUI");
+        SlimeManagerSingleton.Instance.Reset();
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        KillCounter.instance.SetScore(0);
-        KillCounter.instance.SetTimer(0.0f);
-        KillCounter.instance.SetKillCount(0);
-        KillCounter.instance.ResetberserkStateVariables();
-        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
-        SlimeManagerSingleton.Instance.Reset();
         SceneManager.LoadScene("MainMenu");
+        KillCounter.instance.Reset();
+        SlimeManagerSingleton.Instance.Reset();
     }
 }
