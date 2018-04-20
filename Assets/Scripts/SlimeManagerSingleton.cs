@@ -163,7 +163,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
                 //Then reset the timer so we can continue adjusting the difficulty as the rounds progress.
                 globalTimer = 0.0f;
             }
-            if (timer > spawnTime)
+            if (timer > spawnTime && !isGameOver)
             {
                 //Randomly choose between Fire and Ice
                 //Less for a smaller screen
@@ -274,6 +274,14 @@ public class SlimeManagerSingleton : MonoBehaviour {
         raveSpawnrate = 0;
         slimeList = new List<GameObject>();
         isGameOver = false;
+        Object[] imageArray = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+                for (int i = 0; i < imageArray.Length; i++)
+                {
+                    if (imageArray[i].name == "GameOverMenu")
+                    {
+                        gameOverMenu = (GameObject)imageArray[i];
+                    }
+                }
     }
 
     public int SceneCheck()
@@ -281,6 +289,17 @@ public class SlimeManagerSingleton : MonoBehaviour {
         //If we are in the main game scene
         if (SceneManager.GetActiveScene().name == "Main")
         {
+            if (gameOverMenu == null)
+            {
+                Object[] imageArray = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+                for (int i = 0; i < imageArray.Length; i++)
+                {
+                    if (imageArray[i].name == "GameOverMenu")
+                    {
+                        gameOverMenu = (GameObject)imageArray[i];
+                    }
+                }
+            }
             return 1;
         }
         else
@@ -300,9 +319,9 @@ public class SlimeManagerSingleton : MonoBehaviour {
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
+        /*KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
         KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
-        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
 
     }
 }
