@@ -78,4 +78,16 @@ public class WallManager : MonoBehaviour {
         walls.Add(tempWall4);
         //walls.Add(tempWall5);
     }
+
+    public void resetWalls()
+    {
+        //Destroy Current Walls
+        for(int i = 0; i < walls.Count; i++)
+        {
+            Destroy(walls[i]);
+        }
+
+        //Make New Walls
+        createWall();
+    }
 }

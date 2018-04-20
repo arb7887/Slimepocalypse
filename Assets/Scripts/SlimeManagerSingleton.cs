@@ -25,8 +25,8 @@ public class SlimeManagerSingleton : MonoBehaviour {
     public int normalSpawnrate, nomSpawnrate, momSpawnrate, raveSpawnrate;
     public GameObject gameOverMenu;
     public bool isGameOver;
-    public int scoreIncrease = 10;
-    public int passiveScore = 10;
+    public int scoreIncrease;
+    public int passiveScore;
     public GameObject jukeboxSE; // sound effects
 
     public static SlimeManagerSingleton Instance
@@ -89,7 +89,9 @@ public class SlimeManagerSingleton : MonoBehaviour {
         nomSpawnrate = 0;
         momSpawnrate = 0;
         raveSpawnrate = 0;
-    }
+        scoreIncrease = 10;
+        passiveScore = 10;
+}
 
     // Update is called once per frame
     void Update()
@@ -265,15 +267,27 @@ public class SlimeManagerSingleton : MonoBehaviour {
         timer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
-        healthTotal = 2;
-        healthRange = 3; //The max range is exlusive so this will always be 1 higher than the actual max range
+        healthTotal = 4;
+        healthRange = 5; //The max range is exlusive so this will always be 1 higher than the actual max range
         slimeSpeedOffset = 0.0f;
         numMoveTypes = 1;
         nomSpawnrate = 0;
         momSpawnrate = 0;
         raveSpawnrate = 0;
+        scoreIncrease = 10;
+        passiveScore = 10;
+
+        for(int i = 0; i < slimeList.Count; i++)
+        {
+            Destroy(slimeList[i]);
+        }
+
         slimeList = new List<GameObject>();
         isGameOver = false;
+
+        gameOverMenu.SetActive(false);
+
+
         Object[] imageArray = Resources.FindObjectsOfTypeAll(typeof(GameObject));
                 for (int i = 0; i < imageArray.Length; i++)
                 {
@@ -311,17 +325,21 @@ public class SlimeManagerSingleton : MonoBehaviour {
 
     public void GameOver()
     {
-        SlimeManagerSingleton.Instance.isGameOver = true;
-        SlimeManagerSingleton.Instance.StopSlimes();
+        //SlimeManagerSingleton.Instance.isGameOver = true;
+        //SlimeManagerSingleton.Instance.StopSlimes();
+        isGameOver = true;
+        StopSlimes();
         gameOverMenu.SetActive(true);
+
+        Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
 
         // get the jukebox script to play the gameover jingle
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
 
-        Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-        KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
-        //KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
-        //KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
+        //Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
+        /*KillCounter.instance.SaveHighScore(KillCounter.instance.currentScore);
+        KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
+        KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");*/
 
     }
 }

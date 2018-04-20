@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour {
 
     public GameObject jukeboxSE;
+    public GameObject manager;
     // Use this for initialization
     void Start () {
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
@@ -18,16 +19,17 @@ public class GameOverMenu : MonoBehaviour {
 
     public void PlayAgain()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Main");
+        Time.timeScale = 1.0f;
+        //SceneManager.LoadScene("Main");
         KillCounter.instance.Reset();
         KillCounter.instance.superShotImage = GameObject.Find("SuperShotUI");
         SlimeManagerSingleton.Instance.Reset();
+        manager.GetComponent<WallManager>().resetWalls();
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
         KillCounter.instance.Reset();
         SlimeManagerSingleton.Instance.Reset();
