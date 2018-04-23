@@ -51,10 +51,10 @@ public class WallManager : MonoBehaviour {
         */
 
         // Hardcode wall positions
-        Vector3 wallPos1 = new Vector3(-1.8f, -3.5f, 1.0f);
-        Vector3 wallPos2 = new Vector3(-0.6f, -3.5f, 1.0f);
-        Vector3 wallPos3 = new Vector3(0.6f, -3.5f, 1.0f);
-        Vector3 wallPos4 = new Vector3(1.8f, -3.5f, 1.0f);
+        Vector3 wallPos1 = new Vector3(-1.8f, -3.8f, 1.0f);
+        Vector3 wallPos2 = new Vector3(-0.6f, -3.8f, 1.0f);
+        Vector3 wallPos3 = new Vector3(0.6f, -3.8f, 1.0f);
+        Vector3 wallPos4 = new Vector3(1.8f, -3.8f, 1.0f);
         //Vector3 wallPos5 = new Vector3(2.5f, -3.5f, 0.0f);
 
         // instantiate the gameobjects

@@ -47,6 +47,9 @@ TagManager:
   - name: Background
     uniqueID: 1094397597
     locked: 0
+  - name: Slime
+    uniqueID: 1416963247
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
