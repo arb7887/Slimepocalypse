@@ -10,6 +10,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
 
     private static object _lock = new object();
 
+    public GoogleAnalyticsV4 googleAnalytics;
     public GameObject slimePrefab;
     public List<GameObject> slimePrefabs; //Created a list of slime prefabs so we wouldn't need to constantly make new GameObject variables for more slime types.
     public List<GameObject> slimeList;
@@ -91,6 +92,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
         raveSpawnrate = 0;
         scoreIncrease = 10;
         passiveScore = 10;
+        googleAnalytics.StartSession();
 }
 
     // Update is called once per frame
@@ -344,11 +346,12 @@ public class SlimeManagerSingleton : MonoBehaviour {
         gameOverMenu.SetActive(true);
         KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
         KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
-        
+        googleAnalytics.LogEvent("GameOver", "Record Score", "Insert player name here", KillCounter.instance.currentScore);
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
 
         // get the jukebox script to play the gameover jingle
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
+        googleAnalytics.StopSession();
     }
 }

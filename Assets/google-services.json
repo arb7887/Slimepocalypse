@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "754965047824",
+    "firebase_url": "https://slimepocalypse-c76e5.firebaseio.com",
+    "project_id": "slimepocalypse-c76e5",
+    "storage_bucket": "slimepocalypse-c76e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754965047824:android:f3b4aa85420d29cc",
+        "android_client_info": {
+          "package_name": "com.slimepocalypse.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754965047824-5db56g0ttk0j8c4ipsah02jk868kevdd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUm0K8sah1ymp3hWpTGIxlZOJl2HK_fGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
