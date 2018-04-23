@@ -50,3 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Castle Gate
+    uniqueID: 2632477691
+    locked: 0
+  - name: Castle Walls
+    uniqueID: 4049188961
+    locked: 0
