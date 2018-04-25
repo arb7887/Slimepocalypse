@@ -37,7 +37,7 @@ public class KillCounter : MonoBehaviour {
     public Sprite threeChargeSprite; // Sprite to show the user that they have 3 charge for their supershot
     public Sprite fourChargeSprite; // Sprite to show the user that they have 4 charge for their supershot
     public Sprite fullChargeSprite; // Sprite to show the user that they have full charge for their supershot
-    public Sprite[] superShotChargeSpriteHolder = new Sprite[6]; // The array that holds the supershot sprites
+    public Sprite superShotChargeSprite; // The sprite for the [Complete] supershot charge
 
     // audio variables
     private AudioSource source;
@@ -88,12 +88,8 @@ public class KillCounter : MonoBehaviour {
     public void ResetSupershotImages()
     {
         superShotImage = GameObject.FindGameObjectWithTag("SuperShotUI");
-        superShotChargeSpriteHolder[0] = noChargeSprite;
-        superShotChargeSpriteHolder[1] = oneChargeSprite;
-        superShotChargeSpriteHolder[2] = twoChargeSprite;
-        superShotChargeSpriteHolder[3] = threeChargeSprite;
-        superShotChargeSpriteHolder[4] = fourChargeSprite;
-        superShotChargeSpriteHolder[5] = fullChargeSprite;
+        superShotImage.GetComponent<Image>().sprite = superShotChargeSprite;
+        superShotImage.GetComponent<Image>().fillAmount = 0;
     }
 
     private void Start()
@@ -114,10 +110,10 @@ public class KillCounter : MonoBehaviour {
             if (berserkState)
             {
                 berserkCount -= Time.deltaTime;
-
+                superShotImage.GetComponent<Image>().fillAmount -= Time.deltaTime / 5.0f;
                 if (berserkCount <= 0)
                 {
-                    ResetberserkStateVariables();
+                    ResetBerserkStateVariables();
                 }
             }
 
@@ -166,13 +162,13 @@ public class KillCounter : MonoBehaviour {
     }
 
     // Resets the berserk state variables when it runs out
-    public void ResetberserkStateVariables()
+    public void ResetBerserkStateVariables()
     {
         berserkState = false;
         readyToberserk = true;
         killCount = 0;
         killCountSpriteNum = 0;
-        superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[0];     // Resets the sprite for supershot count back to its original state
+        superShotImage.GetComponent<Image>().fillAmount = 0;     // Resets the sprite for supershot count back to its original state
     }
 
     // Tells the game to start the berserk state
@@ -184,7 +180,7 @@ public class KillCounter : MonoBehaviour {
             berserkState = true;
             berserkCount = 5; // Makes the berserk state last 5 seconds
             readyToberserk = false;
-            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[5];
+            
         }
     }
 
@@ -200,13 +196,13 @@ public class KillCounter : MonoBehaviour {
         if(correctType) //Only adds to the Super Shot count if the Slime is killed with the correct element type
         {
             // if gaining a mana charge
-            if(killCountSpriteNum <= 4)
+            if(killCountSpriteNum <= 14)
             {
                 // play a mana gaining sound effect
                 source.PlayOneShot(manaCharge);
             }
             // otherwise the supershot is ready
-            else if(killCountSpriteNum == 5)
+            else if(killCountSpriteNum == 15)
             {
                 // play the ready sound effect
                 source.PlayOneShot(superShotReadySound,2.0f);
@@ -218,20 +214,10 @@ public class KillCounter : MonoBehaviour {
         {
             // Add to the killCount
             killCount++;
+            superShotImage.GetComponent<Image>().fillAmount += (1.0f / 15.0f);
         }
         //Debug.Log(killCount);
         score++;
-
-        // Replace the supershot charge asset on the circle with a more filled asset
-        // Only change the sprite every 3 kills
-        if (killCount % 3 == 0 && killCount > 0)
-        {
-            killCountSpriteNum++;
-        }
-        if(killCountSpriteNum < 5)
-        {
-            superShotImage.GetComponent<Image>().sprite = superShotChargeSpriteHolder[killCountSpriteNum];
-        }
 
 
         // update the text
@@ -345,7 +331,7 @@ public class KillCounter : MonoBehaviour {
         SetScore(0);
         SetTimer(0.0f);
         SetKillCount(0);
-        ResetberserkStateVariables();
+        ResetBerserkStateVariables();
         SaveHighScore(currentScore);
         LoadHighScore();
         SetCurrentScore(0);

@@ -19,8 +19,6 @@ public class Flickshot : MonoBehaviour
     public int ammoType = 1; //Represents element: 1 = Fire | 2 = Ice
     private int superShotCount = 0; // Counts how many shots have been fired to check if we need to fire a super shot
     private int ammoTypeHolder = 0;
-    private float magicCircleHoldCount = 0.0f; // Checks how long the player is holding the magic circle
-    private bool fingerDown = false; // Checks if the magic circle is being held
 
     public Button MagicCircleButton;
     public Sprite fireCircle;
@@ -50,12 +48,6 @@ public class Flickshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Add to the hold count to see whether the player wants to use the berserk state
-        if(fingerDown && KillCounter.instance.CheckKillCount() >= 15)
-        {
-            magicCircleHoldCount += Time.deltaTime;
-        }
-
         if (SceneCheck() == 1)
         {
 
@@ -75,10 +67,6 @@ public class Flickshot : MonoBehaviour
                         // Save the touch's location in the beginning of the touch
                         case TouchPhase.Began:
                             startVec2 = touch.position;
-
-                            // Start recording holding time
-                            fingerDown = true;
-
                             break;
                         // Useable for calculating angle
                         case TouchPhase.Moved:
@@ -101,9 +89,6 @@ public class Flickshot : MonoBehaviour
                 {
                     // Save the touch's location in the beginning of the touch
                     startVec2 = Input.mousePosition;
-
-                    // Start recording holding time
-                    fingerDown = true;
                 }
                 // Check if the player has released
                 if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
@@ -114,10 +99,6 @@ public class Flickshot : MonoBehaviour
                     // reset the start and release vectors
                     startVec2 = Vector2.zero;
                     releaseVec2 = Vector2.zero;
-
-                    // Reset the magic circle holding variables
-                    magicCircleHoldCount = 0.0f;
-                    fingerDown = false;
                 }
             }
         }
@@ -163,28 +144,8 @@ public class Flickshot : MonoBehaviour
                   releaseVec2.y >= launchStartVec2.y - Screen.width / 8))
         {
 
-
-            if(magicCircleHoldCount > 1.5f)
-            {
-                // Begin the berserk state and reset the variables
-                KillCounter.instance.BeginBerserkState();
-
-                // Reset the magic circle holding variables
-                magicCircleHoldCount = 0.0f;
-                fingerDown = false;
-            }
-            // Tap the magic circle to change the element
-
-            if (ammoType == 1)
-            {
-                ammoType = 2;
-                MagicCircleButton.GetComponent<Image>().sprite = iceCircle;
-            }
-            else if (ammoType == 2)
-            {
-                ammoType = 1;
-                MagicCircleButton.GetComponent<Image>().sprite = fireCircle;
-            }
+            // Begin the berserk state and reset the variables
+            KillCounter.instance.BeginBerserkState();
         }
         else
         {
