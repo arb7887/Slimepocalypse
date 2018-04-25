@@ -8,6 +8,7 @@ public class RaveSlime : Slime {
 
 	// Use this for initialization
 	void Start () {
+        specialType = "rave";
         switchTimer = 0.0f;
         setInitialSize();
         slimeSpeed = 0.01f;

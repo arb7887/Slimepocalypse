@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GameAnalyticsSDK;
 
 public class SlimeManagerSingleton : MonoBehaviour {
 
@@ -91,7 +92,9 @@ public class SlimeManagerSingleton : MonoBehaviour {
         raveSpawnrate = 0;
         scoreIncrease = 10;
         passiveScore = 10;
-}
+        GameAnalytics.StartSession();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Start");
+    }
 
     // Update is called once per frame
     void Update()
@@ -286,7 +289,8 @@ public class SlimeManagerSingleton : MonoBehaviour {
         isGameOver = false;
 
         gameOverMenu.SetActive(false);
-
+        GameAnalytics.StartSession();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Restart");
 
         Object[] imageArray = Resources.FindObjectsOfTypeAll(typeof(GameObject));
                 for (int i = 0; i < imageArray.Length; i++)
@@ -347,7 +351,8 @@ public class SlimeManagerSingleton : MonoBehaviour {
         
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Over");
+        GameAnalytics.EndSession();
         // get the jukebox script to play the gameover jingle
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
     }

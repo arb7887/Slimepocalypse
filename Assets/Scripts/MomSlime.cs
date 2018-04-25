@@ -9,6 +9,7 @@ public class MomSlime : Slime {
 
     // Use this for initialization
     void Start () {
+        specialType = "mother";
         setInitialSize();
         slimeSpeed = 0.01f;
         dashSpeed = slimeSpeed * 3.0f;
@@ -85,6 +86,8 @@ public class MomSlime : Slime {
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().specialType = "child of mother slime";
+
 
             SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
@@ -92,6 +95,7 @@ public class MomSlime : Slime {
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().specialType = "child of mother slime";
 
             SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
@@ -99,6 +103,7 @@ public class MomSlime : Slime {
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().specialType = "child of mother slime";
 
             SlimeManagerSingleton.Instance.slimeList.Add(Instantiate(slimePrefab));
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1] = Instantiate(slimePrefab);
@@ -106,7 +111,7 @@ public class MomSlime : Slime {
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetLanes(currentLane + 1);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
             SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().SetType(newType);
-
+            SlimeManagerSingleton.Instance.slimeList[SlimeManagerSingleton.Instance.slimeList.Count - 1].GetComponent<Slime>().specialType = "child of mother slime";
             /*
             newSlime = Instantiate(slimePrefab);
             newSlime.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);

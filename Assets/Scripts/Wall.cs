@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class Wall : MonoBehaviour {
     // wall health
@@ -61,6 +62,11 @@ public class Wall : MonoBehaviour {
 
             //collision.GetComponent<Slime>().manager.GetComponent<SlimeManager>().slimeList.Remove(collision.gameObject);
             SlimeManagerSingleton.Instance.slimeList.Remove(collision.gameObject);
+
+            // Send analytics event of what type hit the wall.
+            GameAnalytics.NewDesignEvent(collision.gameObject.GetComponent<Slime>().specialType, 1.0f);
+            UnityEngine.Analytics.Analytics.CustomEvent(collision.gameObject.GetComponent<Slime>().specialType + " slime Hit Wall");
+
             // destroy slime
             Destroy(collision.gameObject);
 
