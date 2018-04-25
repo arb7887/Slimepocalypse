@@ -1191,10 +1191,12 @@ MonoBehaviour:
   m_Text: 'Tap on the screen to fire projectiles!
 
 
-    Tap the circle or flick down to change elements!
+    Flick down to change elements!
 
 
-    Every kill charges your berserk state!
+    Every kill charges your arcane state!
+
+    Tap the circle when full to activate!
 
 
     Don''t let any Slimes past your walls!'
