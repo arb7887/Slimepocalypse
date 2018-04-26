@@ -266,6 +266,12 @@ public class KillCounter : MonoBehaviour {
         return killCount;
     }
 
+    public float GetTimer()
+    {
+        return timer;
+    }
+
+
     public void SetCurrentScore(int newScore)
     {
         currentScore = newScore;

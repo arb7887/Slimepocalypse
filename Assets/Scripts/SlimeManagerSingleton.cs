@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using GameAnalyticsSDK;
 
 public class SlimeManagerSingleton : MonoBehaviour {
 
@@ -92,8 +91,6 @@ public class SlimeManagerSingleton : MonoBehaviour {
         raveSpawnrate = 0;
         scoreIncrease = 10;
         passiveScore = 10;
-        GameAnalytics.StartSession();
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Start");
     }
 
     // Update is called once per frame
@@ -289,8 +286,6 @@ public class SlimeManagerSingleton : MonoBehaviour {
         isGameOver = false;
 
         gameOverMenu.SetActive(false);
-        GameAnalytics.StartSession();
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Restart");
 
         Object[] imageArray = Resources.FindObjectsOfTypeAll(typeof(GameObject));
                 for (int i = 0; i < imageArray.Length; i++)
@@ -348,11 +343,14 @@ public class SlimeManagerSingleton : MonoBehaviour {
         gameOverMenu.SetActive(true);
         KillCounter.instance.highScoreText = GameObject.Find("HighScoreText");
         KillCounter.instance.highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
-        
+        UnityEngine.Analytics.Analytics.CustomEvent("Game Over Stats", new Dictionary<string, object> {
+            {"Game time",  KillCounter.instance.GetTimer()},
+            {"Spawn timer", spawnTime },
+            {"Slime speed offset", slimeSpeedOffset},
+            {"Slime health", healthRange}
+        });
 
         Time.timeScale = 0f; //Causes weird issues with enemy movement at the end
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Game Over");
-        GameAnalytics.EndSession();
         // get the jukebox script to play the gameover jingle
         jukeboxSE.GetComponent<MainMenuSoundEffects>().PlayGameOverJingle();
     }

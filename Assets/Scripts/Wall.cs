@@ -65,7 +65,7 @@ public class Wall : MonoBehaviour {
 
             // Send analytics event of what type hit the wall.
             GameAnalytics.NewDesignEvent(collision.gameObject.GetComponent<Slime>().specialType, 1.0f);
-            UnityEngine.Analytics.Analytics.CustomEvent(collision.gameObject.GetComponent<Slime>().specialType + " slime Hit Wall");
+            UnityEngine.Analytics.Analytics.CustomEvent(collision.gameObject.GetComponent<Slime>().specialType + " slime hit wall");
 
             // destroy slime
             Destroy(collision.gameObject);

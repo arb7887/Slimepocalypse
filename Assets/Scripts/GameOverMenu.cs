@@ -25,6 +25,7 @@ public class GameOverMenu : MonoBehaviour {
         KillCounter.instance.superShotImage = GameObject.Find("SuperShotUI");
         SlimeManagerSingleton.Instance.Reset();
         manager.GetComponent<WallManager>().resetWalls();
+        UnityEngine.Analytics.Analytics.CustomEvent("Replay game");
     }
 
     public void MainMenu()
