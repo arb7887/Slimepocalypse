@@ -7,7 +7,8 @@ public class Slime : MonoBehaviour {
     public int health = 4; // number of hits until a slime dies
     //private string slimeType = "fire"; // what element type of slime it is
 
-    public float slimeSpeed, dashSpeed; //Speed of normal movement, and dashing movement, which will be higher than normal movement.
+    public float slimeSpeed;
+    public float dashSpeed; //Speed of normal movement, and dashing movement, which will be higher than normal movement.
     public string type; //Determines collision detection for different ammo types.
     public string specialType;
     public List<Sprite> spriteList; //List of sprites for different slime types.
@@ -47,7 +48,7 @@ public class Slime : MonoBehaviour {
     void Start ()
     {
         setInitialSize();
-        slimeSpeed = 0.01f;
+        slimeSpeed = 0.01f + SlimeManagerSingleton.Instance.slimeSpeedOffset;
         dashSpeed = slimeSpeed * 3.0f;
         dashTimer = Random.Range(0.3f, 0.7f);
         delayTimer = Random.Range(1.2f, 1.5f);

@@ -126,10 +126,13 @@ public class SlimeManagerSingleton : MonoBehaviour {
                         }
                         break;
                     case (2):
-                        slimeSpeedOffset += 0.01f;
+                        if (slimeSpeedOffset < 0.02)
+                        {
+                            slimeSpeedOffset += 0.005f;
+                        }
                         break;
                     case (3):
-                        if (spawnTime >= 0.5)
+                        if (spawnTime > 0.75)
                         {
                             spawnTime -= 0.25f;
                         }
@@ -217,8 +220,8 @@ public class SlimeManagerSingleton : MonoBehaviour {
 
                 //And apply any difficulty changes that we have currently implemented.
                 newSlime.GetComponent<Slime>().health = healthTotal;
-                newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
-                newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
+                //newSlime.GetComponent<Slime>().slimeSpeed += slimeSpeedOffset;
+                //newSlime.GetComponent<Slime>().dashSpeed += slimeSpeedOffset;
                 //newSlime.GetComponent<Slime>().manager = gameObject;
                 //newSlime.GetComponent<Slime>().gameOverMenu = gameOverMenu;
 
@@ -283,7 +286,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
         }
 
         slimeList = new List<GameObject>();
-        isGameOver = false;
+        isGameOver = true;
 
         gameOverMenu.SetActive(false);
 
