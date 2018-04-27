@@ -104,7 +104,7 @@ public class KillCounter : MonoBehaviour {
     void Update()
     {
         //Check if we are in the main game scene
-        if (SceneCheck() == 1)
+        if (!SlimeManagerSingleton.Instance.isGameOver)
         {
             // Count down the berserk state
             if (berserkState)

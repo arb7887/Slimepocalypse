@@ -22,17 +22,20 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        // increment the timer each frame
-        timer += Time.deltaTime;
+        if(!SlimeManagerSingleton.Instance.isGameOver)
+        {
+            // increment the timer each frame
+            timer += Time.deltaTime;
 
-        // convert the timer to minutes and seconds
-        minutes = Mathf.FloorToInt(timer / 60F);
-        seconds = Mathf.FloorToInt(timer - minutes * 60);
+            // convert the timer to minutes and seconds
+            minutes = Mathf.FloorToInt(timer / 60F);
+            seconds = Mathf.FloorToInt(timer - minutes * 60);
 
-        // nice formatting for timer
-        niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+            // nice formatting for timer
+            niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        // update the canvas text
-        timeText.GetComponent<Text>().text = "TIME: " + niceTime + " ";
+            // update the canvas text
+            timeText.GetComponent<Text>().text = "TIME: " + niceTime + " ";
+        }
 	}
 }

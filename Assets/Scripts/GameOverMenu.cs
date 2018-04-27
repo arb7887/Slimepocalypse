@@ -31,7 +31,8 @@ public class GameOverMenu : MonoBehaviour {
     public void MainMenu()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        SlimeManagerSingleton.Instance.isGameOver = true;
         KillCounter.instance.Reset();
         SlimeManagerSingleton.Instance.Reset();
     }

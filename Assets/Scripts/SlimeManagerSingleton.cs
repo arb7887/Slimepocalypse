@@ -78,7 +78,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        isGameOver = false;
+        isGameOver = true;
         timer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
@@ -96,7 +96,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (SceneCheck() == 1)
+        if (!isGameOver)
         {
             timer += Time.deltaTime;
             secondTimer += Time.deltaTime;
@@ -111,7 +111,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
             }
 
             //Once the time for whatever we determine one round to be passes...
-            if (globalTimer > 15.0f) //This number represents seconds
+            if (globalTimer > 10.0f) //This number represents seconds for each round
             {
                 // increase the passive score by the scoreIncease
                 passiveScore += scoreIncrease;
@@ -122,16 +122,16 @@ public class SlimeManagerSingleton : MonoBehaviour {
                     case (1):
                         if (healthRange < 17)
                         {
-                            healthRange += 2; //Increase the potential health of Slimes
+                            healthRange += 3; //Increase the potential health of Slimes
                         }
                         break;
                     case (2):
-                        slimeSpeedOffset += 0.005f;
+                        slimeSpeedOffset += 0.01f;
                         break;
                     case (3):
                         if (spawnTime >= 0.5)
                         {
-                            spawnTime -= 0.1f;
+                            spawnTime -= 0.25f;
                         }
                         break;
                 }

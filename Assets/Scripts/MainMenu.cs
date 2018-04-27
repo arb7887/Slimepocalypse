@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void PlayGame()
     {
-        SceneManager.LoadScene("Main");
+        SlimeManagerSingleton.Instance.isGameOver = false;
     }
 
     public void QuitGame()

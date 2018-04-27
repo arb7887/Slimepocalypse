@@ -125,7 +125,7 @@ namespace GameAnalyticsSDK.Wrapper
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor)
 			{
-				Debug.Log("addBusinessEventWithReceipt("+currency+","+amount+","+itemType+","+itemId+","+cartType+","+receipt+","+store+","+signature+")");
+				//Debug.Log("addBusinessEventWithReceipt("+currency+","+amount+","+itemType+","+itemId+","+cartType+","+receipt+","+store+","+signature+")");
 			}
 		}
 #endif
@@ -134,7 +134,7 @@ namespace GameAnalyticsSDK.Wrapper
 		private static void addBusinessEvent (string currency, int amount, string itemType, string itemId, string cartType)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addBusinessEvent(" + currency + "," + amount + "," + itemType + "," + itemId + "," + cartType + ")");
+				//Debug.Log ("addBusinessEvent(" + currency + "," + amount + "," + itemType + "," + itemId + "," + cartType + ")");
 			}
 		}
 		#endif
@@ -142,105 +142,105 @@ namespace GameAnalyticsSDK.Wrapper
 		private static void addResourceEvent (int flowType, string currency, float amount, string itemType, string itemId)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addResourceEvent(" + flowType + "," + currency + "," + amount + "," + itemType + "," + itemId + ")");
+				//Debug.Log ("addResourceEvent(" + flowType + "," + currency + "," + amount + "," + itemType + "," + itemId + ")");
 			}
 		}
 
 		private static void addProgressionEvent (int progressionStatus, string progression01, string progression02, string progression03)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addProgressionEvent(" + progressionStatus + "," + progression01 + "," + progression02 + "," + progression03 + ")");
+				//Debug.Log ("addProgressionEvent(" + progressionStatus + "," + progression01 + "," + progression02 + "," + progression03 + ")");
 			}
 		}
 
 		private static void addProgressionEventWithScore (int progressionStatus, string progression01, string progression02, string progression03, int score)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addProgressionEvent(" + progressionStatus + "," + progression01 + "," + progression02 + "," + progression03 + "," + score + ")");
+				//Debug.Log ("addProgressionEvent(" + progressionStatus + "," + progression01 + "," + progression02 + "," + progression03 + "," + score + ")");
 			}
 		}
 
 		private static void addDesignEvent (string eventId)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addDesignEvent(" + eventId + ")");
+				//Debug.Log ("addDesignEvent(" + eventId + ")");
 			}
 		}
 
 		private static void addDesignEventWithValue (string eventId, float value)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addDesignEventWithValue(" + eventId + "," + value + ")");
+				//Debug.Log ("addDesignEventWithValue(" + eventId + "," + value + ")");
 			}
 		}
 
 		private static void addErrorEvent (int severity, string message)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("addErrorEvent(" + severity + "," + message + ")");
+				//Debug.Log ("addErrorEvent(" + severity + "," + message + ")");
 			}
 		}
 
 		private static void setEnabledInfoLog (bool enabled)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("GameAnalytics setInfoLog(" + enabled + ")\nInfo logs can be deactivated in the Advanced section of the Settings object.");
+				//Debug.Log ("GameAnalytics setInfoLog(" + enabled + ")\nInfo logs can be deactivated in the Advanced section of the Settings object.");
 			}
 		}
 
 		private static void setEnabledVerboseLog (bool enabled)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("GameAnalytics setVerboseLog(" + enabled + ")");
+				//Debug.Log ("GameAnalytics setVerboseLog(" + enabled + ")");
 			}
 		}
 
 		private static void setFacebookId (string facebookId)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("setFacebookId(" + facebookId + ")");
+				//Debug.Log ("setFacebookId(" + facebookId + ")");
 			}
 		}
 
 		private static void setGender (string gender)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("setGender(" + gender + ")");
+				//Debug.Log ("setGender(" + gender + ")");
 			}
 		}
 
 		private static void setBirthYear (int birthYear)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("setBirthYear(" + birthYear + ")");
+				//Debug.Log ("setBirthYear(" + birthYear + ")");
 			}
 		}
 
 		private static void setManualSessionHandling (bool enabled)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("setManualSessionHandling(" + enabled + ")");
+				//Debug.Log ("setManualSessionHandling(" + enabled + ")");
 			}
 		}
 
 		private static void setUsePlayerSettingsBundleVersionForBuild (bool enabled)
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("Using Player Settings bundle version for build(" + enabled + ")");
+				//Debug.Log ("Using Player Settings bundle version for build(" + enabled + ")");
 			}
 		}
 
 		private static void gameAnalyticsStartSession ()
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("gameAnalyticsStartSession()");
+				//Debug.Log ("gameAnalyticsStartSession()");
 			}
 		}
 
 		private static void gameAnalyticsEndSession ()
 		{
 			if (GameAnalytics.SettingsGA.InfoLogEditor) {
-				Debug.Log ("gameAnalyticsEndSession()");
+				//Debug.Log ("gameAnalyticsEndSession()");
 			}
 		}
 			
