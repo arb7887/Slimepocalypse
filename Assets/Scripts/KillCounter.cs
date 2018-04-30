@@ -175,7 +175,7 @@ public class KillCounter : MonoBehaviour {
     public void BeginBerserkState()
     {
         // Check if this is the first click
-        if (readyToberserk == true)
+        if (readyToberserk == true && killCount >= 15)
         {
             berserkState = true;
             berserkCount = 5; // Makes the berserk state last 5 seconds
