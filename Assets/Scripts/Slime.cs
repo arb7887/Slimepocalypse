@@ -163,6 +163,9 @@ public class Slime : MonoBehaviour {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
+            // add to the mana charges
+            KillCounter.instance.killCountSpriteNum++;
+
             // start the death timer
             isDead = true;
         }

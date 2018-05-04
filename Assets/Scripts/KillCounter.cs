@@ -196,14 +196,16 @@ public class KillCounter : MonoBehaviour {
         if(correctType) //Only adds to the Super Shot count if the Slime is killed with the correct element type
         {
             // if gaining a mana charge
-            if(killCountSpriteNum <= 14)
+            if(killCountSpriteNum <= 13) // see else statement
             {
                 // play a mana gaining sound effect
                 source.PlayOneShot(manaCharge);
+                //Debug.Log("mana: " + killCountSpriteNum);
             }
             // otherwise the supershot is ready
-            else if(killCountSpriteNum == 15)
+            else if(killCountSpriteNum == 14) // changed from 15 because it starts by incrementing to 0 on first hit
             {
+                //Debug.Log("READY");
                 // play the ready sound effect
                 source.PlayOneShot(superShotReadySound,2.0f);
             }
