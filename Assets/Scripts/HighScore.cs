@@ -7,11 +7,11 @@ public class HighScore : MonoBehaviour {
 
     //Canvas text field for high score.
     public GameObject highScoreText;
-
+    
 	// Use this for initialization
 	void Start () {
         LoadHighScore();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -36,6 +36,7 @@ public class HighScore : MonoBehaviour {
         {
             PlayerPrefs.SetInt("highScore", score);
             highScoreText.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("highScore");
+
         }
     }
 }

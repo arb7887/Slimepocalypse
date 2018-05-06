@@ -318,6 +318,12 @@ public class KillCounter : MonoBehaviour {
     //Saving the high score if there is a new high score.
     public void SaveHighScore(int score)
     {
+
+        Debug.Log("New Score!");
+
+        // Call ShowNewScores to place this new score in our high score list.
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<HighScoreMenu>().CheckAndUpdateHighScoreList(score);
+
         if (!PlayerPrefs.HasKey("highScore") || score > PlayerPrefs.GetInt("highScore"))
         {
             PlayerPrefs.SetInt("highScore", score);
