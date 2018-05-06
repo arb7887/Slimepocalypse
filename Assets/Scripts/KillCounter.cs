@@ -146,12 +146,35 @@ public class KillCounter : MonoBehaviour {
             {
                 inGameScoreText.GetComponent<Text>().color = Color.black;
             }
-
+            // if a new high score was reached
             if (newHighScoreAlert)
             {
                 alertTimer += Time.deltaTime;
                 newHighScoreAlertText.GetComponent<Text>().enabled = true;
-                if(alertTimer >= 3.0f)
+                // grow
+                if (alertTimer <= 0.25f)
+                {
+                    newHighScoreAlertText.GetComponent<Transform>().localScale += new Vector3(0.05f,0.05f,0.05f);
+                }
+                // shrink
+                else if(alertTimer <= 0.5f)
+                {
+                    newHighScoreAlertText.GetComponent<Transform>().localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+                }
+                // reset the scale when done with the effect
+                else if(alertTimer <=3.0f)
+                {
+                    newHighScoreAlertText.GetComponent<Transform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                }
+                // fade out
+                else if(alertTimer >= 3.0f)
+                {
+                    Color scoreCol = newHighScoreAlertText.GetComponent<Text>().color;
+                    scoreCol.a -= 0.01f;
+                    newHighScoreAlertText.GetComponent<Text>().color = scoreCol;
+                }
+                // turn it off
+                else if (newHighScoreAlertText.GetComponent<Text>().color.a <= 0)
                 {
                     newHighScoreAlertText.GetComponent<Text>().enabled = false;
                     newHighScoreAlert = false;
@@ -347,5 +370,6 @@ public class KillCounter : MonoBehaviour {
         highScoreText = GameObject.Find("HighScoreText");
         newHighScoreAlertText = GameObject.Find("NewHighScoreAlert");
         surpassedHighScore = false;
+        alertTimer = 0;
     }
 }

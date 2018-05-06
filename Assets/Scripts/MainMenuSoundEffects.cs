@@ -34,6 +34,6 @@ public class MainMenuSoundEffects : MonoBehaviour {
     public void PlayGameOverJingle()
     {
         // play the sound
-        source.PlayOneShot(gameOverJingle, 3.0f);
+        source.PlayOneShot(gameOverJingle, 1.0f);
     }
 }

@@ -381,6 +381,16 @@ public class Slime : MonoBehaviour {
     //Moving the Slimes
     protected virtual void MoveSlime()
     {
+        // snap slimes into the outside lanes if they go off the screen
+        if(this.transform.position.x < -1.8f)
+        {
+            this.transform.position = new Vector3(-1.8f, this.transform.position.y, 0.0f);
+        }
+        if(this.transform.position.x > 1.8f)
+        {
+            this.transform.position = new Vector3(1.8f, this.transform.position.y, 0.0f);
+        }
+        // move the slime
         this.transform.Translate(0f, -1f * slimeSpeed, 0f, Space.Self);
     }
 
