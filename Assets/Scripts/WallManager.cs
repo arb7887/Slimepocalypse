@@ -10,6 +10,8 @@ public class WallManager : MonoBehaviour {
     public GameObject wallImage2;
     public GameObject wallImage3;
 
+    private bool spawnedOnce; //Makes sure that createWall() is only called once per game
+
     //private int numWalls = 5; // number of wall pieces
     //private float imgWidth; // width of the image in pixels
 
@@ -26,13 +28,29 @@ public class WallManager : MonoBehaviour {
         //imgWidth = wallImage1.GetComponent<SpriteRenderer>().sprite.rect.width;
 
         // call the create walls method
-        createWall();
+        //createWall();
+
+        spawnedOnce = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(SlimeManagerSingleton.Instance.isGameOver == true)
+        {
+            //Destroy Current Walls
+            for (int i = 0; i < walls.Count; i++)
+            {
+                Destroy(walls[i]);
+            }
 
+            spawnedOnce = false;
+        }
+        else if(SlimeManagerSingleton.Instance.isGameOver == false && spawnedOnce == false)
+        {
+            createWall();
+            spawnedOnce = true;
+        }
 	}
 
     // method to spawn walls
