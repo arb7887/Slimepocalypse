@@ -14,6 +14,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
     public List<GameObject> slimePrefabs; //Created a list of slime prefabs so we wouldn't need to constantly make new GameObject variables for more slime types.
     public List<GameObject> slimeList;
     public float timer;
+    public float menuSpawnTimer;
     public float globalTimer;
     public float secondTimer; // the timer to keep track of when 1 second passes
     public float spawnTime; //Adjusted spawn speed as game goes on.
@@ -80,6 +81,7 @@ public class SlimeManagerSingleton : MonoBehaviour {
     {
         isGameOver = true;
         timer = 0.0f;
+        menuSpawnTimer = 0.0f;
         globalTimer = 0.0f;
         spawnTime = 2.0f;
         healthTotal = 4;
@@ -250,6 +252,80 @@ public class SlimeManagerSingleton : MonoBehaviour {
 
                 slimeList.Add(newSlime);
                 timer = 0.0f;
+            }
+        }
+        else
+        {
+            menuSpawnTimer += Time.deltaTime;
+            if (menuSpawnTimer >= 10.0f)
+            {
+                //Generates 2 random integers. One to determine type, and one to determine movement pattern.
+                //Range from 1 to 100 for calculating movement type.
+                int randSlime = Random.Range(1, 5);
+                GameObject newSlime = slimePrefab;
+                //Debug.Log(randSlime);
+                //Based on the random numbers that are generated, we create a slime of the corresponding type and movement pattern.
+                //We have these spawn rate variables for each different slime type. Remainder is change for normal slime.
+                if (randSlime == 1)
+                {
+                    newSlime = Instantiate(slimePrefabs[3]);
+                }
+                else if (randSlime == 2)
+                {
+                    newSlime = Instantiate(slimePrefabs[1]);
+
+                }
+                else if (randSlime == 3)
+                {
+                    newSlime = Instantiate(slimePrefabs[2]);
+                }
+                else
+                {
+                    newSlime = Instantiate(slimePrefabs[0]);
+                }
+                //For now, generate a random number to determine movement type. Will later add functionality to have multiple movement types added at same time.
+                int moveType = Random.Range(0, 3);
+                if (moveType == 0)
+                {
+                    newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Normal);
+                }
+                else if (moveType == 1)
+                {
+                    newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.Dashing);
+                }
+                else if (moveType == 2)
+                {
+                    newSlime.GetComponent<Slime>().activeMovetypes.Add(Slime.MoveTypes.LaneSwap);
+
+                }
+                int type = Random.Range(0, 2);
+                newSlime.GetComponent<Slime>().SetType(type);
+
+                //Randomly choose between 4 spawn points, and set the lane fields for each slime to be used in lane switching calculation.
+                int random = Random.Range(1, 5);
+
+                switch (random)
+                {
+                    case (1):
+                        newSlime.transform.position = new Vector3(-1.8f, 6.0f, 0.0f);
+                        newSlime.GetComponent<Slime>().SetLanes(1);
+                        break;
+                    case (2):
+                        newSlime.transform.position = new Vector3(-0.6f, 6.0f, 0.0f);
+                        newSlime.GetComponent<Slime>().SetLanes(2);
+                        break;
+                    case (3):
+                        newSlime.transform.position = new Vector3(0.6f, 6.0f, 0.0f);
+                        newSlime.GetComponent<Slime>().SetLanes(3);
+                        break;
+                    case (4):
+                        newSlime.transform.position = new Vector3(1.8f, 6.0f, 0.0f);
+                        newSlime.GetComponent<Slime>().SetLanes(4);
+                        break;
+                }
+
+                slimeList.Add(newSlime);
+                menuSpawnTimer = 0.0f;
             }
         }
     }
