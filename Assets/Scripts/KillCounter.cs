@@ -39,6 +39,8 @@ public class KillCounter : MonoBehaviour {
     public Sprite fullChargeSprite; // Sprite to show the user that they have full charge for their supershot
     public Sprite superShotChargeSprite; // The sprite for the [Complete] supershot charge
 
+    public GameObject godRays;
+
     // audio variables
     private AudioSource source;
     public AudioClip manaCharge;
@@ -82,6 +84,7 @@ public class KillCounter : MonoBehaviour {
                 Destroy(this.gameObject);
             }
         }
+        godRays.SetActive(false);
     }
 
     // Resets the reference to the supershot UI
@@ -115,6 +118,12 @@ public class KillCounter : MonoBehaviour {
                 {
                     ResetBerserkStateVariables();
                 }
+            }
+
+            if(readyToberserk && !berserkState && killCount >= 15)
+            {
+                if (!godRays.activeSelf) godRays.SetActive(true);
+                godRays.transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f) * Time.deltaTime);
             }
 
             // increment the timer each frame
@@ -192,6 +201,7 @@ public class KillCounter : MonoBehaviour {
         killCount = 0;
         killCountSpriteNum = 0;
         superShotImage.GetComponent<Image>().fillAmount = 0;     // Resets the sprite for supershot count back to its original state
+        godRays.SetActive(false);
     }
 
     // Tells the game to start the berserk state
@@ -203,7 +213,6 @@ public class KillCounter : MonoBehaviour {
             berserkState = true;
             berserkCount = 5; // Makes the berserk state last 5 seconds
             readyToberserk = false;
-            
         }
     }
 
