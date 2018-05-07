@@ -224,6 +224,8 @@ public class Flickshot : MonoBehaviour
     {
         var indicator = Instantiate(touchIndicator, Camera.GetComponent<Camera>().ScreenToWorldPoint(position), Quaternion.identity);
         indicator.GetComponent<ParticleSystem>().Play();
+
+        Destroy(indicator, 1);
     }
 
     // Depricated Flicking Code

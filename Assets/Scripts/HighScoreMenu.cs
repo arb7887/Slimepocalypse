@@ -8,6 +8,8 @@ public class HighScoreMenu : MonoBehaviour {
 
     // Main Menu text field for high scores
     public Text highScoreText;
+    // Main Menu text field for the white high scores
+    public Text highScoreTextWhite;
 
     // Use this to make sure we don't repeat ourselves when adding a new score to the high score list
     private bool haveNotReorganizedYet = true;
@@ -26,10 +28,13 @@ public class HighScoreMenu : MonoBehaviour {
             {
                 PlayerPrefs.SetInt("highScore" + i, 0);
                 highScoreText.text += "\n" + "High Score: 0";
+
+                highScoreTextWhite.text += "\n" + "High Score: 0";
             }
             else
             {
                 highScoreText.text += "\n" + "High Score: " + PlayerPrefs.GetInt("highScore" + i);
+                highScoreTextWhite.text += "\n" + "High Score: " + PlayerPrefs.GetInt("highScore" + i);
             }
         }
     }
@@ -61,7 +66,8 @@ public class HighScoreMenu : MonoBehaviour {
     {
 
 
-            highScoreText.text = "";
+        highScoreText.text = "";
+        highScoreTextWhite.text = "";
 
 
         // A for loop to replace the first beaten score with this new score
@@ -78,6 +84,7 @@ public class HighScoreMenu : MonoBehaviour {
         for (int i = 1; i < 11; ++i)
         {
             highScoreText.text += "\n" + "High Score: " + PlayerPrefs.GetInt("highScore" + i);
+            highScoreTextWhite.text += "\n" + "High Score: " + PlayerPrefs.GetInt("highScore" + i);
         }
 
         // Reset its value when its done
