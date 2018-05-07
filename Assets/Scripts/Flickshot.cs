@@ -16,6 +16,7 @@ public class Flickshot : MonoBehaviour
     public GameObject fireAmmo;
     public GameObject iceAmmo;
     public GameObject superAmmo;
+    public GameObject touchIndicator;
     public int ammoType = 1; //Represents element: 1 = Fire | 2 = Ice
     private int superShotCount = 0; // Counts how many shots have been fired to check if we need to fire a super shot
     private int ammoTypeHolder = 0;
@@ -67,6 +68,7 @@ public class Flickshot : MonoBehaviour
                         // Save the touch's location in the beginning of the touch
                         case TouchPhase.Began:
                             startVec2 = touch.position;
+                            SpawnTouchIndicator(startVec2);
                             break;
                         // Useable for calculating angle
                         case TouchPhase.Moved:
@@ -76,7 +78,7 @@ public class Flickshot : MonoBehaviour
                         case TouchPhase.Ended:
                             releaseVec2 = touch.position;
                             Launch();
-
+                           
                             // reset the start and release vectors
                             startVec2 = Vector2.zero;
                             releaseVec2 = Vector2.zero;
@@ -89,6 +91,7 @@ public class Flickshot : MonoBehaviour
                 {
                     // Save the touch's location in the beginning of the touch
                     startVec2 = Input.mousePosition;
+                    SpawnTouchIndicator(startVec2);
                 }
                 // Check if the player has released
                 if (Input.GetMouseButtonUp(0) == true && startVec2 != Vector2.zero)
@@ -217,6 +220,12 @@ public class Flickshot : MonoBehaviour
         }
     }
     
+    private void SpawnTouchIndicator(Vector2 position)
+    {
+        var indicator = Instantiate(touchIndicator, Camera.GetComponent<Camera>().ScreenToWorldPoint(position), Quaternion.identity);
+        indicator.GetComponent<ParticleSystem>().Play();
+    }
+
     // Depricated Flicking Code
     /*
     // Calculates the launch angle using the 2 startVec2 and the releaseVec2, creates a new object on the screen, and launches it with a force
