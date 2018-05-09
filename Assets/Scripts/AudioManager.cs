@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour {
         }
 
 
-        Debug.Log("Is Game Over: " + SlimeManagerSingleton.Instance.isGameOver);
+        //Debug.Log("Is Game Over: " + SlimeManagerSingleton.Instance.isGameOver);
 
         // If we're in the main menu, always play the main menu song.
         if (SlimeManagerSingleton.Instance.isGameOver)
@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour {
             chosenClip = 1;
         }
 
-        Debug.Log("Clip: " + chosenClip);
+        //Debug.Log("Clip: " + chosenClip);
 
         recentTrack = chosenClip; // Save the most recently played clip so that we can avoid playing the same track twice.
 

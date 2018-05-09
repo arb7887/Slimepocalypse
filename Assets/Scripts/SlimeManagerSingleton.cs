@@ -117,8 +117,9 @@ public class SlimeManagerSingleton : MonoBehaviour {
             {
                 // increase the passive score by the scoreIncease
                 passiveScore += scoreIncrease;
-                int randDifficulty = Random.Range(1, 4); //Randomly increase an aspect of the Slimes
-                                                         //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
+                int randDifficulty = Random.Range(1, 4);
+                
+                //Randomly increase an aspect of the Slimes to slowly ramp up difficulty at a non-exponential curve
                 switch (randDifficulty)
                 {
                     case (1):
