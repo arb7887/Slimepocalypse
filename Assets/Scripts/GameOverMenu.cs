@@ -23,6 +23,11 @@ public class GameOverMenu : MonoBehaviour {
         //SceneManager.LoadScene("Main");
         KillCounter.instance.Reset();
         KillCounter.instance.superShotImage = GameObject.Find("SuperShotUI");
+        // kill the slimes before reseting the singleton instance
+        foreach (GameObject slime in SlimeManagerSingleton.Instance.slimeList)
+        {
+            Destroy(slime);
+        }
         SlimeManagerSingleton.Instance.Reset();
         manager.GetComponent<WallManager>().resetWalls();
         SlimeManagerSingleton.Instance.isGameOver = false;

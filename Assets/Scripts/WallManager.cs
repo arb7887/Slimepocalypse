@@ -106,6 +106,6 @@ public class WallManager : MonoBehaviour {
         }
 
         //Make New Walls
-        createWall();
+        //createWall();
     }
 }
